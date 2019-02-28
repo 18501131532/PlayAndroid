@@ -10,7 +10,7 @@ import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
  * Created by 段傅华 on 2019/1/17.
  */
 
-public abstract class BaseActivity<V,P extends BasePresenter<V>> extends SimpleActivity{
+public abstract class BaseActivity<V,P extends BasePresenter<V>> extends SimpleActivity implements Base_View{
     public P mPresenter;
 
     @Override
@@ -32,4 +32,13 @@ public abstract class BaseActivity<V,P extends BasePresenter<V>> extends SimpleA
         }
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoding() {
+
+    }
 }

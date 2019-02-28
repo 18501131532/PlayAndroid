@@ -15,7 +15,6 @@ import com.jy.theplayandroid.playandroid.presenter.TalkClassiyPresenter;
 import okhttp3.FormBody;
 
 public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,TalkClassiyPresenter<TalkClassify.TalkClassifyView>> implements TalkClassify.TalkClassifyView{
-    //郭志俊第一次上传=====================
 
     @Override
     public void showLoading() {
@@ -26,7 +25,6 @@ public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,Tal
     public void hideLoding() {
 
     }
-
 
     @Override
     public void showError(String error) {
