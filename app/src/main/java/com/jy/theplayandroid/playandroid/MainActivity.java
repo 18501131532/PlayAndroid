@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,Tal
     @Override
     public void showSuccess(TalkCalssifyBean talkCalssifyBean) {
         Log.e("duan", "showSuccess: "+talkCalssifyBean.getData());
+        Log.i("TestPush","");
     }
 
     @Override
