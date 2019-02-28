@@ -17,16 +17,6 @@ import okhttp3.FormBody;
 public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,TalkClassiyPresenter<TalkClassify.TalkClassifyView>> implements TalkClassify.TalkClassifyView{
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoding() {
-
-    }
-
-    @Override
     public void showError(String error) {
 
     }
