@@ -41,4 +41,14 @@ public abstract class BaseFragment<V,P extends BasePresenter<V>>extends SimpleFr
             mPresenter=null;
         }
     }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoding() {
+
+    }
 }
