@@ -1,14 +1,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">WanAndroid</string>
+    <string name="awesome_wan_android">Awesome WanAndroid</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_play_start">PlayStartActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="awesome_wan_android">Awesome WanAndroid</string>
 
     //Common
     <string name="http_error">network anomaly</string>
@@ -24,6 +22,8 @@
     <string name="history_search">Search History</string>
     <string name="hot_search">Top Search</string>
     <string name="useful_sites">Useful Sites</string>
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
     <string name="double_click_exit_tint">Press the back button again to exit the GeeksAndroid</string>
     <string name="ok">OK</string>
     <string name="no">NO</string>
