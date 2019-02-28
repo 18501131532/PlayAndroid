@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
+import com.jy.theplayandroid.playandroid.util.GetWindowManagerUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,10 +29,7 @@ public class PlayStartActivity extends SimpleActivity
     @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
     protected void initData() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        //注意要清除 FLAG_TRANSLUCENT_STATUS flag
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryOverlay));
+        GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
