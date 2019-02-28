@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid;
 
-import android.annotation.SuppressLint;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -28,10 +29,10 @@ public class PlayStartActivity extends SimpleActivity
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
 
-    @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
     protected void initData() {
         GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -55,6 +56,7 @@ public class PlayStartActivity extends SimpleActivity
 
     @Override
     protected int creatLoyoutId() {
+//        GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
         return R.layout.activity_play_start;
     }
 
@@ -87,6 +89,7 @@ public class PlayStartActivity extends SimpleActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
