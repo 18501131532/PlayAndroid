@@ -40,7 +40,7 @@ public abstract class SimpleActivity extends AppCompatActivity {
         initView();
     }
 
-    private void initView() {
+    public void initView() {
 
     }
 

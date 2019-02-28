@@ -1,38 +1,45 @@
 package com.jy.theplayandroid.playandroid;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-public class PlayStartActivity extends AppCompatActivity
+import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
+import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class PlayStartActivity extends SimpleActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    @BindView(R.id.tv_toolbar)
+    TextView tvToolbar;
+
+    @SuppressLint({"ResourceAsColor", "NewApi"})
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play_start);
+    protected void initData() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        //注意要清除 FLAG_TRANSLUCENT_STATUS flag
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryOverlay));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        FrameLayout framelayout = (FrameLayout) findViewById(R.id.fragment);
+
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -40,6 +47,15 @@ public class PlayStartActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        PlayFragment playFragment = new PlayFragment(tvToolbar);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, playFragment).commit();
+    }
+
+    @Override
+    protected int creatLoyoutId() {
+        return R.layout.activity_play_start;
     }
 
     @Override
@@ -67,9 +83,6 @@ public class PlayStartActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -88,7 +101,7 @@ public class PlayStartActivity extends AppCompatActivity
 
         } else if (id == R.id.tab_project) {
 
-        }else if (id == R.id.tab_wx_article) {
+        } else if (id == R.id.tab_wx_article) {
 
         }
 
