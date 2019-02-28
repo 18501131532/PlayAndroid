@@ -13,7 +13,7 @@ import com.jy.theplayandroid.playandroid.R;
  * A simple {@link Fragment} subclass.
  */
 public class GongzhonghaoFragment extends Fragment {
-
+//王云鹏是傻子
 
     public GongzhonghaoFragment() {
         // Required empty public constructor
