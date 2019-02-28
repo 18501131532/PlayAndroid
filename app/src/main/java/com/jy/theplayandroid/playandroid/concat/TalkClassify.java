@@ -11,6 +11,7 @@ import okhttp3.FormBody;
  */
 
 public interface TalkClassify {
+
     interface TalkClassifyView extends Base_View{
         void showSuccess(TalkCalssifyBean talkCalssifyBean);
     }
@@ -20,4 +21,5 @@ public interface TalkClassify {
     interface TalkClassCallBack extends HttpFinishCallBack{
         void setSuccess(TalkCalssifyBean talkCalssifyBean);
     }
+
 }
