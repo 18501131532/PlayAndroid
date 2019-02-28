@@ -80,17 +80,15 @@ public class PlayStartActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.tab_knowledge_hierarchy) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.tab_main_pager) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.tab_navigation) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.tab_project) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }else if (id == R.id.tab_wx_article) {
 
         }
 
