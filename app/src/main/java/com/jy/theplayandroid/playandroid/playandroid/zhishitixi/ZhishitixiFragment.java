@@ -27,8 +27,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
  */
 public class ZhishitixiFragment extends Fragment {
 
-
-
     private SmartRefreshLayout Smart;
     private RecyclerView ZhishiRecyclerView;
 
