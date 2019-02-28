@@ -1,36 +1,8 @@
 package com.jy.theplayandroid.playandroid;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 
-import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
-import com.jy.theplayandroid.playandroid.bean.TalkCalssifyBean;
-import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.presenter.TalkClassiyPresenter;
-
-import okhttp3.FormBody;
-
-public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,TalkClassiyPresenter<TalkClassify.TalkClassifyView>> implements TalkClassify.TalkClassifyView{
-
-    @Override
-    public void showError(String error) {
-
-    }
-
-    @Override
-    public void showSuccess(TalkCalssifyBean talkCalssifyBean) {
-        Log.e("duan", "showSuccess: "+talkCalssifyBean.getData());
-        Log.i("TestPush","");
-    }
-
-    @Override
-    protected TalkClassiyPresenter<TalkClassify.TalkClassifyView> creatPresenter() {
-        return new TalkClassiyPresenter<>();
-    }
+public class MainActivity extends SimpleActivity {
 
     @Override
     protected int creatLoyoutId() {
@@ -39,9 +11,6 @@ public class MainActivity extends BaseActivity<TalkClassify.TalkClassifyView,Tal
 
     @Override
     protected void initData() {
-        FormBody formBody = new FormBody.Builder()
-                .add("", "")
-                .build();
-        mPresenter.getTalkClassify(formBody);
+
     }
 }
