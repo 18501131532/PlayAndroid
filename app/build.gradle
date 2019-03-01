@@ -70,4 +70,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:25.3.1'//版本 23以上（必须）
 
+    implementation 'com.airbnb.android:lottie:2.3.0'
+
 }
