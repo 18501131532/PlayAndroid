@@ -24,4 +24,8 @@ public interface ApiServer {
 
     @GET("project/list/{page}/json")
     Observable<ProjectListBean> getProjectList(@Path("page") int page, @Query("cid") int cid);
+
+    @GET("tree/json")
+    Observable<OneBean> getZhishiOne();
+
 }
