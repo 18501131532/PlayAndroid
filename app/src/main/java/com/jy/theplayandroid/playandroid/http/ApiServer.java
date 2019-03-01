@@ -6,6 +6,7 @@ import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBea
 import io.reactivex.Observable;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
