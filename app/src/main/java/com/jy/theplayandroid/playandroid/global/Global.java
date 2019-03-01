@@ -8,5 +8,6 @@ public class Global {
    /*
    * 存储常量
    * */
-   public static final String BASE_URL="https://www.firstgainfo.com/firstga/app/";
+   public static final String BASE_URL="http://www.wanandroid.com/";
+
 }

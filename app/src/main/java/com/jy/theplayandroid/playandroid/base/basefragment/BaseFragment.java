@@ -29,6 +29,12 @@ public abstract class BaseFragment<V,P extends BasePresenter<V>>extends SimpleFr
     @Override
     public void load() {
         super.load();
+        if(mPresenter==null){
+            mPresenter = createPresenter();
+            if (mPresenter != null) {
+                mPresenter.attachView((V) this);
+            }
+        }
     }
 
     protected abstract P createPresenter();
