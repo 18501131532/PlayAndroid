@@ -33,13 +33,20 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHoder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHoder holder, final int position) {
         ProjectListBean.DataBean.DatasBean datasBean = mList.get(position);
         Glide.with(context).load(datasBean.getEnvelopePic()).into(holder.mImage);
         holder.mTitle.setText(datasBean.getTitle());
         holder.mTv.setText(datasBean.getDesc());
         holder.mTime.setText(datasBean.getNiceDate());
         holder.mName.setText(datasBean.getAuthor());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItmeClick.ondianji(position);
+            }
+        });
     }
 
     @Override
@@ -70,5 +77,15 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
             mTime = itemView.findViewById(R.id.item_project_list_time_tv);
             mName = itemView.findViewById(R.id.item_project_list_author_tv);
         }
+    }
+
+    private OnItmeClick mOnItmeClick;
+
+    public void setOnItmeClick(OnItmeClick onItmeClick) {
+        mOnItmeClick = onItmeClick;
+    }
+
+    public interface OnItmeClick{
+        void ondianji(int position);
     }
 }

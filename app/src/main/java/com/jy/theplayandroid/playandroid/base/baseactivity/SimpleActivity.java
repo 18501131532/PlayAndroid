@@ -23,7 +23,7 @@ import io.reactivex.functions.Consumer;
  */
 
 public abstract class SimpleActivity extends AppCompatActivity {
-    private Activity mActivity;
+    public Activity mActivity;
     Unbinder mBind;
     public Observable observable;
     @Override
