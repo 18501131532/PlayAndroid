@@ -1,34 +1,47 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.Preference;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter.Zhishipresenter;
+import com.scwang.smartrefresh.header.TaurusHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
-import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ZhishitixiFragment extends Fragment {
+public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipresenter<ZhishiOne.oneView>> implements ZhishiOne.oneView {
 
-    private SmartRefreshLayout Smart;
-    private RecyclerView ZhishiRecyclerView;
+
+    @BindView(R.id.Zhishi_RecyclerView)
+    RecyclerView ZhishiRecyclerView;
+    @BindView(R.id.footer)
+    TaurusHeader footer;
+    @BindView(R.id.Smart)
+    SmartRefreshLayout Smart;
 
     public ZhishitixiFragment() {
         // Required empty public constructor
@@ -36,17 +49,22 @@ public class ZhishitixiFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_zhishitixi, container, false);
+    protected int createLayoutId() {
+        return R.layout.fragment_zhishitixi;
+    }
+
+
+    @Override
+    protected void initData() {
+        initView();
+
+        mPresenter.getones();
+
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView(view);
-
+    protected Zhishipresenter<ZhishiOne.oneView> createPresenter() {
+        return new Zhishipresenter<>();
     }
 
     Handler han = new Handler(new Handler.Callback() {
@@ -69,13 +87,10 @@ public class ZhishitixiFragment extends Fragment {
         }
     });
 
+    @SuppressLint("ResourceAsColor")
     private void initView(View view) {
         Smart = view.findViewById(R.id.Smart);
         ZhishiRecyclerView = view.findViewById(R.id.Zhishi_RecyclerView);
-        //设置 Header 为 贝塞尔雷达 样式
-        Smart.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
-        //设置 Footer 为 球脉冲 样式
-        Smart.setRefreshFooter(new BallPulseFooter(getActivity()).setSpinnerStyle(SpinnerStyle.Scale));
 
 
         Smart.setOnRefreshListener(new OnRefreshListener() {
@@ -102,4 +117,15 @@ public class ZhishitixiFragment extends Fragment {
         });
 
     }
+
+    @Override
+    public void show(OneBean oneBean) {
+        Log.i("==========", "show: "+oneBean);
+    }
+
+    @Override
+    public void showError(String error) {
+
+    }
+
 }
