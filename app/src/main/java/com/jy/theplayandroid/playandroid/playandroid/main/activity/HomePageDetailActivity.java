@@ -68,8 +68,6 @@ public class HomePageDetailActivity extends SimpleActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.tech_meun, menu);
         return true;
-
-
     }
 
     @Override
