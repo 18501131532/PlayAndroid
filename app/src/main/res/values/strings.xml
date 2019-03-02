@@ -113,7 +113,7 @@
     <string name="register_confirm_password_hint">Confirm password</string>
     <string name="register_success">Register success</string>
     <string name="fail_to_obtain_wx_author">Failed to get WeChat author list</string>
-    <string name="share_view">shareView</string>
+
 
 
 </resources>

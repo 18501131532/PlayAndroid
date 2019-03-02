@@ -2,6 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.main.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
+import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.moudle.AtricleListMoudle;
 
@@ -15,6 +16,13 @@ public class AtricleListPresenter<V extends AtricleList.AtricleListView> extends
     public void getAtricList(int page) {
         if (mView!=null){
             mMoudle.setAtricleList(page,this);
+        }
+    }
+
+    @Override
+    public void getAtricBanner() {
+        if (mView!=null){
+            mMoudle.setAtricBanner(this);
         }
     }
 
@@ -35,8 +43,15 @@ public class AtricleListPresenter<V extends AtricleList.AtricleListView> extends
 
     @Override
     public void showSuccess(ArticleListBean listBean) {
-            if (mView!=null){
-                mView.showSuccess(listBean);
-            }
+        if (mView!=null){
+            mView.showSuccess(listBean);
+        }
+    }
+
+    @Override
+    public void showSuccess(ArticleBannerBean bannerBean) {
+        if (mView!=null){
+            mView.shoeSuccess(bannerBean);
+        }
     }
 }

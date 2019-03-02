@@ -1,7 +1,10 @@
 package com.jy.theplayandroid.playandroid.playandroid.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +16,18 @@ import android.view.ViewGroup;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
+import com.jy.theplayandroid.playandroid.playandroid.main.activity.HomePageDetailActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.adapter.MainRlvAdapter;
+import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.playandroid.main.moudle.AtricleListMoudle;
 import com.jy.theplayandroid.playandroid.playandroid.main.presenter.AtricleListPresenter;
+import com.scwang.smartrefresh.header.PhoenixHeader;
+import com.scwang.smartrefresh.header.TaurusHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +38,17 @@ import butterknife.BindView;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends BaseFragment<AtricleList.AtricleListView, AtricleListPresenter<AtricleList.AtricleListView>> implements AtricleList.AtricleListView {
+
+    @BindView(R.id.main_refresh)
+    PhoenixHeader mMainRefresh;
     @BindView(R.id.main_rlv)
     RecyclerView mMainRlv;
+    @BindView(R.id.main_loadmore)
+    TaurusHeader mMainLoadmore;
+    @BindView(R.id.main_refresh_layout)
+    SmartRefreshLayout mMainRefreshLayout;
     private int mPage = 0;
     MainRlvAdapter mMainRlvAdapter;
-
     public MainFragment() {
         // Required empty public constructor
     }
@@ -43,38 +61,81 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
     @Override
     protected void initData() {
         mPresenter.getAtricList(mPage);
+        mPresenter.getAtricBanner();
     }
 
 
     @Override
     public void initView() {
         super.initView();
+        ArrayList<ArticleBannerBean.DataBean> banner = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mMainRlv.setLayoutManager(layoutManager);
-        List<ArticleListBean.DataBean.DatasBean> datas = new ArrayList<>();
-        mMainRlvAdapter = new MainRlvAdapter(datas,getContext());
+        final List<ArticleListBean.DataBean.DatasBean> list = new ArrayList<>();
+        mMainRlvAdapter = new MainRlvAdapter(list,banner,getContext());
         mMainRlv.setAdapter(mMainRlvAdapter);
+
+        mMainRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mMainRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMainRlvAdapter.mBanner.clear();
+                        mMainRlvAdapter.mIntegers.clear();
+                        list.clear();
+                        mPage=0;
+                        initData();
+                        mMainRlvAdapter.addImage();
+                        mMainRefreshLayout.finishRefresh();
+                    }
+                },500);
+            }
+        });
+        mMainRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mMainRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPage++;
+                        initData();
+                        mMainRlvAdapter.mIntegers.clear();
+                        mMainRlvAdapter.addImage();
+                        mMainRefreshLayout.finishLoadMore();
+                    }
+                },1000);
+            }
+        });
+        mMainRlvAdapter.setOnItemClickListener(new MainRlvAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(getContext(), HomePageDetailActivity.class);
+                intent.putExtra("url",mMainRlvAdapter.mList.get(position).getLink());
+                intent.putExtra("title",mMainRlvAdapter.mList.get(position).getTitle());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void showError(String error) {
 
     }
+    @Override
+    protected AtricleListPresenter<AtricleList.AtricleListView> createPresenter() {
+        return new AtricleListPresenter<>();
+    }
 
     @Override
     public void showSuccess(ArticleListBean listBean) {
         List<ArticleListBean.DataBean.DatasBean> datas = listBean.getData().getDatas();
         mMainRlvAdapter.addData(datas);
-        Log.e("duan", "showSuccess: " + datas);
     }
-/*
+
     @Override
     public void shoeSuccess(ArticleBannerBean bannerBean) {
-
-    }*/
-
-    @Override
-    protected AtricleListPresenter<AtricleList.AtricleListView> createPresenter() {
-        return new AtricleListPresenter<>();
+        List<ArticleBannerBean.DataBean> data = bannerBean.getData();
+        mMainRlvAdapter.addList(data);
     }
 }

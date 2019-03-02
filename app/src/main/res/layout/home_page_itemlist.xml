@@ -18,8 +18,6 @@
         android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginStart="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_8"
-        android:clickable="true"
-        android:focusable="true"
         >
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,22 +30,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_author"
+                />
             <TextView
                 android:id="@+id/home_page_itemlist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/dp_5"
-                android:drawableStart="@mipmap/icon_author"
+                android:layout_marginLeft="@dimen/dp_30"
                 android:gravity="center"
-                tools:text="Carson_Ho"
                 android:textColor="@color/comment_text"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@mipmap/icon_author" />
+                />
             <TextView
                 android:id="@+id/home_page_itemlist_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="四大组件/handler"
                 android:textColor="@color/colorPrimaryOverlay"
                 android:gravity="end"
                 android:layout_alignParentEnd="true"
@@ -61,7 +62,6 @@
             android:id="@+id/home_page_itemlist_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Android Handler: 手把手带你深入分析Handler机制源码"
             android:textColor="@color/comment_text"
             android:textSize="@dimen/sp_16"
             android:gravity="center"
@@ -83,10 +83,10 @@
                 android:layout_alignParentRight="true">
 
                 <TextView
-                    android:id="@+id/item_search_pager_tag_red_tv"
+                    android:id="@+id/home_page_itemlist_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="新"
+                    android:text="项目"
                     android:textColor="@color/light_deep_red"
                     android:background="@drawable/shape_tag_red_background_normal"
                     android:gravity="center"
@@ -95,13 +95,13 @@
                     android:visibility="gone"/>
 
                 <TextView
-                    android:id="@+id/item_search_pager_tag_green_tv"
+                    android:id="@+id/home_page_itemlist_new"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="项目"
                     android:textColor="@color/light_green"
                     android:background="@drawable/shape_tag_green_background"
                     android:gravity="center"
+                    android:text="新"
                     android:paddingStart="@dimen/dp_5"
                     android:paddingEnd="@dimen/dp_5"
                     android:layout_marginStart="@dimen/dp_12"
@@ -110,7 +110,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/item_search_pager_like_iv"
+                android:id="@+id/home_page_itemlist_like"
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="@dimen/dp_25"
                 android:contentDescription="@null"
@@ -126,11 +126,11 @@
                 tools:text="14小时之前"
                 android:textColor="@color/comment_text"
                 android:gravity="center_vertical"
-                android:layout_toEndOf="@id/item_search_pager_like_iv"
+                android:layout_toEndOf="@id/home_page_itemlist_like"
                 android:layout_toStartOf="@id/item_search_tag_group"
                 android:drawableLeft="@drawable/ic_time"
                 android:layout_marginLeft="@dimen/dp_12"
-                android:layout_toRightOf="@id/item_search_pager_like_iv"
+                android:layout_toRightOf="@id/home_page_itemlist_like"
                 android:layout_toLeftOf="@id/item_search_tag_group" />
         </RelativeLayout>
     </LinearLayout>

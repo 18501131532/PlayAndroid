@@ -2,7 +2,9 @@ package com.jy.theplayandroid.playandroid.playandroid.main.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
@@ -23,13 +26,18 @@ import java.util.List;
  */
 
 public class MainRlvAdapter extends RecyclerView.Adapter{
-    private  List<ArticleListBean.DataBean.DatasBean> mList;
+    public   ArrayList<ArticleBannerBean.DataBean> mBanner;
+    public   List<ArticleListBean.DataBean.DatasBean> mList;
     private  Context mContext;
     private  int TYPE_BANNER=0;
     private  int TYPE_LIST=1;
-    public MainRlvAdapter(List<ArticleListBean.DataBean.DatasBean> datas, Context context) {
+    private OnItemClickListener mListener;
+    public ArrayList<String> mIntegers;
+
+    public MainRlvAdapter(List<ArticleListBean.DataBean.DatasBean> datas, ArrayList<ArticleBannerBean.DataBean> banner, Context context) {
         this.mList=datas;
         this.mContext=context;
+        this.mBanner=banner;
     }
 
     @NonNull
@@ -47,29 +55,81 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         int viewType = getItemViewType(position);
         if (viewType==TYPE_BANNER){
-            MyViewHolderB holderB= (MyViewHolderB) holder;
-            ArrayList<Integer> integers = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                integers.add(R.mipmap.ic_navigation_bg);
-            }
-            holderB.mBanner.setImages(integers).setImageLoader(new ImageLoader() {
+            final MyViewHolderB holderB= (MyViewHolderB) holder;
+            mIntegers = new ArrayList<>();
+            addImage();
+            holderB.mTitle.setText(mBanner.get(position).getTitle());
+            holderB.mPosition.setText((position+1)+"/"+ mIntegers.size());
+            holderB.mBanner.setImages(mIntegers).setImageLoader(new ImageLoader() {
                 @Override
                 public void displayImage(Context context, Object path, ImageView imageView) {
                     Glide.with(context).load(path).into(imageView);
                 }
             }).start();
+            holderB.mBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                   if (mIntegers!=null&&mList.size()>0){
+                       holderB.mTitle.setText(mBanner.get(position).getTitle());
+                       holderB.mPosition.setText((position+1)+"/"+ mIntegers.size());
+                   }else {
+                       addImage();
+                   }
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
         }else {
             MyViewHolder holder1= (MyViewHolder) holder;
-            holder1.mName.setText(mList.get(position).getAuthor());
+            if (mList.get(position).getAuthor()!=null){
+                holder1.mName.setText(mList.get(position).getAuthor()+"");
             holder1.mTitle.setText(mList.get(position).getTitle());
             holder1.mType.setText(mList.get(position).getSuperChapterName()+"/"+mList.get(position).getChapterName());
             holder1.mTime.setText(mList.get(position).getNiceDate());
+            }
+
+            //判断是否为新
+            boolean fresh = mList.get(position).isFresh();
+            if (fresh){
+                holder1.mNews.setVisibility(View.VISIBLE);
+            }else {
+                holder1.mNews.setVisibility(View.GONE);
+            }
+
+
+            //判断是否为项目
+            List<ArticleListBean.DataBean.DatasBean.TagsBean> tags = mList.get(position).getTags();
+
+            if(tags!=null&&tags.size()!=0){
+                if(tags.get(0).getName().equals("项目")){
+                    holder1.mItem.setVisibility(View.VISIBLE);
+                }else{
+                    holder1.mItem.setVisibility(View.GONE);
+                }
+            }
+            holder1.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener!=null){
+                        mListener.OnItemClick(position);
+                    }
+                }
+            });
         }
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -80,7 +140,18 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
         this.mList.addAll(datas);
         notifyDataSetChanged();
     }
-
+    public void addImage(){
+        if (mIntegers.size()==0) {
+            for (int i = 0; i < mBanner.size(); i++) {
+                mIntegers.add(mBanner.get(i).getImagePath());
+            }
+        }else {
+            mIntegers.clear();
+            for (int i = 0; i < mBanner.size(); i++) {
+                mIntegers.add(mBanner.get(i).getImagePath());
+            }
+        }
+    }
     @Override
     public int getItemViewType(int position) {
         if (position==0){
@@ -90,12 +161,18 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
         }
     }
 
+    public void addList(List<ArticleBannerBean.DataBean> data) {
+        mBanner.addAll(data);
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         final TextView mName;
         final TextView mType;
         final TextView mTitle;
         final TextView mTime;
+        final TextView mItem;
+        final TextView mNews;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -103,16 +180,29 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
             mType = itemView.findViewById(R.id.home_page_itemlist_type);
             mTitle = itemView.findViewById(R.id.home_page_itemlist_title);
             mTime = itemView.findViewById(R.id.home_page_itemlist_time);
+            mItem = itemView.findViewById(R.id.home_page_itemlist_item);
+            mNews = itemView.findViewById(R.id.home_page_itemlist_new);
 
         }
     }
     class MyViewHolderB extends RecyclerView.ViewHolder{
 
         final Banner mBanner;
+        final TextView mTitle;
+        final TextView mPosition;
 
         public MyViewHolderB(View itemView) {
             super(itemView);
             mBanner = itemView.findViewById(R.id.home_page_itembanner_banner);
+            mTitle = itemView.findViewById(R.id.banner_title);
+            mPosition = itemView.findViewById(R.id.banner_position);
         }
+    }
+    //点击事件回调
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener=listener;
     }
 }
