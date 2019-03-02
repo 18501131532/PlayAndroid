@@ -12,14 +12,14 @@ import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
 public interface AtricleList {
     interface AtricleListView extends Base_View{
         void showSuccess(ArticleListBean listBean);
-        //void shoeSuccess(ArticleBannerBean bannerBean);
+        void shoeSuccess(ArticleBannerBean bannerBean);
     }
     interface AtricleListIPresenter{
         void getAtricList(int page);
-       // void getAtricBanner();
+        void getAtricBanner();
     }
     interface AtricleListCallBack extends HttpFinishCallBack{
         void showSuccess(ArticleListBean listBean);
-        //void showSuccess(ArticleBannerBean bannerBean);
+        void showSuccess(ArticleBannerBean bannerBean);
     }
 }
