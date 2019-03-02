@@ -10,8 +10,11 @@
     <android.support.v7.widget.Toolbar
         android:background="@drawable/blue_gradient_bg"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dp_32"
-        android:layout_height="@dimen/dp_60">
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:layout_height="@dimen/dp_90">
         <ImageView
             android:id="@+id/fanhui"
             android:src="@drawable/ic_arrow_back_black_24dp"
