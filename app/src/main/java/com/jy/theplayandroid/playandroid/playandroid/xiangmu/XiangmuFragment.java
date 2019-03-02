@@ -55,8 +55,8 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
 
     @Override
     protected void initData() {
+        showLoading();
         mPresenter.getProjectClassify();
-
     }
 
     @Override
@@ -75,7 +75,7 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
         Log.e("156", dataBeans.toString());
         List<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
-            String name = dataBeans.get(i).getName().toString();
+//            String name = dataBeans.get(i).getName().toString();
             // mProjectTabLayout.addTab(mProjectTabLayout.newTab().setText(name));
             fragments.add(new ProjectListFragment(dataBeans.get(i).getId()));
         }

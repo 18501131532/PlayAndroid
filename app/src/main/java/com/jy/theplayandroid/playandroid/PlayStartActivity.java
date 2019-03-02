@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,12 +31,12 @@ public class PlayStartActivity extends SimpleActivity
     @BindView(R.id.tv_toolbar)
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
-
+    public static AppCompatDelegate mDelegate;
     @Override
     protected void initData() {
         GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
 
-
+        mDelegate = getDelegate();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         FrameLayout framelayout = (FrameLayout) findViewById(R.id.fragment);
@@ -55,6 +56,9 @@ public class PlayStartActivity extends SimpleActivity
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
     }
+
+
+
 
     @Override
     protected int creatLoyoutId() {
