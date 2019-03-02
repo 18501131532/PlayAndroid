@@ -1,10 +1,6 @@
 package com.jy.theplayandroid.playandroid.http;
 
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 
 import io.reactivex.Observable;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
@@ -16,6 +12,7 @@ import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Part;
@@ -26,6 +23,9 @@ import retrofit2.http.Path;
  */
 
 public interface ApiServer {
+    //http://www.wanandroid.com/navi/json
+    @GET
+    Observable<JsonBean>getDaoHangList(@Url String url);
 
 
     //项目分类

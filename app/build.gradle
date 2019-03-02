@@ -87,6 +87,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:25.3.1'//版本 23以上（必须）
     //下拉刷新动画
     compile 'com.yalantis:phoenix:1.2.3'
+    //垂直TabLayout
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
+//    implementation 'com.airbnb.android:lottie:1.0.1'
 
     implementation 'com.airbnb.android:lottie:2.3.0'
 

@@ -7,15 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.adapter.FragmentAdapter;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.DaohangFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.GongzhonghaoFragment;
@@ -23,6 +23,8 @@ import com.jy.theplayandroid.playandroid.playandroid.main.MainFragment;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.XiangmuFragment;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.ZhishitixiFragment;
 import com.jy.theplayandroid.playandroid.util.BottomNavigationViewHelper;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +41,9 @@ public class PlayFragment extends SimpleFragment {
     FloatingActionButton fab;
     @BindView(R.id.bottom_navigation_view)
     BottomNavigationView bottomNavigationView;
+    @BindView(R.id.framelayout_play)
+    ViewPager framelayoutPlay;
+    Unbinder unbinder;
 
     public PlayFragment() {
         // Required empty public constructor
@@ -46,7 +51,7 @@ public class PlayFragment extends SimpleFragment {
 
     @SuppressLint("ValidFragment")
     public PlayFragment(TextView toolbar) {
-        this.tool=toolbar;
+        this.tool = toolbar;
     }
 
     @Override
@@ -72,30 +77,43 @@ public class PlayFragment extends SimpleFragment {
         final GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
         final DaohangFragment daohangFragment = new DaohangFragment();
         final XiangmuFragment xiangmuFragment = new XiangmuFragment();
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(mainFragment);
+        fragments.add(zhishitixiFragment);
+        fragments.add(gongzhonghaoFragment);
+        fragments.add(daohangFragment);
+        fragments.add(xiangmuFragment);
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), fragments);
+        framelayoutPlay.setAdapter(fragmentAdapter);
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.tab_main_pager:
-                        getFragmentManager().beginTransaction().replace(R.id.framelayout_play,mainFragment).commit();
+                        framelayoutPlay.setCurrentItem(0);
+                        //getFragmentManager().beginTransaction().replace(R.id.framelayout_play, mainFragment).commit();
                         tool.setText(item.getTitle());
                         break;
                     case R.id.tab_knowledge_hierarchy:
-                        getFragmentManager().beginTransaction().replace(R.id.framelayout_play,zhishitixiFragment).commit();
+                        framelayoutPlay.setCurrentItem(1);
+                        //getFragmentManager().beginTransaction().replace(R.id.framelayout_play, zhishitixiFragment).commit();
                         tool.setText(item.getTitle());
                         break;
                     case R.id.tab_wx_article:
-                        getFragmentManager().beginTransaction().replace(R.id.framelayout_play,gongzhonghaoFragment).commit();
+                        framelayoutPlay.setCurrentItem(2);
+                        //getFragmentManager().beginTransaction().replace(R.id.framelayout_play, gongzhonghaoFragment).commit();
                         tool.setText(item.getTitle());
                         break;
                     case R.id.tab_navigation:
-                        getFragmentManager().beginTransaction().replace(R.id.framelayout_play,daohangFragment).commit();
+                        framelayoutPlay.setCurrentItem(3);
+                        //getFragmentManager().beginTransaction().replace(R.id.framelayout_play, daohangFragment).commit();
                         tool.setText(item.getTitle());
                         break;
                     case R.id.tab_project:
-                        getFragmentManager().beginTransaction().replace(R.id.framelayout_play,xiangmuFragment).commit();
+                        framelayoutPlay.setCurrentItem(4);
+                        //getFragmentManager().beginTransaction().replace(R.id.framelayout_play, xiangmuFragment).commit();
                         tool.setText(item.getTitle());
                         break;
                 }

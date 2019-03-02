@@ -122,6 +122,42 @@ public class JsonBean {
             private int visible;
             private int zan;
             private List<?> tags;
+            private boolean bool;
+
+            public boolean isBool() {
+                return bool;
+            }
+
+            public void setBool(boolean bool) {
+                this.bool = bool;
+            }
+
+            public ArticlesBean(String apkLink, String author, int chapterId, String chapterName, boolean collect, int courseId, String desc, String envelopePic, boolean fresh, int id, String link, String niceDate, String origin, String projectLink, long publishTime, int superChapterId, String superChapterName, String title, int type, int userId, int visible, int zan, List<?> tags, boolean bool) {
+                this.apkLink = apkLink;
+                this.author = author;
+                this.chapterId = chapterId;
+                this.chapterName = chapterName;
+                this.collect = collect;
+                this.courseId = courseId;
+                this.desc = desc;
+                this.envelopePic = envelopePic;
+                this.fresh = fresh;
+                this.id = id;
+                this.link = link;
+                this.niceDate = niceDate;
+                this.origin = origin;
+                this.projectLink = projectLink;
+                this.publishTime = publishTime;
+                this.superChapterId = superChapterId;
+                this.superChapterName = superChapterName;
+                this.title = title;
+                this.type = type;
+                this.userId = userId;
+                this.visible = visible;
+                this.zan = zan;
+                this.tags = tags;
+                this.bool = bool;
+            }
 
             public String getApkLink() {
                 return apkLink;

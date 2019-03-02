@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".playandroid.PlayFragment">
 
-    <FrameLayout
+    <com.jy.theplayandroid.playandroid.util.NoScrollViewPager
         android:id="@+id/framelayout_play"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
