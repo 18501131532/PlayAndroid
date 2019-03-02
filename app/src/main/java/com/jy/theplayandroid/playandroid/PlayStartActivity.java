@@ -53,12 +53,8 @@ public class PlayStartActivity extends SimpleActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mPlayFragment = new PlayFragment(tvToolbar);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
     }
-
-
-
 
     @Override
     protected int creatLoyoutId() {
@@ -100,13 +96,14 @@ public class PlayStartActivity extends SimpleActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        PlayFragment playFragment = new PlayFragment(tvToolbar);
         FavroiteFragment favroiteFragment = new FavroiteFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
         AboutFragment aboutFragment = new AboutFragment();
         LogoutFragment logoutFragment = new LogoutFragment();
         int id = item.getItemId();
         if (id == R.id.nav_item_wan_android) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, playFragment).commit();
         } else if (id == R.id.nav_item_my_collect) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, favroiteFragment).commit();
         } else if (id == R.id.nav_item_setting) {

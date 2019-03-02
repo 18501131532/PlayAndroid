@@ -1,6 +1,10 @@
 package com.jy.theplayandroid.playandroid.http;
 
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;

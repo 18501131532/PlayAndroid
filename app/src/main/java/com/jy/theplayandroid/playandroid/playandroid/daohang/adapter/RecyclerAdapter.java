@@ -48,9 +48,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
         viewHolder.setIsRecyclable(false);
         viewHolder.tvNodeTitle.setText(mStrings.get(position).getTitle());
         List<JsonBean.DataBean.ArticlesBean> articles = mDataBeans.get(position).getArticles();
-        articles.get(position).setBool(false);
 //        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < articles.size(); i++) {
+            articles.get(i).setBool(false);
             Random myRandom = new Random();
             int ranColor = 0xff000000 | myRandom.nextInt(0x00ffffff);
 
