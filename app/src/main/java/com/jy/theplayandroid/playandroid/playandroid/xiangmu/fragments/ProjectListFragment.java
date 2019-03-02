@@ -2,6 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.ProjectListData;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.activitys.ProjectActivity;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.adapters.ProjectListAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter.IPProjectListData;
@@ -80,8 +82,20 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
     }
 
     @Override
-    public void showProjectList(List<ProjectListBean.DataBean.DatasBean> dataBeans) {
+    public void showProjectList(final List<ProjectListBean.DataBean.DatasBean> dataBeans) {
             mProjectListAdapter.addData(dataBeans);
+            mProjectListAdapter.setOnItmeClick(new ProjectListAdapter.OnItmeClick() {
+                @Override
+                public void ondianji(int position) {
+                    String link = dataBeans.get(position).getLink();
+                    String title = dataBeans.get(position).getTitle();
+                    Intent intent = new Intent(mActivity, ProjectActivity.class);
+                    intent.putExtra("url",link);
+                    intent.putExtra("title",title);
+                    startActivity(intent);
+                }
+            });
+
     }
 
     @Override

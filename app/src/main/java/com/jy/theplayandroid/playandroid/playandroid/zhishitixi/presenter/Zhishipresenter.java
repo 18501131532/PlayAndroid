@@ -7,13 +7,10 @@ import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel.ZhishiMoudel;
 
-public class Zhishipresenter<V extends ZhishiOne.oneView> extends BasePresenter<V> implements ZhishiOne.oneMoudel {
+public class Zhishipresenter<V extends ZhishiOne.oneView> extends BasePresenter<V> implements ZhishiOne.oneMoudel,ZhishiOne.onePresenter {
 
 
     ZhishiMoudel moudel=new ZhishiMoudel();
-    public void getones(){
-        moudel.getZhishi(this);
-    }
 
     @Override
     public void setOne(OneBean oneBean) {
@@ -33,5 +30,10 @@ public class Zhishipresenter<V extends ZhishiOne.oneView> extends BasePresenter<
     @Override
     public void setShowError(String error) {
 
+    }
+
+    @Override
+    public void getone() {
+        moudel.getZhishi(this);
     }
 }

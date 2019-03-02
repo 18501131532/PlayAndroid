@@ -2,6 +2,9 @@ package com.jy.theplayandroid.playandroid.http;
 
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
 import io.reactivex.Observable;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
@@ -34,6 +37,9 @@ public interface ApiServer {
 
     @GET("tree/json")
     Observable<OneBean> getZhishiOne();
+
+    @GET("article/list/{curPage}/json")
+    Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("chapterId") String id);
 
    /*
    * 首页文章列表
