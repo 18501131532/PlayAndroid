@@ -1,19 +1,54 @@
 package com.jy.theplayandroid.playandroid.settings;
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.jy.theplayandroid.playandroid.MainActivity;
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
+import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends SimpleFragment {
 
+
+    @BindView(R.id.setting_usage_tv)
+    TextView mSettingUsageTv;
+    @BindView(R.id.cb_setting_cache)
+    AppCompatCheckBox mCbSettingCache;
+    @BindView(R.id.setting_auto_cache_group)
+    LinearLayout mSettingAutoCacheGroup;
+    @BindView(R.id.cb_setting_image)
+    AppCompatCheckBox mCbSettingImage;
+    @BindView(R.id.cb_setting_night)
+    AppCompatCheckBox mCbSettingNight;
+    @BindView(R.id.setting_usage_card)
+    CardView mSettingUsageCard;
+    @BindView(R.id.setting_other_tv)
+    TextView mSettingOtherTv;
+    @BindView(R.id.ll_setting_feedback)
+    TextView mLlSettingFeedback;
+    @BindView(R.id.tv_setting_clear)
+    TextView mTvSettingClear;
+    @BindView(R.id.ll_setting_clear)
+    LinearLayout mLlSettingClear;
+    @BindView(R.id.setting_other_group)
+    CardView mSettingOtherGroup;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -21,10 +56,40 @@ public class SettingsFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+    protected int createLayoutId() {
+        return R.layout.fragment_settings;
     }
 
+    @Override
+    protected void initData() {
+
+    }
+
+
+
+
+
+
+
+    @OnClick({R.id.cb_setting_cache, R.id.cb_setting_image, R.id.cb_setting_night, R.id.ll_setting_clear, R.id.setting_other_group})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cb_setting_cache:
+                break;
+            case R.id.cb_setting_image:
+                break;
+            case R.id.cb_setting_night:
+                if(mCbSettingNight.isChecked()){
+                    int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                    PlayStartActivity.mDelegate.setLocalNightMode(currentNightMode == Configuration.UI_MODE_NIGHT_NO ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+                    // 同样需要调用recreate方法使之生效
+                    getActivity().recreate();
+                }
+                break;
+            case R.id.ll_setting_clear:
+                break;
+            case R.id.setting_other_group:
+                break;
+        }
+    }
 }

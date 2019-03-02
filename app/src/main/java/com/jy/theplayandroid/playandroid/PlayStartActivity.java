@@ -1,10 +1,13 @@
 package com.jy.theplayandroid.playandroid;
 
-import android.annotation.SuppressLint;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +21,7 @@ import com.jy.theplayandroid.playandroid.logout.LogoutFragment;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.settings.SettingsFragment;
 import com.jy.theplayandroid.playandroid.util.GetWindowManagerUtils;
+import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
 
 import butterknife.BindView;
 
@@ -27,19 +31,19 @@ public class PlayStartActivity extends SimpleActivity
     @BindView(R.id.tv_toolbar)
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
-
-    @SuppressLint({"ResourceAsColor", "NewApi"})
+    public static AppCompatDelegate mDelegate;
     @Override
     protected void initData() {
         GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
 
+        mDelegate = getDelegate();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         FrameLayout framelayout = (FrameLayout) findViewById(R.id.fragment);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-
+        StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -53,8 +57,12 @@ public class PlayStartActivity extends SimpleActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
     }
 
+
+
+
     @Override
     protected int creatLoyoutId() {
+//        GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
         return R.layout.activity_play_start;
     }
 
@@ -87,6 +95,7 @@ public class PlayStartActivity extends SimpleActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
