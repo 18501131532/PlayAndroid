@@ -60,10 +60,15 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
 
     @Override
     protected void initData() {
+        getList();
+        getbanner();
+    }
+    public void getList(){
         mPresenter.getAtricList(mPage);
+    }
+    public void getbanner(){
         mPresenter.getAtricBanner();
     }
-
 
     @Override
     public void initView() {
@@ -81,12 +86,9 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
                 mMainRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mMainRlvAdapter.mBanner.clear();
-                        mMainRlvAdapter.mIntegers.clear();
                         list.clear();
                         mPage=0;
-                        initData();
-                        mMainRlvAdapter.addImage();
+                        getList();
                         mMainRefreshLayout.finishRefresh();
                     }
                 },500);
@@ -99,9 +101,7 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
                     @Override
                     public void run() {
                         mPage++;
-                        initData();
-                        mMainRlvAdapter.mIntegers.clear();
-                        mMainRlvAdapter.addImage();
+                        getList();
                         mMainRefreshLayout.finishLoadMore();
                     }
                 },1000);

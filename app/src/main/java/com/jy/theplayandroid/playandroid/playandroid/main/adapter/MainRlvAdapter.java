@@ -61,8 +61,9 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
             final MyViewHolderB holderB= (MyViewHolderB) holder;
             mIntegers = new ArrayList<>();
             addImage();
-            holderB.mTitle.setText(mBanner.get(position).getTitle());
-            holderB.mPosition.setText((position+1)+"/"+ mIntegers.size());
+            holderB.mTitle.setText(mBanner.get(0).getTitle());
+            holderB.mPosition.setText("1/"+ mIntegers.size());
+
             holderB.mBanner.setImages(mIntegers).setImageLoader(new ImageLoader() {
                 @Override
                 public void displayImage(Context context, Object path, ImageView imageView) {

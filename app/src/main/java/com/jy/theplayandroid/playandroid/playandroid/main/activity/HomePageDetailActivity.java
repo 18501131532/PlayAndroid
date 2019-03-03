@@ -60,7 +60,6 @@ public class HomePageDetailActivity extends SimpleActivity {
         WebSettings settings = mWebWeb.getSettings();
         settings.setJavaScriptEnabled(true);
         mWebWeb.loadUrl(mUrl);
-
     }
 
 
