@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid.http;
 
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
@@ -55,4 +56,7 @@ public interface ApiServer {
    * */
    @GET("banner/json")
    Observable<ArticleBannerBean>getArticleBanner();
+   //公众号
+    @GET("wxarticle/chapters/json")
+    Observable<WxAuthor> getWxAuthorListData();
 }
