@@ -72,13 +72,13 @@ public class HomePageDetailActivity extends SimpleActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
+
         switch (itemId) {
             case android.R.id.home:
                 finish();
                 break;
-            case R.id.item_like:
-                if (mIsChange){
-
+               case R.id.item_like:
+             if (mIsChange){
                 }
                 break;
             case R.id.item_share:
