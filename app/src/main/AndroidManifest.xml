@@ -27,7 +27,9 @@
         </activity>
         <activity android:name=".playandroid.xiangmu.activitys.ProjectActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
+        <activity android:name=".playandroid.main.activity.HomePageDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+            />
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
         <activity android:name=".playandroid.zhishitixi.infoActivity"></activity>
     </application>
