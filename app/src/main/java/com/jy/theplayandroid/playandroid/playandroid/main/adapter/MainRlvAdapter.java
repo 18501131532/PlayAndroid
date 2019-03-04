@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid.playandroid.main.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.playandroid.main.activity.BannerDetailsActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -61,8 +64,11 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
             final MyViewHolderB holderB= (MyViewHolderB) holder;
             mIntegers = new ArrayList<>();
             addImage();
-            holderB.mTitle.setText(mBanner.get(0).getTitle());
-            holderB.mPosition.setText("1/"+ mIntegers.size());
+            if(mBanner.size()>0){
+
+                holderB.mTitle.setText(mBanner.get(0).getTitle());
+                holderB.mPosition.setText("1/"+ mIntegers.size());
+            }
 
             holderB.mBanner.setImages(mIntegers).setImageLoader(new ImageLoader() {
                 @Override
@@ -89,6 +95,15 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onPageScrollStateChanged(int state) {
 
+                }
+            });
+            holderB.mBanner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    Intent intent = new Intent(mContext, BannerDetailsActivity.class);
+                    intent.putExtra("titles",mBanner.get(position).getTitle());
+                    intent.putExtra("urls",mBanner.get(position).getUrl());
+                    mContext.startActivity(intent);
                 }
             });
         }else {
