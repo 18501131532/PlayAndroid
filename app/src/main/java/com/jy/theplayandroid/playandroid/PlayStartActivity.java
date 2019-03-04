@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
+import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.favroite.FavroiteFragment;
 import com.jy.theplayandroid.playandroid.logout.LogoutFragment;
@@ -63,14 +64,9 @@ public class PlayStartActivity extends SimpleActivity
                 switch (item.getItemId()){
                     case R.id.action_usage:
 
-                        Toast.makeText(mActivity, ""+1, Toast.LENGTH_SHORT).show();
-
                         break;
                     case R.id.action_search:
-
-                        Toast.makeText(mActivity, ""+2, Toast.LENGTH_SHORT).show();
-
-
+                        new DialogFragment().show(getFragmentManager(),"123");
                         break;
                 }
                 return false;
