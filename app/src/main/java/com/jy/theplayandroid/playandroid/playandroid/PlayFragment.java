@@ -68,11 +68,11 @@ public class PlayFragment extends SimpleFragment {
     private void initClick() {
 
 
-        final MainFragment mainFragment = new MainFragment();
-        final ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
-        final GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
-        final DaohangFragment daohangFragment = new DaohangFragment();
-        final XiangmuFragment xiangmuFragment = new XiangmuFragment();
+         MainFragment mainFragment = new MainFragment();
+         ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
+         GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
+         DaohangFragment daohangFragment = new DaohangFragment();
+         XiangmuFragment xiangmuFragment = new XiangmuFragment();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(mainFragment);
         fragments.add(zhishitixiFragment);
