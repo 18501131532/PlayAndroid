@@ -14,6 +14,7 @@
         android:background="@drawable/blue_gradient_bg"
         android:fitsSystemWindows="true"
         android:clipToPadding="true"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
         <TextView

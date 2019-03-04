@@ -15,6 +15,7 @@ import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.OfficialMarkConcat;
+import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.fragment.ReuseFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.presenter.OfficialMarkPresenter;
 
 import java.util.ArrayList;

@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +30,7 @@ public class HomePageDetailActivity extends SimpleActivity {
     @BindView(R.id.web_web)
     WebView mWebWeb;
     String mUrl;
+    public boolean mIsChange = false;
 
     @Override
     protected int creatLoyoutId() {
@@ -76,6 +76,11 @@ public class HomePageDetailActivity extends SimpleActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.item_like:
+                if (mIsChange){
+
+                }
+                break;
             case R.id.item_share:
                 ShareUtil.shareText(mActivity, mUrl, "分享");
                 break;
@@ -104,10 +109,4 @@ public class HomePageDetailActivity extends SimpleActivity {
         return super.onMenuOpened(featureId, menu);
     }
 
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//    super.onCreateContextMenu(menu, v, menuInfo);
-//    menu.add(1,1,1,"分享");
-//    menu.add(1,2,2,"用系统浏览器打开");
-//}
 }

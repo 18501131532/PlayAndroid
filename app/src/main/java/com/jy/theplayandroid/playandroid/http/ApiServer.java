@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid.http;
 
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
@@ -45,7 +46,9 @@ public interface ApiServer {
 
     @GET("article/list/{curPage}/json")
     Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("chapterId") String id);
-
+    //公众号列表
+    @GET("wxarticle/list/{id}/{page}/json")
+    Observable<FeedArticleListData> getWxSumData(@Path("id") int id, @Path("page") int page);
    /*
    * 首页文章列表
    * */
@@ -59,4 +62,7 @@ public interface ApiServer {
    //公众号
     @GET("wxarticle/chapters/json")
     Observable<WxAuthor> getWxAuthorListData();
+   /*
+   * 收藏站内文章
+   * */
 }
