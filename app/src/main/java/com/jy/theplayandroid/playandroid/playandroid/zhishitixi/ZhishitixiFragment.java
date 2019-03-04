@@ -3,12 +3,15 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +22,8 @@ import android.view.ViewGroup;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
+import com.jy.theplayandroid.playandroid.global.MyApp;
+import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.adapter.ZhishiAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
@@ -50,7 +55,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
     TaurusHeader footer;
     @BindView(R.id.Smart)
     SmartRefreshLayout Smart;
-    private List<OneBean.DataBean> list=new ArrayList<>();
+    private List<OneBean.DataBean> list = new ArrayList<>();
     private ZhishiAdapter shi;
 
 
@@ -71,7 +76,15 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
         initView();
 
 
+        MyApp.sMyApp.ScrollList(ZhishiRecyclerView);
 
+
+        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZhishiRecyclerView.scrollToPosition(0);
+            }
+        });
     }
 
     @Override
@@ -107,11 +120,11 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
         shi.setOnclicklist(new ZhishiAdapter.OnClickListener() {
             @Override
             public void onclickshow(int i) {
-                Intent in=new Intent();
-                in.setClass(getActivity(),Zhishiactivity.class);
-                in.putExtra("title",list.get(i).getName());
+                Intent in = new Intent();
+                in.setClass(getActivity(), Zhishiactivity.class);
+                in.putExtra("title", list.get(i).getName());
                 List<OneBean.DataBean.ChildrenBean> children = list.get(i).getChildren();
-                Bundle bun=new Bundle();
+                Bundle bun = new Bundle();
                 bun.putSerializable("id", (Serializable) children);
                 in.putExtras(bun);
                 startActivity(in);

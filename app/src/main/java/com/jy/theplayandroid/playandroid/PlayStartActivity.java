@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
@@ -54,6 +55,27 @@ public class PlayStartActivity extends SimpleActivity
 
         mPlayFragment = new PlayFragment(tvToolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
+
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_usage:
+
+                        Toast.makeText(mActivity, ""+1, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.action_search:
+
+                        Toast.makeText(mActivity, ""+2, Toast.LENGTH_SHORT).show();
+
+
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

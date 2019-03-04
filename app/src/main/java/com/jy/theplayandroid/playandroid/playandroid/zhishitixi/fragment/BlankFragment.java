@@ -74,7 +74,8 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
+        if (isVisibleToUser) {
+            Log.i("=============", "setUserVisibleHint: " + id);
             mPresenter.gettwo(page + "", id);
 
         }
@@ -144,31 +145,22 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
 
     @Override
     public void show(TwoBEAN twoBEAN) {
-
-        if(page<0){
-            page=0;
-            Toast.makeText(getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
+        if (page < 0) {
+            page = 0;
         }
-
-
-        Log.i("============", "show: "+twoBEAN.getData().getDatas()+"        "+page);
-        if((page+1)==twoBEAN.getData().getPageCount()){
+        if (twoBEAN.getData().getPageCount() < (page + 1)) {
             Toast.makeText(getActivity(), "已经没有数据了>.<", Toast.LENGTH_SHORT).show();
-        }else{
+        }
+        if (page >= 0) {
             list.addAll(twoBEAN.getData().getDatas());
             shi.notifyDataSetChanged();
         }
-
-
-
     }
 
     @Override
     public void showError(String error) {
 
     }
-
-
 }
 
 

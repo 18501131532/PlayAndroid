@@ -36,6 +36,6 @@ public interface ApiServer {
     Observable<OneBean> getZhishiOne();
 
     @GET("article/list/{curPage}/json")
-    Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("chapterId") String id);
+    Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("cid") String id);
 
 }
