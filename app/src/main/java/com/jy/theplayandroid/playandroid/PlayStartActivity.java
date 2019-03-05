@@ -1,5 +1,6 @@
 package com.jy.theplayandroid.playandroid;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -128,7 +129,7 @@ public class PlayStartActivity extends SimpleActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, settingsFragment).commit();
             tvToolbar.setText(item.getTitle());
         } else if (id == R.id.nav_item_about_us) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, aboutFragment).commit();
+             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, aboutFragment).commit();
         } else if (id == R.id.nav_item_logout) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logoutFragment).commit();
         }

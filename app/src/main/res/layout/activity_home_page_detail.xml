@@ -19,7 +19,6 @@
 
         <TextView
             android:id="@+id/tv_toolbar"
-            android:layout_gravity="center"
             android:textSize="@dimen/sp_17"
             android:textStyle="normal"
             android:text="@string/home_pager"
