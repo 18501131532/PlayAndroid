@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".playandroid.daohang.activity.DaoHangInfoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_daohanginfo"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/blue_gradient_bg"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/colorCard"
+        app:navigationIcon="@drawable/ic_action_navigation_arrow_back_inverted"/>
+
+    <WebView
+        android:id="@+id/wv_daohanginfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

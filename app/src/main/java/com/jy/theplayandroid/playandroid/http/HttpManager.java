@@ -2,7 +2,10 @@ package com.jy.theplayandroid.playandroid.http;
 
 import android.util.Log;
 
+import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.global.MyApp;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.cookies.AddHeaderInterceptor;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.cookies.SaveCookieInterceptor;
 import com.jy.theplayandroid.playandroid.util.SystemUtil;
 
 import java.io.File;
@@ -45,6 +48,28 @@ public class HttpManager {
         return sHttpManager;
     }
 
+    public ApiServer getServers() {
+//创建Ok log拦截
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(new SaveCookieInterceptor())
+                .addInterceptor(new AddHeaderInterceptor())
+                .writeTimeout(2000, TimeUnit.SECONDS)
+                .readTimeout(2000, TimeUnit.SECONDS)
+                .connectTimeout(2000, TimeUnit.SECONDS)
+                .build();
+
+        Retrofit build = new Retrofit.Builder().baseUrl(Global.BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+        ApiServer baseurl = build.create(ApiServer.class);
+        return baseurl;
+    }
+
     public ApiServer getServer(String url) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -80,6 +105,8 @@ public class HttpManager {
                 .cache(cache)
                 .addInterceptor(httpLoggingInterceptor)
                 .addInterceptor(myCacheinterceptor)
+                .addInterceptor(new SaveCookieInterceptor())
+                .addInterceptor(new AddHeaderInterceptor())
                 .addNetworkInterceptor(myCacheinterceptor)
                 .retryOnConnectionFailure(true)
                 .build();

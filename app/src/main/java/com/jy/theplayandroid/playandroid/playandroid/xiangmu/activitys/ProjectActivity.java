@@ -97,11 +97,4 @@ public class ProjectActivity extends SimpleActivity {
         }
         return super.onMenuOpened(featureId, menu);
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

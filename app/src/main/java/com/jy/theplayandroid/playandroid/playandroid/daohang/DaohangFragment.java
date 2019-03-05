@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid.playandroid.daohang;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -13,10 +14,13 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
+import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.DaoHangListAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.RecyclerAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.RecycleritemAdapter;
@@ -55,6 +59,14 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
     @Override
     protected void initData() {
 //        mPresenter.getDaoHang("navi/json");
+        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "dvfdvb", Toast.LENGTH_SHORT).show();
+                rlvDaohang.scrollToPosition(0);
+                lvDaohang.scrollToPosition(0);
+            }
+        });
     }
 
     @Override
@@ -133,6 +145,12 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
             public void onClick(View v, int position, int art_position) {
                 Log.e("duanxq", "onClick: " + mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
 //                mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).setBool(true);
+                Intent intent = new Intent(mContext, DaoHangInfoActivity.class);
+                intent.putExtra("title",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
+                intent.putExtra("link",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getLink());
+                intent.putExtra("auther",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getAuthor());
+                intent.putExtra("id",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId()+"");
+                startActivity(intent);
             }
         });
     }

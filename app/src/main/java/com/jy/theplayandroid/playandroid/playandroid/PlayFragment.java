@@ -37,8 +37,7 @@ public class PlayFragment extends SimpleFragment {
 
 
     TextView tool;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+    public static FloatingActionButton fab;
     @BindView(R.id.bottom_navigation_view)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.framelayout_play)
@@ -61,6 +60,7 @@ public class PlayFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+        fab = getActivity().findViewById(R.id.fab);
         initClick();
     }
 

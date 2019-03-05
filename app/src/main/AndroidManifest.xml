@@ -15,21 +15,24 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PlayStartActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".MainActivity" >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".playandroid.xiangmu.activitys.ProjectActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+        <activity
+            android:name=".playandroid.xiangmu.activitys.ProjectActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
-        <activity android:name=".playandroid.zhishitixi.infoActivity"></activity>
+        <activity android:name=".playandroid.zhishitixi.infoActivity" />
+        <activity
+            android:name=".playandroid.daohang.activity.DaoHangInfoActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

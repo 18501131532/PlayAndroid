@@ -13,7 +13,7 @@ public class DaoHangPresenter<V extends TalkClassify.DaoHangView> extends BasePr
     @Override
     public void getDaoHang(String json) {
         if (mDaoHangModule!=null){
-            mDaoHangModule.getDaoHangList(json,this);
+            mDaoHangModule.getDaoHangList(this,json);
         }
     }
 

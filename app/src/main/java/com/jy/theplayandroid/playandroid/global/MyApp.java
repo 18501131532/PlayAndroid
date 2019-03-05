@@ -1,8 +1,14 @@
 package com.jy.theplayandroid.playandroid.global;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,14 +17,49 @@ import java.util.Set;
 
 public class MyApp extends Application {
     public static MyApp sMyApp;
-    private Set<Activity> allActivities;
+    private List<Activity> activities = new ArrayList<Activity>();
+    private static MyActivityLifecycle myActivityLifecycle;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEdit;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        myActivityLifecycle = new MyActivityLifecycle();
+        registerActivityLifecycleCallbacks(myActivityLifecycle);
         sMyApp=this;
+
+        boolean runBackground = isRunBackground(sMyApp);
+        if (runBackground){
+
+        }else {
+            Log.e("duanxq", "app: " + "shabi");
+            mSharedPreferences = getSharedPreferences("loging", 0);
+            mEdit = mSharedPreferences.edit();
+            mEdit.putBoolean("loging", false);
+            mEdit.commit();
+        }
     }
     public static  synchronized MyApp getMyApp(){
         return sMyApp;
     }
 
+    /** 判断程序是否在后台运行 */
+    public static boolean isRunBackground(Context context) {
+        ActivityManager activityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager
+                .getRunningAppProcesses();
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            if (appProcess.processName.equals(context.getPackageName())) {
+                if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
+                    // 表明程序在后台运行
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 }

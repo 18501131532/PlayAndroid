@@ -1,5 +1,6 @@
 package com.jy.theplayandroid.playandroid;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -9,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.favroite.FavroiteFragment;
+import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.logout.LogoutFragment;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.settings.SettingsFragment;
@@ -32,6 +35,9 @@ public class PlayStartActivity extends SimpleActivity
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
     public static AppCompatDelegate mDelegate;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEdit;
+
     @Override
     protected void initData() {
         GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this,true,R.color.colorPrimaryOverlay);
@@ -96,6 +102,7 @@ public class PlayStartActivity extends SimpleActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        tvToolbar.setText("首页");
         PlayFragment playFragment = new PlayFragment(tvToolbar);
         FavroiteFragment favroiteFragment = new FavroiteFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
@@ -118,5 +125,15 @@ public class PlayStartActivity extends SimpleActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void initBack() {
+        super.initBack();
+        Log.e("wangyunpeng", "onDestroy: " + "shabi");
+        mSharedPreferences = getSharedPreferences("loging", 0);
+        mEdit = mSharedPreferences.edit();
+        mEdit.putBoolean("loging", false);
+        mEdit.commit();
     }
 }
