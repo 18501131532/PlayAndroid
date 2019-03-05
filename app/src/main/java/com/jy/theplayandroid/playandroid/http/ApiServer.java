@@ -5,6 +5,7 @@ import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArtic
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
@@ -64,5 +65,9 @@ public interface ApiServer {
    * 收藏站内文章
    * */
     Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("cid") String id);
+
+    //常用网站列表
+    @GET("friend/json")
+    Observable<ChuangYongBean> getchangyong();
 
 }

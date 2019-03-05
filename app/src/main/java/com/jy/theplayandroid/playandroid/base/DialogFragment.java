@@ -9,21 +9,41 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
+import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
 
-public class DialogFragment extends BaseDialogFragment {
+public abstract class DialogFragment<V,P extends BasePresenter<V>> extends BaseDialogFragment implements Base_View {
 
-
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_search,container,false);
-        return view;
-    }
+    public P Mpresenter;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Mpresenter=createPresenter();
+        if(Mpresenter!=null){
+            Mpresenter.attachView((V) this);
+        }
+
+        init();
+
+    }
+
+    protected abstract void init();
+
+    public abstract P createPresenter();
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoding() {
+
+    }
+
+    @Override
+    public void showError(String error) {
 
     }
 }

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BaseDialogFragment extends DialogFragment{
+public abstract class BaseDialogFragment extends DialogFragment{
     public Context context;
 
     @Override
@@ -16,4 +16,14 @@ public class BaseDialogFragment extends DialogFragment{
         super.onAttach(context);
         this.context=context;
     }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(createLayoutId(), null,false);
+        return view;
+    }
+
+
+    public abstract int createLayoutId();
 }

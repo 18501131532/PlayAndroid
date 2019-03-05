@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jy.theplayandroid.playandroid.Dialogfragment.Changyong;
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
@@ -63,10 +64,9 @@ public class PlayStartActivity extends SimpleActivity
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_usage:
-
+                        new Changyong().show(getFragmentManager(),"123");
                         break;
                     case R.id.action_search:
-                        new DialogFragment().show(getFragmentManager(),"123");
                         break;
                 }
                 return false;
