@@ -41,6 +41,12 @@ public class GongzhonghaoFragment extends BaseFragment<OfficialMarkConcat.Offici
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void load() {
+        super.load();
         mPresenter.setData();
     }
 
