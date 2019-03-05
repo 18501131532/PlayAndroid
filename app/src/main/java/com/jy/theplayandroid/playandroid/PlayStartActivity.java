@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.Dialogfragment.Changyong;
+import com.jy.theplayandroid.playandroid.Dialogfragment.Sousuo;
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
@@ -69,6 +70,7 @@ public class PlayStartActivity extends SimpleActivity
                         changyong.show(getFragmentManager(),"123");
                         break;
                     case R.id.action_search:
+                        new Sousuo().show(getFragmentManager(),"123");
                         break;
                 }
                 return false;

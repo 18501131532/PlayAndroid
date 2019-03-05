@@ -7,6 +7,7 @@ import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassif
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
 import io.reactivex.Observable;
@@ -39,6 +40,7 @@ public interface ApiServer {
     @GET("project/tree/json")
     Observable<ProjectClassifyData> getProjectfenlei();
 
+    //项目列表数据
     @GET("project/list/{page}/json")
     Observable<ProjectListBean> getProjectList(@Path("page") int page, @Query("cid") int cid);
 
@@ -64,6 +66,17 @@ public interface ApiServer {
    /*
    * 收藏站内文章
    * */
+
+
+    /**
+     * 知识体系下的文章
+     * http://www.wanandroid.com/article/list/0?cid=60
+     *
+     * @param page page num
+     * @param cid second page id
+     * @return 知识体系feed文章数据
+     */
+
     @GET("article/list/{curPage}/json")
     Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("cid") String id);
 
@@ -71,4 +84,7 @@ public interface ApiServer {
     @GET("friend/json")
     Observable<ChuangYongBean> getchangyong();
 
+    //搜索热词
+    @GET("hotkey/json")
+    Observable<SearchHotkeyBean> getSearchHotkey();
 }

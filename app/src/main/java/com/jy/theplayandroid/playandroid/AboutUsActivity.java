@@ -73,7 +73,7 @@ public class AboutUsActivity extends SimpleActivity {
         //进入界面时自动刷新
         mAboutUsRefreshLayout.autoRefresh();
         //点击悬浮按钮时自动刷新
-        mAboutUsFab.setOnClickListener(v -> mAboutUsRefreshLayout.autoRefresh());
+//        mAboutUsFab.setOnClickListener(v -> mAboutUsRefreshLayout.autoRefresh());
 
         //监听 AppBarLayout 的关闭和开启 给 FlyView（纸飞机） 和 ActionButton 设置关闭隐藏动画
         mAboutUsAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -94,11 +94,11 @@ public class AboutUsActivity extends SimpleActivity {
                     mAboutUsFlyView.animate().scaleX(0).scaleY(0);
                     ValueAnimator animator = ValueAnimator.ofInt(mAboutUsContent.getPaddingTop(), 0);
                     animator.setDuration(300);
-                    animator.addUpdateListener(animation -> {
-                        if (mAboutUsContent != null) {
-                            mAboutUsContent.setPadding(0, (int) animation.getAnimatedValue(), 0, 0);
-                        }
-                    });
+//                    animator.addUpdateListener(animation -> {
+//                        if (mAboutUsContent != null) {
+//                            mAboutUsContent.setPadding(0, (int) animation.getAnimatedValue(), 0, 0);
+//                        }
+//                    });
                     animator.start();
                 }
                 if (fraction > maxFraction && !misAppbarExpand) {
@@ -107,11 +107,11 @@ public class AboutUsActivity extends SimpleActivity {
                     mAboutUsFlyView.animate().scaleX(1).scaleY(1);
                     ValueAnimator animator = ValueAnimator.ofInt(mAboutUsContent.getPaddingTop(), DensityUtil.dp2px(25));
                     animator.setDuration(300);
-                    animator.addUpdateListener(animation -> {
-                        if (mAboutUsContent != null) {
-                            mAboutUsContent.setPadding(0, (int) animation.getAnimatedValue(), 0, 0);
-                        }
-                    });
+//                    animator.addUpdateListener(animation -> {
+//                        if (mAboutUsContent != null) {
+//                            mAboutUsContent.setPadding(0, (int) animation.getAnimatedValue(), 0, 0);
+//                        }
+//                    });
                     animator.start();
                 }
             }
@@ -122,10 +122,10 @@ public class AboutUsActivity extends SimpleActivity {
         mAboutUsFlyRefresh.setUp(mAboutUsMountain, mAboutUsFlyView);
         mAboutUsRefreshLayout.setReboundInterpolator(new ElasticOutInterpolator());
         mAboutUsRefreshLayout.setReboundDuration(800);
-        mAboutUsRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            updateTheme();
-            refreshLayout.finishRefresh(1000);
-        });
+//        mAboutUsRefreshLayout.setOnRefreshListener(refreshLayout -> {
+//            updateTheme();
+//            refreshLayout.finishRefresh(1000);
+//        });
 
         //设置让Toolbar和AppBarLayout的滚动同步
         mAboutUsRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {

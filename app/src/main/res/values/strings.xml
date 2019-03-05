@@ -9,6 +9,11 @@
     <string name="action_settings">Settings</string>
 
     //Common
+
+    <string name="bye_burger_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerBehavior</string>
+    <string name="bye_burger_bottom_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerBottomBehavior</string>
+    <string name="bye_burger_title_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerTitleBehavior</string>
+
     <string name="http_error">network anomaly</string>
     <string name="unKnown_error">unKnown error</string>
     <string name="me">Me</string>
