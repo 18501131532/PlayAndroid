@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_coordinator_group"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg_search_shape"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -47,11 +47,10 @@
                 android:textColor="@color/light_deep_red"
                 android:textSize="@dimen/sp_16" />
 
-            <com.zhy.view.flowlayout.TagFlowLayout
+            <com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout
                 android:id="@+id/top_search_flow_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:max_select="0" />
+                android:layout_height="wrap_content" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -99,6 +98,5 @@
                 android:background="@color/colorBackground" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-
 
 </android.support.design.widget.CoordinatorLayout>

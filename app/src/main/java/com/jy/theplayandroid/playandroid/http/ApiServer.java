@@ -11,6 +11,7 @@ import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassif
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
@@ -133,4 +134,8 @@ public interface ApiServer {
     //搜索热词
     @GET("hotkey/json")
     Observable<SearchHotkeyBean> getSearchHotkey();
+
+
+    @POST("article/query/0/json")
+    Observable<SearchBean> getsearch(@Query("k")String k);
 }

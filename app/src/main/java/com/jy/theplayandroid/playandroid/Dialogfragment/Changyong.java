@@ -91,7 +91,6 @@ public class Changyong extends DialogFragment<ChangYong.ChangYongV, ChuangyongPr
             Random myRandom = new Random();
             int ranColor = 0xff000000 | myRandom.nextInt(0x00ffffff);
             TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.layout, flowlayout, false);
-            if (list.get(i).getName().toString() != null)
                 tv.setText(list.get(i).getName());
             tv.setBackgroundColor(ranColor);
             flowlayout.addView(tv);
