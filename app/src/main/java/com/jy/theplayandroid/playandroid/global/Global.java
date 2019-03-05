@@ -10,7 +10,7 @@ public class Global {
    /*
    * 存储常量
    * */
-   public static final String BASE_URL="http://www.wanandroid.com/";
+   public static String BASE_URL="http://www.wanandroid.com/";
 
    /**
     * Path

@@ -2,17 +2,12 @@ package com.jy.theplayandroid.playandroid.playandroid;
 
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
@@ -28,8 +23,6 @@ import com.jy.theplayandroid.playandroid.util.BottomNavigationViewHelper;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,8 +31,7 @@ public class PlayFragment extends SimpleFragment {
 
 
     TextView tool;
-
-    public  static FloatingActionButton fab;
+    public static FloatingActionButton fab;
     public static BottomNavigationView bottomNavigationView;
     @BindView(R.id.framelayout_play)
     ViewPager framelayoutPlay;
@@ -60,19 +52,16 @@ public class PlayFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+        fab = getActivity().findViewById(R.id.fab);
         initClick();
     }
 
-
-
     private void initClick() {
-
-
-         MainFragment mainFragment = new MainFragment();
-         ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
-         GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
-         DaohangFragment daohangFragment = new DaohangFragment();
-         XiangmuFragment xiangmuFragment = new XiangmuFragment();
+        MainFragment mainFragment = new MainFragment();
+        ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
+        GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
+        DaohangFragment daohangFragment = new DaohangFragment();
+        XiangmuFragment xiangmuFragment = new XiangmuFragment();
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(mainFragment);
         fragments.add(zhishitixiFragment);
@@ -82,8 +71,8 @@ public class PlayFragment extends SimpleFragment {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), fragments);
         framelayoutPlay.setAdapter(fragmentAdapter);
 
-        bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation_view);
-        fab=getActivity().findViewById(R.id.fab);
+        bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation_view);
+        fab = getActivity().findViewById(R.id.fab);
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

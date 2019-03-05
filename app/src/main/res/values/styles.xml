@@ -19,7 +19,7 @@
 
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">true</item>
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -147,6 +147,5 @@
         <item name="android:backgroundDimEnabled">true</item>
 
     </style>
-
 
 </resources>

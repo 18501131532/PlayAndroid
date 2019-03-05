@@ -1,5 +1,9 @@
 package com.jy.theplayandroid.playandroid.http;
 
+import com.jy.theplayandroid.playandroid.bean.LoadingBean;
+import com.jy.theplayandroid.playandroid.bean.RegisterBean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
@@ -20,7 +24,10 @@ import java.util.Map;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
@@ -35,9 +42,50 @@ import retrofit2.http.Path;
 
 public interface ApiServer {
     //http://www.wanandroid.com/navi/json
+
+    /**
+     * 登录
+     *http://www.wanandroid.com/user/login
+     * */
+    @POST("user/login")
+    @FormUrlEncoded
+    Observable<LoadingBean>getLoading(@FieldMap Map<String,Object> requestBody);
+
+    /**
+     * 注册
+     *http://www.wanandroid.com/user/register
+     * */
+    @POST("user/register")
+    Observable<RegisterBean>getRegister(@Body RequestBody requestBody);
+
+    /**
+     * 导航列表
+     *
+     * */
     @GET
     Observable<JsonBean>getDaoHangList(@Url String url);
 
+    /**
+     * 导航收藏
+     *http://www.wanandroid.com/lg/collect/add/json
+     * */
+    @POST("lg/collect/add/json")
+    Observable<JsonBean>getDaoHangLike(@Body RequestBody requestBody);
+
+    /**
+     * 收藏站外文章
+     *http://www.wanandroid.com/lg/collect/add/json
+     * */
+    @POST("lg/collect/add/json")
+    @FormUrlEncoded
+    Observable<FavroiteAddBean>getFavruiteWebAdd(@FieldMap Map<String,Object> requestBody);
+
+    /**
+     * 收藏列表
+     *http://www.wanandroid.com/lg/collect/list/0/json
+     * */
+    @POST("lg/collect/list/0/json")
+    Observable<Favruite>getFavruite(@Body RequestBody requestBody);
 
     //项目分类
     @GET("project/tree/json")
@@ -84,7 +132,7 @@ public interface ApiServer {
      */
 
     @GET("article/list/{curPage}/json")
-    Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("cid") String id);
+    Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("chapterId") String id);
 
     //常用网站列表
     @GET("friend/json")
