@@ -56,13 +56,13 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
     @Override
     protected void initData() {
         showLoading();
-        mPresenter.getProjectClassify();
+
     }
 
     @Override
     public void load() {
         super.load();
-
+        mPresenter.getProjectClassify();
     }
 
     @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.jy.theplayandroid.playandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,8 +16,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PlayStartActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +29,24 @@
         <activity
             android:name=".playandroid.xiangmu.activitys.ProjectActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".playandroid.main.activity.HomePageDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".playandroid.xiangmu.activitys.ProjectActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
         <activity android:name=".playandroid.zhishitixi.infoActivity" />
+        <activity
+
+            android:name=".playandroid.main.activity.BannerDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".playandroid.gongzhonghao.OfficialMarkDetailsActivity"></activity>
+        <activity android:name=".playandroid.zhishitixi.infoActivity"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".playandroid.daohang.activity.DaoHangInfoActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

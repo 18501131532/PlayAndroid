@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jy.theplayandroid.playandroid.playandroid.main.activity.BannerDetailsActivity"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/banner_web_tooblar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_85"
+        android:background="@drawable/blue_gradient_bg"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="true"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <TextView
+            android:id="@+id/banner_tv_toolbar"
+            android:textSize="@dimen/sp_17"
+            android:textStyle="normal"
+            android:text="@string/home_pager"
+            android:textColor="@color/colorCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+    </android.support.v7.widget.Toolbar>
+    <WebView
+        android:id="@+id/banner_web_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

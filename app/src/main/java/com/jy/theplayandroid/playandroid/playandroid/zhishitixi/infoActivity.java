@@ -1,15 +1,24 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
 
@@ -20,10 +29,14 @@ public class infoActivity extends AppCompatActivity {
 
     @BindView(R.id.like_web)
     WebView likeWeb;
-    @BindView(R.id.fanhui)
-    ImageView fanhui;
+
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    private MenuItem item;
+    private SharedPreferences.Editor ed;
+    private SharedPreferences sh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +47,41 @@ public class infoActivity extends AppCompatActivity {
 
 
 
-        fanhui.setOnClickListener(new View.OnClickListener() {
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //以下三行是修改回退按钮为白色的逻辑
+
+        Drawable upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material);
+
+        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
+        sh = getSharedPreferences("xx",MODE_PRIVATE);
+        ed = sh.edit();
+
+
+
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
+
+
+
         Intent in = getIntent();
         String like = in.getStringExtra("like");
+
+//        toolbar.setTitle(in.getStringExtra("name"));
         title.setText(in.getStringExtra("name"));
+
         // 关于 WebView   设置   的 对象
         WebSettings settings = likeWeb.getSettings();
 
@@ -70,5 +108,57 @@ public class infoActivity extends AppCompatActivity {
         likeWeb.loadUrl(like);
         likeWeb.setWebViewClient(new WebViewClient());
 
+
+
+        toolbar.setOnMenuItemClickListener(clickListener);
+
+
+    }
+    Toolbar.OnMenuItemClickListener clickListener=new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.like:
+                    boolean checked = item.isChecked();
+                    if(checked){
+                        item.setIcon(R.mipmap.ic_toolbar_like_n);
+                    }else{
+                        item.setIcon(R.mipmap.ic_toolbar_like_p);
+                    }
+                    break;
+            }
+            return false;
+        }
+    };
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Log.i("==========", "onCreateOptionsMenu: "+"123");
+        menu.add(0,1,Menu.NONE,"分享");
+        menu.add(0,2,Menu.NONE,"用系统浏览器打开");
+
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        item = menu.getItem(0);
+
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+       switch (item.getItemId()){
+           case 1:
+               Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
+               break;
+           case 2:
+               Toast.makeText(this, "用浏览器打开", Toast.LENGTH_SHORT).show();
+               break;
+
+       }
+        return super.onOptionsItemSelected(item);
     }
 }

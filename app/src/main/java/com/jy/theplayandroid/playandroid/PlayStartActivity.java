@@ -1,6 +1,7 @@
 package com.jy.theplayandroid.playandroid;
 
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -15,8 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.jy.theplayandroid.playandroid.Dialogfragment.Changyong;
+import com.jy.theplayandroid.playandroid.Dialogfragment.Sousuo;
 import com.jy.theplayandroid.playandroid.about.AboutFragment;
+import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.favroite.FavroiteFragment;
 import com.jy.theplayandroid.playandroid.global.MyApp;
@@ -60,6 +65,23 @@ public class PlayStartActivity extends SimpleActivity
 
         mPlayFragment = new PlayFragment(tvToolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
+
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_usage:
+                        Changyong changyong = new Changyong();
+                        changyong.show(getFragmentManager(),"123");
+                        break;
+                    case R.id.action_search:
+                        new Sousuo().show(getFragmentManager(),"123");
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -117,7 +139,7 @@ public class PlayStartActivity extends SimpleActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, settingsFragment).commit();
             tvToolbar.setText(item.getTitle());
         } else if (id == R.id.nav_item_about_us) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, aboutFragment).commit();
+             startActivity(new Intent(this,AboutUsActivity.class));
         } else if (id == R.id.nav_item_logout) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logoutFragment).commit();
         }

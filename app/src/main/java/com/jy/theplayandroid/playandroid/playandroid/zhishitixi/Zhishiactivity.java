@@ -1,11 +1,14 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +39,8 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
     ImageView fanhui;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
 
     @Override
@@ -50,22 +55,40 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
         List<Fragment> fragmentList = new ArrayList<>();
         String title2 = in.getStringExtra("title");
         List<OneBean.DataBean.ChildrenBean> children = (List<OneBean.DataBean.ChildrenBean>) in.getSerializableExtra("id");
+
+
         for (int i = 0; i < children.size(); i++) {
             titleList.add(children.get(i).getName());
-            fragmentList.add(new BlankFragment(children.get(i).getCourseId()+""));
+            fragmentList.add(new BlankFragment(children.get(i).getId() + ""));
         }
+
+
         TabAdapter tab = new TabAdapter(getSupportFragmentManager(), titleList, fragmentList);
         zhishiActivityView.setAdapter(tab);
         zhishiActivityTab.setupWithViewPager(zhishiActivityView);
         title.setText(title2);
 
-        fanhui.setOnClickListener(new View.OnClickListener() {
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//以下三行是修改回退按钮为白色的逻辑
+
+        Drawable upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material);
+
+        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
     }
+
 
     @Override
     public void show(TwoBEAN twoBEAN) {

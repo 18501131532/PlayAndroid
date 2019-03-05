@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jy.theplayandroid.playandroid.Dialogfragment.Changyong;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,4 +144,6 @@ public class FlowLayout extends ViewGroup {
         MarginLayoutParams mp = new MarginLayoutParams(getContext(), attrs);
         return mp;
     }
+
+
 }

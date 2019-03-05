@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".playandroid.zhishitixi.infoActivity">
+
     <android.support.v7.widget.Toolbar
-        android:background="@drawable/blue_gradient_bg"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_90">
-        <ImageView
-            android:id="@+id/fanhui"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30" />
+        android:layout_height="@dimen/dp_90"
+        android:background="@drawable/blue_gradient_bg"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="123"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20" />
+
     </android.support.v7.widget.Toolbar>
 
     <WebView
