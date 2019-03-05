@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -44,12 +43,7 @@ public class OfficialMarkDetailsActivity extends AppCompatActivity {
         mark_toolbar.setTitle("");
         toolbar1.setText(title);
         mark_toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
-        mark_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OfficialMarkDetailsActivity.this.finish();
-            }
-        });
+
         setSupportActionBar(mark_toolbar);
 
         mark_web.setWebChromeClient(new WebChromeClient());

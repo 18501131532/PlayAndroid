@@ -18,9 +18,11 @@ import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 import io.reactivex.Observable;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
@@ -28,9 +30,12 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 /**
  * Created by 段傅华 on 2019/2/27.
@@ -97,6 +102,9 @@ public interface ApiServer {
     //公众号列表
     @GET("wxarticle/list/{id}/{page}/json")
     Observable<FeedArticleListData> getWxSumData(@Path("id") int id, @Path("page") int page);
+    //公众号搜索
+    @GET("wxarticle/list/{id}/{page}/json")
+    Observable<FeedArticleListData> getWxSearchSumData(@Path("id") int id, @Path("page") int page, @QueryMap Map<String,Object> map);
    /*
    * 首页文章列表
    * */
