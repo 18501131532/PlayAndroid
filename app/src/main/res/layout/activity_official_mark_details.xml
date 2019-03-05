@@ -4,22 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".playandroid.gongzhonghao.OfficialMarkDetailsActivity">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/mark_toolbar"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="#1E46C8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/blue_gradient_bg"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
         <TextView
             android:id="@+id/toolbar1"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp_17"
+            android:textStyle="normal"
+            android:text="@string/home_pager"
+            android:textColor="@color/colorCard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:textSize="@dimen/sp_18"
-            android:text="标题"/>
+            android:layout_height="wrap_content" />
+
     </android.support.v7.widget.Toolbar>
     <WebView
         android:id="@+id/mark_web"
