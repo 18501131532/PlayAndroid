@@ -1,32 +1,41 @@
 package com.jy.theplayandroid.playandroid.Dialogfragment;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.util.DisplayMetrics;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.concat.ChangYong;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter.ChuangyongPresenter;
-import com.zhy.view.flowlayout.FlowLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class Changyong extends DialogFragment<ChangYong.ChangYongV, ChuangyongPresenter<ChangYong.ChangYongV>> implements ChangYong.ChangYongV {
 
 
-
-    @BindView(R.id.flowlayout)
     FlowLayout flowlayout;
-    Unbinder unbinder;
+    List<ChuangYongBean.DataBean> list = new ArrayList<>();
+    @BindView(R.id.changyong_fanhui)
+    ImageView changyongFanhui;
+
+
 
     @Override
     public ChuangyongPresenter<ChangYong.ChangYongV> createPresenter() {
@@ -35,37 +44,38 @@ public class Changyong extends DialogFragment<ChangYong.ChangYongV, ChuangyongPr
 
     @Override
     protected void init() {
+        flowlayout = getView().findViewById(R.id.flowlayout);
+
+
+        changyongFanhui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDialog().dismiss();
+            }
+        });
         Mpresenter.getChangYongP();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initDialog();
+
     }
 
     private void initDialog() {
         Window window = getDialog().getWindow();
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        //DialogSearch的宽
-        int width = (int) (metrics.widthPixels * 0.98);
-        assert window != null;
-        window.setLayout(width, WindowManager.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.TOP);
+//        生成popuwindows的宽高
+        WindowManager manager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
+        int width = manager.getDefaultDisplay().getWidth();
+        int height = manager.getDefaultDisplay().getHeight();
+        window.setLayout(width, height);
+
         //取消过渡动画 , 使DialogSearch的出现更加平滑
         window.setWindowAnimations(R.style.DialogEmptyAnimation);
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
 
-//        Window window = getDialog().getWindow();
-//        WindowManager.LayoutParams windowParams = window.getAttributes();
-//        windowParams.dimAmount = 0.0f;
-//        windowParams.y = 100;
-//        window.setAttributes(windowParams);
-//        Dialog dialog = getDialog();
-//        if (dialog != null) {
-//            DisplayMetrics dm = new DisplayMetrics();
-//            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-//            dialog.getWindow().setLayout((int) (dm.widthPixels *1), (int) (dm.heightPixels * 1));
-//        }
-        initDialog();
     }
+
     @Override
     public int createLayoutId() {
         return R.layout.fragment_search;
@@ -73,8 +83,35 @@ public class Changyong extends DialogFragment<ChangYong.ChangYongV, ChuangyongPr
 
     @Override
     public void showChangYong(ChuangYongBean dataBeans) {
-        Log.i("=============", "showChangYong: " + dataBeans);
+        Log.i("=============", "showChangYong: " + dataBeans.getData().size() + "     " + flowlayout);
+        list.addAll(dataBeans.getData());
+
+        for (int i = 0; i < list.size(); i++) {
+            final int j=i;
+            Random myRandom = new Random();
+            int ranColor = 0xff000000 | myRandom.nextInt(0x00ffffff);
+            TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.layout, flowlayout, false);
+            if (list.get(i).getName().toString() != null)
+                tv.setText(list.get(i).getName());
+            tv.setBackgroundColor(ranColor);
+            flowlayout.addView(tv);
+
+
+
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(context, ""+j, Toast.LENGTH_SHORT).show();
+                    Intent in=new Intent(context,ChuangyongInfo.class);
+                    in.putExtra("title",list.get(j).getName());
+                    in.putExtra("url",list.get(j).getLink());
+                    startActivity(in);
+                }
+            });
+        }
+
     }
+
 
 
 }

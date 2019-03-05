@@ -64,6 +64,7 @@ public interface ApiServer {
    /*
    * 收藏站内文章
    * */
+    @GET("article/list/{curPage}/json")
     Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("cid") String id);
 
     //常用网站列表

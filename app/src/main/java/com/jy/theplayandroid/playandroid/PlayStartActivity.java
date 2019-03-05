@@ -64,7 +64,8 @@ public class PlayStartActivity extends SimpleActivity
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_usage:
-                        new Changyong().show(getFragmentManager(),"123");
+                        Changyong changyong = new Changyong();
+                        changyong.show(getFragmentManager(),"123");
                         break;
                     case R.id.action_search:
                         break;

@@ -12,9 +12,13 @@ import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public abstract class DialogFragment<V,P extends BasePresenter<V>> extends BaseDialogFragment implements Base_View {
 
     public P Mpresenter;
+    Unbinder mBind;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -23,7 +27,7 @@ public abstract class DialogFragment<V,P extends BasePresenter<V>> extends BaseD
         if(Mpresenter!=null){
             Mpresenter.attachView((V) this);
         }
-
+        mBind = ButterKnife.bind(this, view);
         init();
 
     }
