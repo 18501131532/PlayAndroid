@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
+import com.jy.theplayandroid.playandroid.global.MyApp;
+import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.main.activity.HomePageDetailActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.adapter.MainRlvAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
@@ -37,7 +41,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends BaseFragment<AtricleList.AtricleListView, AtricleListPresenter<AtricleList.AtricleListView>> implements AtricleList.AtricleListView {
+public class MainFragment extends BaseFragment<AtricleList.AtricleListView, AtricleListPresenter<AtricleList.AtricleListView>> implements AtricleList.AtricleListView, View.OnClickListener {
 
     @BindView(R.id.main_refresh)
     PhoenixHeader mMainRefresh;
@@ -56,18 +60,26 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
     @Override
     protected int createLayoutId() {
         return R.layout.fragment_main;
+
     }
 
     @Override
     protected void initData() {
-        getList();
-        getbanner();
+        showLoading();
+
     }
 
     @Override
     public void load() {
         super.load();
-
+        getList();
+        getbanner();
+        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainRlv.scrollToPosition(0);
+            }
+        });
     }
 
     public void getList(){
@@ -83,7 +95,7 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
         ArrayList<ArticleBannerBean.DataBean> banner = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mMainRlv.setLayoutManager(layoutManager);
-        final List<ArticleListBean.DataBean.DatasBean> list = new ArrayList<>();
+         List<ArticleListBean.DataBean.DatasBean> list = new ArrayList<>();
         mMainRlvAdapter = new MainRlvAdapter(list,banner,getContext());
         mMainRlv.setAdapter(mMainRlvAdapter);
 
@@ -123,7 +135,10 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
                 startActivity(intent);
             }
         });
+        MyApp.getMyApp().ScrollList(mMainRlv);
+
     }
+
 
     @Override
     public void showError(String error) {
@@ -136,13 +151,20 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
 
     @Override
     public void showSuccess(ArticleListBean listBean) {
+        hideLoding();
         List<ArticleListBean.DataBean.DatasBean> datas = listBean.getData().getDatas();
         mMainRlvAdapter.addData(datas);
     }
 
     @Override
     public void shoeSuccess(ArticleBannerBean bannerBean) {
+        hideLoding();
         List<ArticleBannerBean.DataBean> data = bannerBean.getData();
         mMainRlvAdapter.addList(data);
+    }
+
+    @Override
+    public void onClick(View v) {
+        mMainRlv.scrollToPosition(0);
     }
 }
