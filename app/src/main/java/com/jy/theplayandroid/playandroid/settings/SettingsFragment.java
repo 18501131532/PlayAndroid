@@ -10,12 +10,17 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.MainActivity;
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
+import com.jy.theplayandroid.playandroid.util.ACache;
+import com.jy.theplayandroid.playandroid.util.ShareUtil;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +55,7 @@ public class SettingsFragment extends SimpleFragment {
     @BindView(R.id.setting_other_group)
     CardView mSettingOtherGroup;
 
+    private File cacheFile;
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -62,7 +68,7 @@ public class SettingsFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
-
+        mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
     }
 
 
@@ -71,7 +77,7 @@ public class SettingsFragment extends SimpleFragment {
 
 
 
-    @OnClick({R.id.cb_setting_cache, R.id.cb_setting_image, R.id.cb_setting_night, R.id.ll_setting_clear, R.id.setting_other_group})
+    @OnClick({R.id.cb_setting_cache, R.id.cb_setting_image, R.id.cb_setting_night, R.id.ll_setting_clear, R.id.ll_setting_feedback})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cb_setting_cache:
@@ -86,10 +92,18 @@ public class SettingsFragment extends SimpleFragment {
                     getActivity().recreate();
                 }
                 break;
-            case R.id.ll_setting_clear:
+            case R.id.ll_setting_feedback:
+                //Toast.makeText(mContext, "bdhjskhskjdhfk", Toast.LENGTH_SHORT).show();
+                ShareUtil.sendEmail(mActivity,getString(R.string.send_email));
                 break;
-            case R.id.setting_other_group:
+            case R.id.ll_setting_clear:
+                //clearCache();
                 break;
         }
+
+    }
+    private void clearCache() {
+        ACache.deleteDir(cacheFile);
+        mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
     }
 }

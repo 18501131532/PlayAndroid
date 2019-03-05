@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jy.theplayandroid.playandroid.playandroid.main.activity.HomePageDetailActivity"
+    tools:context="com.jy.theplayandroid.playandroid.playandroid.main.activity.BannerDetailsActivity"
     android:orientation="vertical"
     >
     <android.support.v7.widget.Toolbar
-        android:id="@+id/web_tooblar"
+        android:id="@+id/banner_web_tooblar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_85"
         android:background="@drawable/blue_gradient_bg"
@@ -18,7 +18,7 @@
         >
 
         <TextView
-            android:id="@+id/tv_toolbar"
+            android:id="@+id/banner_tv_toolbar"
             android:textSize="@dimen/sp_17"
             android:textStyle="normal"
             android:text="@string/home_pager"
@@ -28,10 +28,9 @@
             android:maxLines="1"
             android:ellipsize="end"
             />
-
     </android.support.v7.widget.Toolbar>
     <WebView
-        android:id="@+id/web_web"
+        android:id="@+id/banner_web_web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

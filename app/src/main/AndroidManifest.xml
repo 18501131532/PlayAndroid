@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PlayStartActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,10 @@
 
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
         <activity android:name=".playandroid.zhishitixi.infoActivity" />
-        <activity android:name=".Dialogfragment.ChuangyongInfo"></activity>
+        <activity
+            android:name=".playandroid.main.activity.BannerDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutUsActivity"></activity>
     </application>
 
 </manifest>

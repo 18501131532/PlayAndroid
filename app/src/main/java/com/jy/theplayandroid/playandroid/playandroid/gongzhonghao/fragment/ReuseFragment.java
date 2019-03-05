@@ -34,6 +34,8 @@ public class ReuseFragment extends BaseFragment<FeedArticleListConcat.FeedArticl
     SmartRefreshLayout public_layout;
     @BindView(R.id.rv)
     RecyclerView rv;
+    public ReuseFragment() {
+    }
     @SuppressLint("ValidFragment")
     public ReuseFragment(int id) {
         this.id=id;

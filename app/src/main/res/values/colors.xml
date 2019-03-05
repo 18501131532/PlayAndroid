@@ -24,6 +24,7 @@
     <color name="topic_text">#afafaf</color>
     <color name="grey_search">#FF999999</color>
     <color name="colorPrimaryOverlay">#00abff</color>
+
     <color name="delete_text">#cccccc</color>
     <color name="deep_grey">#e6e6e6</color>
     <color name="dialog_background">#ffffff</color>
