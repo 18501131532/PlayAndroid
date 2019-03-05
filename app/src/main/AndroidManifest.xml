@@ -33,6 +33,7 @@
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
         <activity android:name=".playandroid.zhishitixi.infoActivity" />
         <activity
+
             android:name=".playandroid.main.activity.BannerDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AboutUsActivity"></activity>

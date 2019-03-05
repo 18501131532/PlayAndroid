@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.playandroid.main.activity.BannerDetailsActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
 import com.youth.banner.Banner;
@@ -98,10 +99,10 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
             holderB.mBanner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-//                    Intent intent = new Intent(mContext, BannerDetailsActivity.class);
-//                    intent.putExtra("titles",mBanner.get(position).getTitle());
-//                    intent.putExtra("urls",mBanner.get(position).getUrl());
-//                    mContext.startActivity(intent);
+                    Intent intent = new Intent(mContext, BannerDetailsActivity.class);
+                    intent.putExtra("titles",mBanner.get(position).getTitle());
+                    intent.putExtra("urls",mBanner.get(position).getUrl());
+                    mContext.startActivity(intent);
                 }
             });
         }else {
