@@ -129,7 +129,7 @@ public class PlayStartActivity extends SimpleActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, settingsFragment).commit();
             tvToolbar.setText(item.getTitle());
         } else if (id == R.id.nav_item_about_us) {
-             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, aboutFragment).commit();
+             startActivity(new Intent(this,AboutUsActivity.class));
         } else if (id == R.id.nav_item_logout) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logoutFragment).commit();
         }
