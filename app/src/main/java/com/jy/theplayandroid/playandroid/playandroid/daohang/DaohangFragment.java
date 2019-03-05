@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
+import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.DaoHangListAdapter;
@@ -146,13 +147,16 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
                 Log.e("duanxq", "onClick: " + mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
 //                mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).setBool(true);
                 Intent intent = new Intent(mContext, DaoHangInfoActivity.class);
-                intent.putExtra("title",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
-                intent.putExtra("link",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getLink());
-                intent.putExtra("auther",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getAuthor());
-                intent.putExtra("id",mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId()+"");
+                intent.putExtra("title", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
+                intent.putExtra("link", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getLink());
+                intent.putExtra("auther", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getAuthor());
+                intent.putExtra("id", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId() + "");
                 startActivity(intent);
             }
         });
+
+        MyApp.sMyApp.ScrollList(rlvDaohang);
+        MyApp.sMyApp.ScrollList(lvDaohang);
     }
 
     //目标项是否在最后一个可见项之后

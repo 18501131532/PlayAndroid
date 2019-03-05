@@ -48,7 +48,7 @@ public class MyApp extends Application {
 
 
     public void ScrollList(RecyclerView recy){
-        recy.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        recy.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);

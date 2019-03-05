@@ -4,9 +4,6 @@ import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
@@ -20,9 +17,9 @@ import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 import io.reactivex.Observable;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
 
-import io.reactivex.Observable;
+import java.util.Map;
+
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
@@ -33,8 +30,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Url;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
 
 /**
  * Created by 段傅华 on 2019/2/27.

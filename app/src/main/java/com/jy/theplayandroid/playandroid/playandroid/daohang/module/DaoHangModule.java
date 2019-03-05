@@ -1,38 +1,19 @@
 package com.jy.theplayandroid.playandroid.playandroid.daohang.module;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import com.jy.theplayandroid.playandroid.base.Httpresultcallback;
 import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
 import com.jy.theplayandroid.playandroid.global.Global;
-import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.ExceptionManager;
 import com.jy.theplayandroid.playandroid.util.RxUtils;
-import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
