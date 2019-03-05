@@ -37,6 +37,7 @@
             android:name=".playandroid.main.activity.BannerDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".playandroid.gongzhonghao.OfficialMarkDetailsActivity"></activity>
     </application>
 
 </manifest>
