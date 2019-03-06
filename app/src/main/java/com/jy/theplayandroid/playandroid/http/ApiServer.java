@@ -85,8 +85,8 @@ public interface  ApiServer {
      * 收藏列表
      *http://www.wanandroid.com/lg/collect/list/0/json
      * */
-    @POST("lg/collect/list/0/json")
-    Observable<Favruite>getFavruite(@Body RequestBody requestBody);
+    @GET("lg/collect/list/{page}/json")
+    Observable<Favruite>getFavruite(@Path("page") int page);
 
     //项目分类
     @GET("project/tree/json")

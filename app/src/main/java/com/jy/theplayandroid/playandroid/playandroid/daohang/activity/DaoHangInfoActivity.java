@@ -133,7 +133,6 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.info_meun, menu);
 
-        mPresenter.getFavruite(null);
 
         mMenu1 = menu;
         return true;

@@ -1,10 +1,13 @@
 package com.jy.theplayandroid.playandroid.playandroid.main;
 
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -127,12 +130,13 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
             }
         });
         mMainRlvAdapter.setOnItemClickListener(new MainRlvAdapter.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
-            public void OnItemClick(int position) {
+            public void OnItemClick(int position,View view) {
                 Intent intent = new Intent(getContext(), HomePageDetailActivity.class);
                 intent.putExtra("url",mMainRlvAdapter.mList.get(position).getLink());
                 intent.putExtra("title",mMainRlvAdapter.mList.get(position).getTitle());
-                startActivity(intent);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
             }
         });
         MyApp.getMyApp().ScrollList(mMainRlv);

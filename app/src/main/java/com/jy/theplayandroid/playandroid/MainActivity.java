@@ -40,7 +40,7 @@ public class MainActivity extends SimpleActivity {
 
     @Override
     protected void initData() {
-        new CountDownTimer(3000, 1000) {
+        new CountDownTimer(1000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -91,6 +91,7 @@ public class MainActivity extends SimpleActivity {
                 mTenAnimation.cancelAnimation();
 
                 startActivity(new Intent(MainActivity.this,PlayStartActivity.class));
+                finish();
             }
         }.start();
     }

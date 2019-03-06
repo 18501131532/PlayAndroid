@@ -13,6 +13,7 @@ import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.FormBody;
@@ -79,18 +80,18 @@ public interface TalkClassify {
     interface FavruiteWebView extends Base_View{
         void showFavruiteWeb(FavroiteAddBean favruiteBean);
         void showFavruiteWebDelete(FavruiteWebDeleteBean favruiteBean);
-        void showFavruite(Favruite favruiteBean);
+        void showFavruite(Favruite favruite);
     }
 
     interface FavruiteWebPresenter {
         void getFavruiteWeb(Map<String,Object> formBody);
         void getFavruiteWebDelete(FormBody formBody);
-        void getFavruite(FormBody formBody);
+        void getFavruite(int page);
     }
 
     interface FavruiteWebCallBack extends HttpFinishCallBack{
         void setFavruiteWeb(FavroiteAddBean favruiteWeb);
         void setFavruiteWebDelete(FavruiteWebDeleteBean favruiteWeb);
-        void setFavruite(Favruite favruiteWeb);
+        void setFavruite(Favruite favruite);
     }
 }

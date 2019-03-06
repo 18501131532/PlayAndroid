@@ -2,9 +2,13 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -98,14 +102,17 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
         hideLoding();
             mProjectListAdapter.addData(dataBeans);
             mProjectListAdapter.setOnItmeClick(new ProjectListAdapter.OnItmeClick() {
+                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
-                public void ondianji(int position) {
+                public void ondianji(int position,View view) {
                     String link = dataBeans.get(position).getLink();
                     String title = dataBeans.get(position).getTitle();
                     Intent intent = new Intent(mActivity, ProjectActivity.class);
                     intent.putExtra("url",link);
                     intent.putExtra("title",title);
-                    startActivity(intent);
+
+                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
                 }
             });
 

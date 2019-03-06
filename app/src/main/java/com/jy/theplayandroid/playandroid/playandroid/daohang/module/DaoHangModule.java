@@ -12,6 +12,7 @@ import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.util.RxUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.FormBody;
@@ -73,13 +74,14 @@ public class DaoHangModule {
 //                });
 //    }
 
-    public void getFavruite(FormBody map, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
-        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruite(map)
-                .compose(RxUtils.<Favruite>rxObserableSchedulerHelper())
+    public void getFavruite(int page, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
+        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruite(page)
+                .compose(RxUtils.rxObserableSchedulerHelper())
                 .subscribe(new BaseObserver<Favruite>(daoHangCallBack) {
                     @Override
-                    public void onNext(Favruite value) {
-                        daoHangCallBack.setFavruite(value);
+                    public void onNext(Favruite favruite) {
+
+                        daoHangCallBack.setFavruite(favruite);
                     }
                 });
     }

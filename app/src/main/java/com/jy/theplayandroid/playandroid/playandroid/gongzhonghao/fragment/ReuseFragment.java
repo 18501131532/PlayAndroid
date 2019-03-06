@@ -2,8 +2,11 @@ package com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -156,12 +159,13 @@ public class ReuseFragment extends BaseFragment<FeedArticleListConcat.FeedArticl
         public_layout.finishRefresh();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onclickItem(int position) {
+    public void onclickItem(int position,View view) {
         FeedArticleListData.DataBean.DatasBean bean = list.get(position);
         Intent intent = new Intent(getActivity(), OfficialMarkDetailsActivity.class);
         intent.putExtra("link", bean.getLink());
         intent.putExtra("title", bean.getTitle());
-        startActivity(intent);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
     }
 }

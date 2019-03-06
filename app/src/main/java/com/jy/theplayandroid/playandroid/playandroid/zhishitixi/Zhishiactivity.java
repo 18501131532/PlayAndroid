@@ -50,7 +50,7 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
 
     @Override
     protected void initData() {
-        showLoading();
+       // showLoading();
         Intent in = getIntent();
         List<String> titleList = new ArrayList<>();
         List<Fragment> fragmentList = new ArrayList<>();
@@ -93,6 +93,7 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
 
     @Override
     public void show(TwoBEAN twoBEAN) {
+        //hideLoding();
     }
 
     @Override
@@ -102,7 +103,7 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
 
     @Override
     protected ZhishipresenterTwo<ZhishiTwo.twoView> creatPresenter() {
-        hideLoding();
+
         return new ZhishipresenterTwo<>();
     }
 

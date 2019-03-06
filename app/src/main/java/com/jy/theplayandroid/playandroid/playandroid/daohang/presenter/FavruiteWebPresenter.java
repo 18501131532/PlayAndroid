@@ -7,6 +7,7 @@ import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.module.DaoHangModule;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.FormBody;
@@ -47,9 +48,9 @@ public class FavruiteWebPresenter<V extends TalkClassify.FavruiteWebView> extend
     }
 
     @Override
-    public void getFavruite(FormBody formBody) {
+    public void getFavruite(int page) {
         if (mDaoHangModule!=null){
-            mDaoHangModule.getFavruite(formBody,this);
+            mDaoHangModule.getFavruite(page,this);
         }
     }
 
@@ -68,9 +69,9 @@ public class FavruiteWebPresenter<V extends TalkClassify.FavruiteWebView> extend
     }
 
     @Override
-    public void setFavruite(Favruite favruiteWeb) {
+    public void setFavruite(Favruite favruite) {
         if (mView!=null){
-            mView.showFavruite(favruiteWeb);
+            mView.showFavruite(favruite);
         }
     }
 }

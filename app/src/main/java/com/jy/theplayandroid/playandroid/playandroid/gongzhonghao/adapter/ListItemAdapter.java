@@ -41,7 +41,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if (onclickItem!=null){
-                    onclickItem.onclickItem(position);
+                    onclickItem.onclickItem(position,v);
                 }
             }
         });
@@ -58,7 +58,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ViewHo
     }
 
     public interface OnclickItemJumpDetails{
-        void onclickItem(int position);
+        void onclickItem(int position,View view);
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name,tag,content,date;

@@ -72,7 +72,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     protected void initData() {
-        showLoading();
+//        showLoading();
         initView();
 
 
@@ -163,7 +163,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     public void show(OneBean oneBean) {
-        hideLoding();
+//        hideLoding();
         list.addAll(oneBean.getData());
         shi.notifyDataSetChanged();
     }

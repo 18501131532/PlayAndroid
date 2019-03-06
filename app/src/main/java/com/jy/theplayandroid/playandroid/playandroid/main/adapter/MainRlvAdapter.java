@@ -68,7 +68,7 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
                     mIntegers.add(mBanner.get(i).getImagePath());
                 }
             }else {
-                mIntegers.clear();
+//                mIntegers.clear();
                 for (int i = 0; i < mBanner.size(); i++) {
                     mIntegers.add(mBanner.get(i).getImagePath());
                 }
@@ -140,7 +140,7 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View v) {
                     if (mListener!=null){
-                        mListener.OnItemClick(position);
+                        mListener.OnItemClick(position,v);
                     }
                 }
             });
@@ -209,7 +209,7 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
     }
     //点击事件回调
     public interface OnItemClickListener{
-        void OnItemClick(int position);
+        void OnItemClick(int position, View view);
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mListener=listener;
