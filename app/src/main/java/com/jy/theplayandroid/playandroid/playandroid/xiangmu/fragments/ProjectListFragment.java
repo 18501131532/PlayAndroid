@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.ProjectListData;
@@ -65,21 +66,19 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
 
     @Override
     protected void initData() {
-        showLoading();
+        //showLoading();
         setRefresh();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         mProjectListRecyclerView.setLayoutManager(linearLayoutManager);
         mProjectListAdapter = new ProjectListAdapter(mActivity,mList);
         mProjectListRecyclerView.setAdapter(mProjectListAdapter);
-
-        MyApp.getMyApp().ScrollList(mProjectListRecyclerView);
     }
 
     @Override
     public void load() {
         super.load();
         mPresenter.getProjectList(page, id);
-        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+        PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mProjectListRecyclerView.scrollToPosition(0);
@@ -95,7 +94,7 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
 
     @Override
     public void showProjectList(final List<ProjectListBean.DataBean.DatasBean> dataBeans) {
-        hideLoding();
+        //hideLoding();
             mProjectListAdapter.addData(dataBeans);
             mProjectListAdapter.setOnItmeClick(new ProjectListAdapter.OnItmeClick() {
                 @Override

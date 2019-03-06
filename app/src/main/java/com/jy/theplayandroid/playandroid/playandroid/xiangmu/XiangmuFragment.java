@@ -44,7 +44,6 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
     Unbinder unbinder;
 
     public XiangmuFragment() {
-        // Required empty public constructor
 
     }
 
@@ -75,34 +74,9 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
         Log.e("156", dataBeans.toString());
         List<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
-//            String name = dataBeans.get(i).getName().toString();
-            // mProjectTabLayout.addTab(mProjectTabLayout.newTab().setText(name));
             fragments.add(new ProjectListFragment(dataBeans.get(i).getId()));
         }
 
-       /* mProjectTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                mProjectViewpager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });*/
-        //设置分割线
-      /*  LinearLayout linearLayout = (LinearLayout) mProjectTabLayout.getChildAt(0);
-        linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-        linearLayout.setDividerPadding(15); // 设置分割线的pandding
-        linearLayout.setDividerDrawable(ContextCompat.getDrawable(mActivity, R.drawable.divider)); //设置分割线的样式*/
-        // linearLayout.setDividerPadding(dip2px(20)); //设置分割线间隔
-        /* mProjectViewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mProjectTabLayout));*/
         ProjectClassityAdapter projectClassityAdapter = new ProjectClassityAdapter(getChildFragmentManager(), fragments, dataBeans);
         mProjectViewpager.setAdapter(projectClassityAdapter);
         mProjectTabLayout.setViewPager(mProjectViewpager);

@@ -48,6 +48,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
     Unbinder unbinder;
     private RecyclerAdapter mRecyclerAdapter;
     private RecycleritemAdapter mRecycleritemAdapter;
+    private LinearLayoutManager mLinearLayoutManager1;
 
     public DaohangFragment() {
         // Required empty public constructor
@@ -86,9 +87,9 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
             strings.add(new Bean(arrayList.get(i).getName(), false));
         }
 
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(mContext);
-        linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
-        lvDaohang.setLayoutManager(linearLayoutManager1);
+        mLinearLayoutManager1 = new LinearLayoutManager(mContext);
+        mLinearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
+        lvDaohang.setLayoutManager(mLinearLayoutManager1);
         mRecycleritemAdapter = new RecycleritemAdapter(strings, mContext);
         lvDaohang.setAdapter(mRecycleritemAdapter);
 
@@ -113,6 +114,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
                             for (int k = 0; k < mRecycleritemAdapter.mStrings.size(); k++) {
                                 mRecycleritemAdapter.mStrings.get(k).setSelect(false);
                             }
+//                            moveLeftClickItemToCenter(i);
                             mRecycleritemAdapter.mStrings.get(i).setSelect(true);//改变分类选中状态
                             mRecycleritemAdapter.notifyDataSetChanged();
                             mRecycleritemAdapter.setColor(i);
@@ -128,6 +130,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v, int position) {
+//                moveLeftClickItemToCenter(position);
                 for (int i = 0; i < mRecycleritemAdapter.mStrings.size(); i++) {
                     mRecycleritemAdapter.mStrings.get(i).setSelect(false);
                 }
@@ -157,9 +160,18 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
                 startActivity(intent);
             }
         });
+    }
 
-        MyApp.sMyApp.ScrollList(rlvDaohang);
-        MyApp.sMyApp.ScrollList(lvDaohang);
+    /**
+     * 将左边点击的小项移动到中间
+     */
+    private void moveLeftClickItemToCenter(int position) {
+        int leftFirstVisiblePosition = mLinearLayoutManager1.findFirstVisibleItemPosition();
+        int leftLastVisiblePosition = mLinearLayoutManager1.findLastVisibleItemPosition();
+        int centerPosition = (leftFirstVisiblePosition + leftLastVisiblePosition) / 2;
+        int centerTop = mLinearLayoutManager1.findViewByPosition(centerPosition).getTop();
+        int currentTop = mLinearLayoutManager1.findViewByPosition(position).getTop();
+        lvDaohang.smoothScrollBy(0, currentTop - centerTop);
     }
 
     //目标项是否在最后一个可见项之后

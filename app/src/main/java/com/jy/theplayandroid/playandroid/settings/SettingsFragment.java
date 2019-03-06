@@ -17,7 +17,7 @@ import com.jy.theplayandroid.playandroid.util.CleanDataUtils;
 import com.jy.theplayandroid.playandroid.http.HttpGreendao;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
-import com.jy.theplayandroid.playandroid.util.ACache;
+//import com.jy.theplayandroid.playandroid.util.ACache;
 import com.jy.theplayandroid.playandroid.util.ShareUtil;
 
 import java.io.File;

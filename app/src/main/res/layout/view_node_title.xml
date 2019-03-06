@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/dp_5"
     android:paddingLeft="@dimen/dp_10"
     android:paddingTop="@dimen/dp_10"
-    android:textColor="@color/colorText"
+    android:textColor="@color/comment_reply"
     android:textSize="@dimen/sp_16"
     tools:text="Geek" />
 

@@ -7,6 +7,14 @@
     android:orientation="horizontal"
     tools:context=".playandroid.daohang.DaohangFragment">
 
+    <include
+        layout="@layout/loading_view"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rlv1_daohang"
         android:layout_width="match_parent"
@@ -21,9 +29,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rlv_daohang"
-        android:layout_marginLeft="@dimen/dp_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_5"
         android:layout_weight="2" />
 
+</LinearLayout>
 </LinearLayout>

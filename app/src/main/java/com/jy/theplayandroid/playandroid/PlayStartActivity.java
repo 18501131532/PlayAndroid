@@ -69,6 +69,7 @@ public class PlayStartActivity extends SimpleActivity
     public static TextView mHead;
     public static FloatingActionButton fab;
     public static BottomNavigationView bottomNavigationView;
+    private Toolbar mToolbar;
 
     @Override
     protected void initData() {
@@ -77,7 +78,7 @@ public class PlayStartActivity extends SimpleActivity
         //侧滑 功能
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mHead = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_header_login_tv);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar_play);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         FrameLayout framelayout = (FrameLayout) findViewById(R.id.fragment);
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -96,23 +97,26 @@ public class PlayStartActivity extends SimpleActivity
             item.setVisible(false);
         }
 
+        initToolBar();
+
         GetWindowManagerUtils.changeStatusBarTextColor(PlayStartActivity.this, true, R.color.colorPrimaryOverlay);
         mDelegate = getDelegate();
 
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
         StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         HttpGreendao.getInstance().insert(new ImageList(null,isone,istwo));
 
         mPlayFragment = new PlayFragment(tvToolbar,bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
+    }
 
-
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    private void initToolBar() {
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
+        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
@@ -152,18 +156,6 @@ public class PlayStartActivity extends SimpleActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -201,7 +193,6 @@ public class PlayStartActivity extends SimpleActivity
         mSharedPreferences = getSharedPreferences("loging", 0);
         mEdit = mSharedPreferences.edit();
         mEdit.putBoolean("loging", false);
-        mEdit.putString("loging","");
         mEdit.commit();
     }
 }

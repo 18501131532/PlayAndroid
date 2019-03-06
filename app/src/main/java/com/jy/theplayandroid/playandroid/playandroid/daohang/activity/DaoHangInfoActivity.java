@@ -3,44 +3,37 @@ package com.jy.theplayandroid.playandroid.playandroid.daohang.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.jy.theplayandroid.playandroid.LoadingActivity;
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
-import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Bean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.DateBase;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.manager.LikeDataBaseMannger;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.presenter.FavruiteWebPresenter;
 import com.jy.theplayandroid.playandroid.util.ShareUtil;
 import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import okhttp3.FormBody;
 
 public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebView, FavruiteWebPresenter<TalkClassify.FavruiteWebView>> implements TalkClassify.FavruiteWebView {
 
@@ -74,6 +67,14 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         mAuther = getIntent().getStringExtra("auther");
         Log.e("web", "initData: " + mWeb);
 
+        initToolbar();
+
+        StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
+
+        initWebView();
+    }
+
+    private void initToolbar() {
         toolbarDaohanginfo.setTitle(mTitle);
         setSupportActionBar(toolbarDaohanginfo);
         toolbarDaohanginfo.setNavigationOnClickListener(new View.OnClickListener() {
@@ -82,18 +83,12 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                 finish();
             }
         });
+    }
 
-        StatusBarUtil.setStatusColor(getWindow(), ContextCompat.getColor(this, R.color.main_status_bar_blue), 1f);
-
+    private void initWebView() {
         //百度
         WebSettings settings = wvDaohanginfo.getSettings();
         settings.setJavaScriptEnabled(true);
-//        wvDaohanginfo.setWebChromeClient(new WebChromeClient() {
-//            @Override
-//            public void onReceivedTitle(WebView view, String title) {
-//                toolbarDaohanginfo.setTitle(title);
-//            }
-//        });
         wvDaohanginfo.loadUrl(mWeb);
         wvDaohanginfo.setWebViewClient(new WebViewClient() {
             @Override
@@ -102,6 +97,22 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
+    }
+
+    private void initDateBase() {
+        MenuItem like = (MenuItem) findViewById(R.id.iteminfo_like);
+        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+        if (dateBases.size() > 0) {
+            for (int i = 0; i < dateBases.size(); i++) {
+                if (dateBases.get(i).getMId().contains(mId)) {
+                    like.setIcon(R.mipmap.ic_toolbar_like_p);
+                } else {
+                    like.setIcon(R.mipmap.ic_toolbar_like_n);
+                }
+            }
+        } else {
+            like.setIcon(R.mipmap.ic_toolbar_like_n);
+        }
     }
 
     private void initWeb() {
@@ -131,18 +142,29 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.info_meun, menu);
-
-        mPresenter.getFavruite(null);
-
-        mMenu1 = menu;
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        MenuItem menuItem = menu.findItem(R.id.iteminfo_like).setChecked(true);
+        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+        if (dateBases.size() > 0) {
+            for (int i = 0; i < dateBases.size(); i++) {
+                if (dateBases.get(i).getMId().contains(mId)) {
+                    menuItem.setIcon(R.mipmap.ic_toolbar_like_p);
+                } else {
+                    menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
+                }
+            }
+        } else {
+            menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
+        }
         return true;
     }
 
+
     @Override
-    public Intent getIntent() {
-        return super.getIntent();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.info_meun, menu);
+        return true;
     }
 
     @Override
@@ -156,13 +178,29 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                     if (isClick) {
                         initWeb();
                         item.setIcon(R.mipmap.ic_toolbar_like_p);
+
+                        ArrayList<DateBase> dateBases = new ArrayList<>();
+                        dateBases.add(new DateBase(null, true, mId));
+                        LikeDataBaseMannger.getInstrance().insert(dateBases);
+                        Log.e("datebse_selete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
+
                         isClick = false;
                     } else {
-                        FormBody formBody = new FormBody.Builder()
-                                .add("id", mId)
-                                .build();
-                        mPresenter.getFavruiteWebDelete(formBody);
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("id", mId);
+                        mPresenter.getFavruiteWebDelete(map);
                         item.setIcon(R.mipmap.ic_toolbar_like_n);
+
+                        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+                        Log.e("datebse_selete2", "onOptionsItemSelected: " + dateBases.size());
+                        if (dateBases.size() > 0) {
+                            List<DateBase> dateBases1 = LikeDataBaseMannger.getInstrance().selectId(mId);
+                            Log.e("datebse_seleteid", "onOptionsItemSelected: " + dateBases1.size());
+                            if (dateBases1.size() > 0) {
+                                LikeDataBaseMannger.getInstrance().delete(dateBases1.get(0));
+                                Log.e("datebse_seletedelete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
+                            }
+                        }
                         isClick = true;
                     }
                     v.setVisible(true);
@@ -201,27 +239,9 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     }
 
     @Override
-    public void showFavruiteWebDelete(FavruiteWebDeleteBean favruiteBean) {
+    public void showFavruiteWebDelete(HttpResult favruiteBean) {
         if (favruiteBean.getErrorCode() == 0) {
             Toast.makeText(mActivity, "删除收藏成功", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void showFavruite(Favruite favruiteBean) {
-//        boolean loading = getSharedPreferences("true",0).getBoolean("loading", false);
-        Favruite.DataBean data = favruiteBean.getData();
-        if (data != null) {
-            List<Favruite.DataBean.DatasBean> datas = data.getDatas();
-            for (int i = 0; i < datas.size(); i++) {
-                if (datas.get(i).getLink().equals(mWeb)) {
-                    mMenu1.findItem(R.id.iteminfo_like).setIcon(R.mipmap.ic_toolbar_like_p);
-                } else {
-                    mMenu1.findItem(R.id.iteminfo_like).setIcon(R.mipmap.ic_toolbar_like_n);
-                }
-            }
-        } else {
-            mMenu1.findItem(R.id.iteminfo_like).setIcon(R.mipmap.ic_toolbar_like_n);
         }
     }
 

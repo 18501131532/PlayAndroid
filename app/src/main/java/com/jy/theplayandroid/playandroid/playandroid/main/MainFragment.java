@@ -74,12 +74,7 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
         super.load();
         getList();
         getbanner();
-        PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMainRlv.scrollToPosition(0);
-            }
-        });
+        PlayStartActivity.fab.setOnClickListener(v -> mMainRlv.scrollToPosition(0));
     }
 
     public void getList(){
@@ -135,15 +130,13 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
                 startActivity(intent);
             }
         });
-        MyApp.getMyApp().ScrollList(mMainRlv);
-
     }
-
 
     @Override
     public void showError(String error) {
 
     }
+
     @Override
     protected AtricleListPresenter<AtricleList.AtricleListView> createPresenter() {
         return new AtricleListPresenter<>();

@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="false"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="@dimen/dp_0">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_play"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/blue_gradient_bg"
@@ -34,7 +35,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_play_start" />
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -42,6 +47,7 @@
         android:layout_marginBottom="@dimen/dp_60"
         android:layout_marginEnd="@dimen/dp_16"
         android:src="@mipmap/icon_up_arrow"
+        app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.ScaleDownShowBehavior"
         tools:ignore="RtlCompat" />
 
     <android.support.design.widget.BottomNavigationView
@@ -53,6 +59,7 @@
         app:elevation="@dimen/dp_16"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
+        app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.BottomNavigationBehavior"
         app:menu="@menu/bottom_navigation_main" />
 
 </android.support.design.widget.CoordinatorLayout>

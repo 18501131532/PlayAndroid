@@ -76,9 +76,6 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
         showLoading();
         initView();
 
-
-        MyApp.sMyApp.ScrollList(ZhishiRecyclerView);
-
         PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

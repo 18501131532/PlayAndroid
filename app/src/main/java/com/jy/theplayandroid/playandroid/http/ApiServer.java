@@ -4,6 +4,7 @@ import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
@@ -74,19 +75,19 @@ public interface  ApiServer {
     @FormUrlEncoded
     Observable<FavroiteAddBean>getFavruiteWebAdd(@FieldMap Map<String,Object> requestBody);
 
-//    /**
-//     * 取消站外收藏
-//     *http://www.wanandroid.com/lg/uncollect/2805/json
-//     * */
-//    @POST("lg/collect/2805/json")
-//    @FormUrlEncoded
-//    Observable<FavroiteAddBean>getFavruiteWebAdd(@FieldMap Map<String,Object> requestBody);
+    /**
+     * 取消站外收藏
+     *http://www.wanandroid.com/lg/uncollect/2805/json
+     * */
+    @POST("lg/collect/2805/json")
+    @FormUrlEncoded
+    Observable<HttpResult>getFavruiteWebDelete(@FieldMap Map<String,Object> requestBody);
 
     /**
      * 收藏列表
      *http://www.wanandroid.com/lg/collect/list/0/json
      * */
-    @POST("lg/collect/list/0/json")
+    @GET("lg/collect/list/0/json")
     Observable<Favruite>getFavruite(@Body RequestBody requestBody);
 
     //项目分类

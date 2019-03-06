@@ -1,16 +1,13 @@
 package com.jy.theplayandroid.playandroid.concat;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
-import com.jy.theplayandroid.playandroid.base.basepresenter.Base_Presenter;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -78,19 +75,16 @@ public interface TalkClassify {
      * */
     interface FavruiteWebView extends Base_View{
         void showFavruiteWeb(FavroiteAddBean favruiteBean);
-        void showFavruiteWebDelete(FavruiteWebDeleteBean favruiteBean);
-        void showFavruite(Favruite favruiteBean);
+        void showFavruiteWebDelete(HttpResult favruiteBean);
     }
 
     interface FavruiteWebPresenter {
         void getFavruiteWeb(Map<String,Object> formBody);
-        void getFavruiteWebDelete(FormBody formBody);
-        void getFavruite(FormBody formBody);
+        void getFavruiteWebDelete(Map<String,Object> formBody);
     }
 
     interface FavruiteWebCallBack extends HttpFinishCallBack{
         void setFavruiteWeb(FavroiteAddBean favruiteWeb);
-        void setFavruiteWebDelete(FavruiteWebDeleteBean favruiteWeb);
-        void setFavruite(Favruite favruiteWeb);
+        void setFavruiteWebDelete(HttpResult favruiteWeb);
     }
 }

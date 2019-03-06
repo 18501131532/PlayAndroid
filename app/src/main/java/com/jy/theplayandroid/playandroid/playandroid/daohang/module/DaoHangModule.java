@@ -8,6 +8,7 @@ import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.util.RxUtils;
 
@@ -19,12 +20,14 @@ import okhttp3.RequestBody;
 
 public class DaoHangModule {
     public void getDaoHangList(final TalkClassify.DaoHangCallBack daoHangCallBack, String json) {
+        daoHangCallBack.setShowLoading();
         HttpManager.getInstance().getServer(Global.BASE_URL).getDaoHangList(json)
                 .compose(RxUtils.<JsonBean>rxObserableSchedulerHelper())
                 .subscribe(new BaseObserver<JsonBean>(daoHangCallBack) {
                     @Override
                     public void onNext(JsonBean value) {
                         daoHangCallBack.setDaoHangList((ArrayList<JsonBean.DataBean>) value.getData());
+                        daoHangCallBack.setHideLoading();
                     }
                 });
     }
@@ -62,24 +65,13 @@ public class DaoHangModule {
                 });
     }
 
-//    public void getFavruiteWebDelete(FormBody map, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
-//        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruiteWebDelete(map)
-//                .compose(RxUtils.<FavruiteWebDeleteBean>rxObserableSchedulerHelper())
-//                .subscribe(new BaseObserver<FavruiteWebDeleteBean>(daoHangCallBack) {
-//                    @Override
-//                    public void onNext(FavruiteWebDeleteBean value) {
-//                        daoHangCallBack.setFavruiteWebDelete(value);
-//                    }
-//                });
-//    }
-
-    public void getFavruite(FormBody map, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
-        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruite(map)
-                .compose(RxUtils.<Favruite>rxObserableSchedulerHelper())
-                .subscribe(new BaseObserver<Favruite>(daoHangCallBack) {
+    public void getFavruiteWebDelete(Map<String,Object> map, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
+        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruiteWebDelete(map)
+                .compose(RxUtils.<HttpResult>rxObserableSchedulerHelper())
+                .subscribe(new BaseObserver<HttpResult>(daoHangCallBack) {
                     @Override
-                    public void onNext(Favruite value) {
-                        daoHangCallBack.setFavruite(value);
+                    public void onNext(HttpResult value) {
+                        daoHangCallBack.setFavruiteWebDelete(value);
                     }
                 });
     }

@@ -23,10 +23,12 @@ public abstract class BaseFragment<V,P extends BasePresenter<V>>extends SimpleFr
     public P mPresenter;
     RelativeLayout mGroup;
     LottieAnimationView mAnimation;
+
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void viewCreate(View view) {
+        super.viewCreate(view);
         //找到动画布局
-        View inflate = View.inflate(getContext(),R.layout.loading_view, (ViewGroup) view);
+        View inflate = View.inflate(mContext,R.layout.loading_view, (ViewGroup) view);
         //找到动画中控件
         mGroup = inflate.findViewById(R.id.loading_group);
         mAnimation = inflate.findViewById(R.id.loading_animation);
@@ -34,7 +36,6 @@ public abstract class BaseFragment<V,P extends BasePresenter<V>>extends SimpleFr
         if (mPresenter!=null){
             mPresenter.attachView((V) this);
         }
-        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
@@ -61,10 +62,13 @@ public abstract class BaseFragment<V,P extends BasePresenter<V>>extends SimpleFr
 
     @Override
     public void showLoading() {
-        mGroup.setVisibility(View.VISIBLE);
-        mAnimation.setAnimation("loading_bus.json");
-        mAnimation.loop(true);
-        mAnimation.playAnimation();
+        if(mGroup!=null&&mAnimation!=null){
+            mGroup.setVisibility(View.VISIBLE);
+            mAnimation.setAnimation("loading_bus.json");
+            mAnimation.loop(true);
+            mAnimation.playAnimation();
+        }
+
     }
 
     @Override
