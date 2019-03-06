@@ -44,7 +44,6 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV,IPSearchHo
     public void onStart() {
         super.onStart();
         initDialog();
-
     }
 
 

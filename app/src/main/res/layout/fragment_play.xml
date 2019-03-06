@@ -12,23 +12,4 @@
         android:layout_height="match_parent">
     </com.jy.theplayandroid.playandroid.util.NoScrollViewPager>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/style_float_btn"
-        android:layout_marginBottom="@dimen/dp_60"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:src="@mipmap/icon_up_arrow"
-        tools:ignore="RtlCompat" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorCard"
-        android:elevation="@dimen/dp_16"
-        app:itemIconTint="@drawable/nav_item_color_state"
-        app:itemTextColor="@drawable/nav_item_color_state"
-        app:menu="@menu/bottom_navigation_main" />
-
 </android.support.design.widget.CoordinatorLayout>

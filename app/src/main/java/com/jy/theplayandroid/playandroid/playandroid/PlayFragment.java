@@ -31,18 +31,18 @@ public class PlayFragment extends SimpleFragment {
 
 
     TextView tool;
-    public static FloatingActionButton fab;
-    public static BottomNavigationView bottomNavigationView;
     @BindView(R.id.framelayout_play)
     ViewPager framelayoutPlay;
+    BottomNavigationView mBottomNavigationView;
 
     public PlayFragment() {
         // Required empty public constructor
     }
 
     @SuppressLint("ValidFragment")
-    public PlayFragment(TextView toolbar) {
-        this.tool = toolbar;
+    public PlayFragment(TextView tvToolbar, BottomNavigationView bottomNavigationView) {
+        this.tool = tvToolbar;
+        this.mBottomNavigationView=bottomNavigationView;
     }
 
     @Override
@@ -52,11 +52,6 @@ public class PlayFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
-        fab = getActivity().findViewById(R.id.fab);
-        initClick();
-    }
-
-    private void initClick() {
         MainFragment mainFragment = new MainFragment();
         ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
         GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
@@ -71,11 +66,7 @@ public class PlayFragment extends SimpleFragment {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), fragments);
         framelayoutPlay.setAdapter(fragmentAdapter);
 
-        bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation_view);
-        fab = getActivity().findViewById(R.id.fab);
-
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

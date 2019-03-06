@@ -40,7 +40,7 @@ public class MainActivity extends SimpleActivity {
 
     @Override
     protected void initData() {
-        new CountDownTimer(3000, 1000) {
+        new CountDownTimer(2150, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -68,13 +68,12 @@ public class MainActivity extends SimpleActivity {
                 mEightAnimation.setAnimation("O.json");
                 mEightAnimation.loop(true);
                 mEightAnimation.playAnimation();
-                mNineAnimation.setAnimation("O.json");
+                mNineAnimation.setAnimation("I.json");
                 mNineAnimation.loop(true);
                 mNineAnimation.playAnimation();
-                mTenAnimation.setAnimation("I.json");
+                mTenAnimation.setAnimation("D.json");
                 mTenAnimation.loop(true);
                 mTenAnimation.playAnimation();
-
             }
 
             @Override
@@ -91,15 +90,8 @@ public class MainActivity extends SimpleActivity {
                 mTenAnimation.cancelAnimation();
 
                 startActivity(new Intent(MainActivity.this,PlayStartActivity.class));
+                finish();
             }
         }.start();
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

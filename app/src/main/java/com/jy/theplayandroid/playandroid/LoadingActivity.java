@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +63,7 @@ public class LoadingActivity extends BaseActivity<TalkClassify.LoadingView, Load
     public static SharedPreferences mSharedPreferences;
     public static SharedPreferences.Editor mEdit;
     private String mEmail;
+    private MenuItem mItem;
 
     @Override
     protected int creatLoyoutId() {
@@ -93,10 +95,16 @@ public class LoadingActivity extends BaseActivity<TalkClassify.LoadingView, Load
                 mSharedPreferences = getSharedPreferences("loging", 0);
                 mEdit = mSharedPreferences.edit();
                 mEdit.putBoolean("loging", true);
+                mEdit.putString("name",loadingBean.getData().getEmail().toString());
                 mEdit.commit();
+
+                mItem = PlayStartActivity.mNavigationView.getMenu().getItem(4);
+                PlayStartActivity.mHead.setText(loadingBean.getData().getUsername().toString());
+                mItem.setVisible(true);
                 finish();
             } else {
                 Toast.makeText(mActivity, "登陆失败", Toast.LENGTH_SHORT).show();
+                mItem.setVisible(false);
             }
         } else {
             Toast.makeText(mActivity, loadingBean.getErrorMsg(), Toast.LENGTH_SHORT).show();

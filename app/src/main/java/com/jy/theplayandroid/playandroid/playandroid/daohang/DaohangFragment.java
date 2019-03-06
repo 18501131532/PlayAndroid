@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
@@ -60,7 +61,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
     @Override
     protected void initData() {
 //        mPresenter.getDaoHang("navi/json");
-        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+        PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "dvfdvb", Toast.LENGTH_SHORT).show();

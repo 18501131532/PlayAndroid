@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.support.v7.widget.RecyclerView;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 
 import java.util.ArrayList;
@@ -24,8 +25,6 @@ public class MyApp extends Application {
     private static MyActivityLifecycle myActivityLifecycle;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEdit;
-
-    private Set<Activity> allActivities;
     public boolean bool=true;
     @Override
     public void onCreate() {
@@ -34,16 +33,16 @@ public class MyApp extends Application {
         registerActivityLifecycleCallbacks(myActivityLifecycle);
         sMyApp=this;
 
-        boolean runBackground = isRunBackground(sMyApp);
-        if (runBackground){
-
-        }else {
-            Log.e("duanxq", "app: " + "shabi");
-            mSharedPreferences = getSharedPreferences("loging", 0);
-            mEdit = mSharedPreferences.edit();
-            mEdit.putBoolean("loging", false);
-            mEdit.commit();
-        }
+//        boolean runBackground = isRunBackground(sMyApp);
+//        if (runBackground){
+//
+//        }else {
+//            Log.e("duanxq", "app: " + "shabi");
+//            mSharedPreferences = getSharedPreferences("loging", 0);
+//            mEdit = mSharedPreferences.edit();
+//            mEdit.putBoolean("loging", false);
+//            mEdit.commit();
+//        }
     }
 
 
@@ -55,12 +54,12 @@ public class MyApp extends Application {
 
                 if(dy>0&&bool){//下滑隐藏
                     bool=false;
-                    PlayFragment.bottomNavigationView.animate().translationY(PlayFragment.bottomNavigationView.getHeight());
-                    PlayFragment.fab.animate().translationY(PlayFragment.fab.getHeight()+PlayFragment.bottomNavigationView.getHeight()+20);
+                    PlayStartActivity.bottomNavigationView.animate().translationY(PlayStartActivity.bottomNavigationView.getHeight());
+                    PlayStartActivity.fab.animate().translationY(PlayStartActivity.fab.getHeight()+PlayStartActivity.bottomNavigationView.getHeight()+20);
                 }else if(dy<0&&!bool){
                     bool=true;
-                    PlayFragment.bottomNavigationView.animate().translationY(0);
-                    PlayFragment.fab.animate().translationY(0);
+                    PlayStartActivity.bottomNavigationView.animate().translationY(0);
+                    PlayStartActivity.fab.animate().translationY(0);
 
                 }
 
