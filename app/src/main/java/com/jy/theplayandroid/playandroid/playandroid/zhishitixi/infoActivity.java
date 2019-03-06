@@ -34,7 +34,7 @@ public class infoActivity extends AppCompatActivity {
     TextView title;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    private MenuItem item;
+    private MenuItem items;
     private SharedPreferences.Editor ed;
     private SharedPreferences sh;
 
@@ -58,10 +58,6 @@ public class infoActivity extends AppCompatActivity {
         upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
-        sh = getSharedPreferences("xx",MODE_PRIVATE);
-        ed = sh.edit();
 
 
 
@@ -119,11 +115,16 @@ public class infoActivity extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.like:
-                    boolean checked = item.isChecked();
+
+                    boolean checked = items.isChecked();
                     if(checked){
+
                         item.setIcon(R.mipmap.ic_toolbar_like_n);
+                        items.setChecked(false);
                     }else{
                         item.setIcon(R.mipmap.ic_toolbar_like_p);
+                        items.setChecked(true);
+
                     }
                     break;
             }
@@ -140,8 +141,7 @@ public class infoActivity extends AppCompatActivity {
         menu.add(0,2,Menu.NONE,"用系统浏览器打开");
 
         getMenuInflater().inflate(R.menu.toolbar,menu);
-        item = menu.getItem(0);
-
+        items = menu.getItem(0);
 
 
         return true;

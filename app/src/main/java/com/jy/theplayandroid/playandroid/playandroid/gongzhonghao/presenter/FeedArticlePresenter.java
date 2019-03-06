@@ -16,9 +16,16 @@ implements FeedArticleListConcat.FeedArticlePresenter, FeedArticleListConcat.Fee
     }
 
     @Override
+    public void getWxSearchSumData(int id, int page, String k) {
+        if (module!=null){
+            module.getWxSearchSumData(id,page,k,this);
+        }
+    }
+
+    @Override
     public void getFeedArticleInfo(FeedArticleListData feedArticleListData) {
         if (mView!=null){
-            mView.showFeedArticleInfo(feedArticleListData);
+            mView.showWxSearchView(feedArticleListData);
         }
     }
 

@@ -7,9 +7,11 @@ import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArtic
 public interface FeedArticleListConcat {
     interface FeedArticleView extends Base_View {
         void showFeedArticleInfo(FeedArticleListData feedArticleListData);
+        void showWxSearchView(FeedArticleListData wxSearchData);
     }
     interface FeedArticlePresenter{
         void setData(int id, int name);
+        void getWxSearchSumData(int id, int page, String k);
     }
     interface FeedArticleCallBack extends HttpFinishCallBack {
         void getFeedArticleInfo(FeedArticleListData feedArticleListData);

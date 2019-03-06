@@ -27,7 +27,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PlayFragment extends SimpleFragment {
+public class PlayFragment extends SimpleFragment  {
 
 
     TextView tool;
@@ -52,6 +52,11 @@ public class PlayFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+        fab = getActivity().findViewById(R.id.fab);
+        initClick();
+    }
+
+    private void initClick() {
         MainFragment mainFragment = new MainFragment();
         ZhishitixiFragment zhishitixiFragment = new ZhishitixiFragment();
         GongzhonghaoFragment gongzhonghaoFragment = new GongzhonghaoFragment();
@@ -102,4 +107,6 @@ public class PlayFragment extends SimpleFragment {
             }
         });
     }
+
+
 }

@@ -74,6 +74,7 @@ public class MainActivity extends SimpleActivity {
                 mTenAnimation.setAnimation("D.json");
                 mTenAnimation.loop(true);
                 mTenAnimation.playAnimation();
+
             }
 
             @Override
@@ -94,4 +95,5 @@ public class MainActivity extends SimpleActivity {
             }
         }.start();
     }
+
 }
