@@ -20,7 +20,7 @@ import com.jy.theplayandroid.playandroid.concat.TalkClassify;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavruiteWebDeleteBean;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.presenter.FavruiteWebPresenter;
 import com.scwang.smartrefresh.header.StoreHouseHeader;
 import com.scwang.smartrefresh.header.TaurusHeader;
@@ -73,8 +73,8 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
         super.initView();
         mManager = new LinearLayoutManager(getContext());
         mCollectRlv.setLayoutManager(mManager);
-        List<Favruite.DataBean.DatasBean> datas =new ArrayList<>();
-        mAdapter = new CollectLiskeAdapter(datas,getContext());
+        List<Favruite.DataBean.DatasBean> datas = new ArrayList<>();
+        mAdapter = new CollectLiskeAdapter(datas, getContext());
         mCollectRlv.setAdapter(mAdapter);
 
         mCollectRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -84,43 +84,43 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
                     @Override
                     public void run() {
                         datas.clear();
-                        mPage=0;
+                        mPage = 0;
                         initData();
                         mCollectRefreshLayout.finishRefresh();
                     }
-                },1000);
+                }, 1000);
             }
         });
-            mCollectRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-                @Override
-                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                    mCollectRefreshLayout.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (mSize>0&&mSize>=20) {
-                                mPage++;
-                                initData();
-                                mCollectRefreshLayout.finishLoadMore();
-                            } else {
-                                Toast.makeText(mContext, "没有多余的干货了", Toast.LENGTH_SHORT).show();
-                                mCollectRefreshLayout.finishLoadMore();
-                            }
+        mCollectRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mCollectRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mSize > 0 && mSize >= 20) {
+                            mPage++;
+                            initData();
+                            mCollectRefreshLayout.finishLoadMore();
+                        } else {
+                            Toast.makeText(mContext, "没有多余的干货了", Toast.LENGTH_SHORT).show();
+                            mCollectRefreshLayout.finishLoadMore();
                         }
-                    },1000);
-                }
-            });
-            mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
-                @Override
-                public void OnItemClick(int position) {
-                    Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
-                    intent.putExtra("title",mAdapter.mList.get(position).getTitle());
-                    intent.putExtra("id",mAdapter.mList.get(position).getId());
-                    intent.putExtra("link",mAdapter.mList.get(position).getLink());
-                    intent.putExtra("auther",mAdapter.mList.get(position).getAuthor());
-                    startActivity(intent);
-                }
-            });
-        }
+                    }
+                }, 1000);
+            }
+        });
+        mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
+                intent.putExtra("title", mAdapter.mList.get(position).getTitle());
+                intent.putExtra("id", mAdapter.mList.get(position).getId());
+                intent.putExtra("link", mAdapter.mList.get(position).getLink());
+                intent.putExtra("auther", mAdapter.mList.get(position).getAuthor());
+                startActivity(intent);
+            }
+        });
+    }
 
 
     @Override
@@ -134,19 +134,19 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
     }
 
     @Override
-    public void showFavruiteWebDelete(FavruiteWebDeleteBean favruiteBean) {
+    public void showFavruiteWebDelete(HttpResult favruiteBean) {
 
     }
 
-    @Override
-    public void showFavruite(Favruite favruite) {
-        if (favruite.getData()!=null){
-            List<Favruite.DataBean.DatasBean> datas = favruite.getData().getDatas();
-            mAdapter.addData(datas);
-            mSize = favruite.getData().getSize();
-        }
-
-    }
+//    @Override
+//    public void showFavruite(Favruite favruite) {
+//        if (favruite.getData() != null) {
+//            List<Favruite.DataBean.DatasBean> datas = favruite.getData().getDatas();
+//            mAdapter.addData(datas);
+//            mSize = favruite.getData().getSize();
+//        }
+//
+//    }
 
     @Override
     public void showError(String error) {
