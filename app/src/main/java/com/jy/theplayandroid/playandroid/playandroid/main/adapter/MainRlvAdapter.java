@@ -63,10 +63,15 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
         if (viewType==TYPE_BANNER){
             final MyViewHolderB holderB= (MyViewHolderB) holder;
             mIntegers = new ArrayList<>();
-            addImage();
-            if(mBanner.size()>0){
-                holderB.mTitle.setText(mBanner.get(0).getTitle());
-                holderB.mPosition.setText("1/"+ mIntegers.size());
+            if (mIntegers.size()==0) {
+                for (int i = 0; i < mBanner.size(); i++) {
+                    mIntegers.add(mBanner.get(i).getImagePath());
+                }
+            }else {
+                mIntegers.clear();
+                for (int i = 0; i < mBanner.size(); i++) {
+                    mIntegers.add(mBanner.get(i).getImagePath());
+                }
             }
 
             holderB.mBanner.setImages(mIntegers).setImageLoader(new ImageLoader() {
@@ -83,12 +88,10 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
 
                 @Override
                 public void onPageSelected(int position) {
-                   if (mIntegers!=null&&mList.size()>0){
+
                        holderB.mTitle.setText(mBanner.get(position).getTitle());
                        holderB.mPosition.setText((position+1)+"/"+ mIntegers.size());
-                   }else {
-                       addImage();
-                   }
+
                 }
 
                 @Override
@@ -100,9 +103,9 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
                 @Override
                 public void OnBannerClick(int position) {
                     Intent intent = new Intent(mContext, BannerDetailsActivity.class);
-                    intent.putExtra("titles",mBanner.get(position).getTitle());
-                    intent.putExtra("urls",mBanner.get(position).getUrl());
-                    mContext.startActivity(intent);
+                  intent.putExtra("titles",mBanner.get(position).getTitle());
+                  intent.putExtra("urls",mBanner.get(position).getUrl());
+                  mContext.startActivity(intent);
                 }
             });
         }else {
@@ -155,18 +158,7 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
         this.mList.addAll(datas);
         notifyDataSetChanged();
     }
-    public void addImage(){
-        if (mIntegers.size()==0) {
-            for (int i = 0; i < mBanner.size(); i++) {
-                mIntegers.add(mBanner.get(i).getImagePath());
-            }
-        }else {
-            mIntegers.clear();
-            for (int i = 0; i < mBanner.size(); i++) {
-                mIntegers.add(mBanner.get(i).getImagePath());
-            }
-        }
-    }
+
     @Override
     public int getItemViewType(int position) {
         if (position==0){
@@ -177,7 +169,9 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
     }
 
     public void addList(List<ArticleBannerBean.DataBean> data) {
+        mBanner.clear();
         mBanner.addAll(data);
+        notifyDataSetChanged();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{

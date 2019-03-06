@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.adapter.ZhishiActivityAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.infoActivity;
@@ -92,9 +93,11 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
         shi.setOnclicklist(new ZhishiActivityAdapter.OnClickListener() {
             @Override
             public void onclickshow(int i) {
-                Intent in = new Intent(getActivity(), infoActivity.class);
-                in.putExtra("like", list.get(i).getLink());
-                in.putExtra("name", list.get(i).getChapterName());
+                Intent in = new Intent(getActivity(), DaoHangInfoActivity.class);
+                in.putExtra("link", list.get(i).getLink());
+                in.putExtra("auther",list.get(i).getAuthor());
+                in.putExtra("title", list.get(i).getTitle());
+                in.putExtra("id",list.get(i).getId()+"");
                 startActivity(in);
             }
         });

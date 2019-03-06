@@ -35,7 +35,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ViewHo
         FeedArticleListData.DataBean.DatasBean bean = list.get(position);
         holder.name.setText(bean.getAuthor());
         holder.tag.setText(bean.getSuperChapterName()+"/"+bean.getChapterName());
-        holder.content.setText(bean.getTitle()+"                                                                              ");
+        holder.content.setText(bean.getTitle()+"                                                                                                  ");
         holder.date.setText(bean.getNiceDate());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

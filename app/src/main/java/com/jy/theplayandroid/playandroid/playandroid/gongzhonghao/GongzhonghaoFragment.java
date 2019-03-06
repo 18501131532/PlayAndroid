@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.jy.theplayandroid.playandroid.R;
@@ -59,6 +60,7 @@ public class GongzhonghaoFragment extends BaseFragment<OfficialMarkConcat.Offici
     public void showOfficialMarkInfo(WxAuthor wxAuthor) {
         title= (ArrayList<WxAuthor.DataBean>) wxAuthor.getData();
         for (int i = 0; i < title.size(); i++) {
+            Log.i("===========", "showOfficialMarkInfo: "+title.get(i).getName());
             tab.addTab(tab.newTab().setText(title.get(i).getName()));
 
             list.add(new ReuseFragment(title.get(i).getName(),title.get(i).getId()));

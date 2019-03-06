@@ -39,11 +39,12 @@
             tools:ignore="DuplicateActivity" />
         <activity android:name=".playandroid.zhishitixi.Zhishiactivity" />
         <activity android:name=".playandroid.zhishitixi.infoActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".Dialogfragment.ChuangyongInfo" />
         <activity
-
             android:name=".playandroid.main.activity.BannerDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutUsActivity"></activity>
+
         <activity android:name=".playandroid.gongzhonghao.OfficialMarkDetailsActivity"></activity>
         <activity android:name=".playandroid.zhishitixi.infoActivity"
             tools:ignore="DuplicateActivity" />
@@ -52,6 +53,8 @@
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Dialogfragment.SearchActivity" />
+        <activity android:name=".Dialogfragment.SearchInfo"></activity>
     </application>
 
 </manifest>

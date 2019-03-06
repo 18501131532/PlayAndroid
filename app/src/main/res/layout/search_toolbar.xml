@@ -55,7 +55,9 @@
             android:textColor="@color/title_black"
             android:textCursorDrawable="@drawable/shape_cursor"
             android:textSize="@dimen/sp_14"
-            tools:ignore="RtlCompat" />
+            android:layout_marginRight="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_1"
+            android:paddingLeft="@dimen/dp_27" />
 
         <TextView
             android:id="@+id/search_tint_tv"

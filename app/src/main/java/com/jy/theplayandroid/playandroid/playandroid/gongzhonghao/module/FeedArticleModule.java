@@ -7,9 +7,24 @@ import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArtic
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.FeedArticleListConcat;
 import com.jy.theplayandroid.playandroid.util.RxUtils;
 
+import java.util.HashMap;
+
 public class FeedArticleModule {
     public void getFeedArticleBean(int id, int page, final FeedArticleListConcat.FeedArticleCallBack callBack){
         HttpManager.getInstance().getServer(Global.BASE_URL).getWxSumData(id,page)
+                .compose(RxUtils.<FeedArticleListData>rxObserableSchedulerHelper())
+                .subscribe(new BaseObserver<FeedArticleListData>(callBack) {
+                    @Override
+                    public void onNext(FeedArticleListData value) {
+                        callBack.getFeedArticleInfo(value);
+                    }
+                });
+    }
+
+    public void getWxSearchSumData(int id, int page, String k, final FeedArticleListConcat.FeedArticleCallBack callBack) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("k",k);
+        HttpManager.getInstance().getServer(Global.BASE_URL).getWxSearchSumData(id, page, map)
                 .compose(RxUtils.<FeedArticleListData>rxObserableSchedulerHelper())
                 .subscribe(new BaseObserver<FeedArticleListData>(callBack) {
                     @Override

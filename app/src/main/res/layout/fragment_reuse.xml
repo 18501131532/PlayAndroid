@@ -6,21 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".playandroid.gongzhonghao.fragment.ReuseFragment">
 
-    <EditText
-        android:id="@+id/public_edit"
-        android:drawableLeft="@drawable/ic_action_action_search"
+    <LinearLayout
+        android:id="@+id/line2"
         android:layout_width="match_parent"
-        android:hint="带你发现更多干货"
-        android:layout_marginLeft="@dimen/dp_15"
-        android:layout_height="wrap_content" />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/public_edit"
+            android:drawableLeft="@drawable/ic_action_action_search"
+            android:layout_width="wrap_content"
+            android:layout_weight="4"
+            android:hint="带你发现更多干货"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/search_title"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_28"
+            android:text="搜索"
+            android:background="@drawable/bg_btn_two"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_marginRight="@dimen/dp_8"
+            android:textColor="#FFF"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
     <com.scwang.smartrefresh.layout.header.BezierRadarHeader
         android:id="@+id/public_anim"
-        android:layout_below="@id/public_edit"
+        android:layout_below="@id/line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.scwang.smartrefresh.layout.header.BezierRadarHeader>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/public_layout"
-        android:layout_below="@id/public_edit"
+        android:layout_below="@id/line2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srlPrimaryColor="@color/colorPrimary"

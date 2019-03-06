@@ -65,6 +65,7 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
 
     @Override
     protected void initData() {
+        showLoading();
         setRefresh();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         mProjectListRecyclerView.setLayoutManager(linearLayoutManager);
@@ -94,6 +95,7 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
 
     @Override
     public void showProjectList(final List<ProjectListBean.DataBean.DatasBean> dataBeans) {
+        hideLoding();
             mProjectListAdapter.addData(dataBeans);
             mProjectListAdapter.setOnItmeClick(new ProjectListAdapter.OnItmeClick() {
                 @Override

@@ -48,24 +48,24 @@ public class MyApp extends Application {
 
 
     public void ScrollList(RecyclerView recy){
-        recy.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if(dy>0&&bool){//下滑隐藏
-                    bool=false;
-                    PlayFragment.bottomNavigationView.animate().translationY(PlayFragment.bottomNavigationView.getHeight());
-                    PlayFragment.fab.animate().translationY(PlayFragment.fab.getHeight()+PlayFragment.bottomNavigationView.getHeight()+20);
-                }else if(dy<0&&!bool){
-                    bool=true;
-                    PlayFragment.bottomNavigationView.animate().translationY(0);
-                    PlayFragment.fab.animate().translationY(0);
-
-                }
-
-            }
-        });
+//        recy.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//                if(dy>0&&bool){//下滑隐藏
+//                    bool=false;
+//                    PlayFragment.bottomNavigationView.animate().translationY(PlayFragment.bottomNavigationView.getHeight());
+//                    PlayFragment.fab.animate().translationY(PlayFragment.fab.getHeight()+PlayFragment.bottomNavigationView.getHeight()+20);
+//                }else if(dy<0&&!bool){
+//                    bool=true;
+//                    PlayFragment.bottomNavigationView.animate().translationY(0);
+//                    PlayFragment.fab.animate().translationY(0);
+//
+//                }
+//
+//            }
+//        });
     }
 
     public static  synchronized MyApp getMyApp(){

@@ -33,7 +33,7 @@
             android:padding="@dimen/dp_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="一起来做个app吧"
             android:textColor="@color/white"
             android:layout_marginLeft="@dimen/dp_10"
             />
@@ -42,7 +42,7 @@
             android:padding="@dimen/dp_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0/0"
+            android:text="1/7"
             android:textColor="@color/white"
             android:layout_marginRight="@dimen/dp_10"
             android:layout_alignParentRight="true"

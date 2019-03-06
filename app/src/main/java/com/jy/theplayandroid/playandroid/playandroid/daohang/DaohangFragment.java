@@ -60,6 +60,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
     @Override
     protected void initData() {
 //        mPresenter.getDaoHang("navi/json");
+        showLoading();
         PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,7 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
 
     @Override
     public void showList(ArrayList<JsonBean.DataBean> arrayList) {
+        hideLoding();
         Log.e("daohang", "showList: " + arrayList.size());
         ArrayList<Bean> strings = new ArrayList<>();
         for (int i = 0; i < arrayList.size(); i++) {
