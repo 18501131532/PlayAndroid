@@ -74,7 +74,7 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
         super.load();
         getList();
         getbanner();
-        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+        PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMainRlv.scrollToPosition(0);
@@ -95,7 +95,7 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
         ArrayList<ArticleBannerBean.DataBean> banner = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mMainRlv.setLayoutManager(layoutManager);
-         List<ArticleListBean.DataBean.DatasBean> list = new ArrayList<>();
+         final List<ArticleListBean.DataBean.DatasBean> list = new ArrayList<>();
         mMainRlvAdapter = new MainRlvAdapter(list,banner,getContext());
         mMainRlv.setAdapter(mMainRlvAdapter);
 

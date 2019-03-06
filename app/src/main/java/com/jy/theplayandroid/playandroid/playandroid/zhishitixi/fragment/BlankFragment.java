@@ -71,15 +71,11 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
         return R.layout.fragment_blank;
     }
 
-
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            Log.i("=============", "setUserVisibleHint: " + id);
-            mPresenter.gettwo(page + "", id);
-
-        }
+    public void load() {
+        super.load();
+        Log.i("=============", "setUserVisibleHint: " + id);
+        mPresenter.gettwo(page + "", id);
     }
 
     @Override
@@ -95,9 +91,9 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
             public void onclickshow(int i) {
                 Intent in = new Intent(getActivity(), DaoHangInfoActivity.class);
                 in.putExtra("link", list.get(i).getLink());
-                in.putExtra("auther",list.get(i).getAuthor());
+                in.putExtra("auther", list.get(i).getAuthor());
                 in.putExtra("title", list.get(i).getTitle());
-                in.putExtra("id",list.get(i).getId()+"");
+                in.putExtra("id", list.get(i).getId() + "");
                 startActivity(in);
             }
         });

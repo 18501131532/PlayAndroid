@@ -52,7 +52,6 @@ public class PlayFragment extends SimpleFragment  {
 
     @Override
     protected void initData() {
-        fab = getActivity().findViewById(R.id.fab);
         initClick();
     }
 

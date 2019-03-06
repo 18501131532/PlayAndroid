@@ -9,12 +9,12 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/blue_gradient_bg"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/colorCard"
-        android:elevation="@dimen/dp_16"
+        app:elevation="@dimen/dp_16"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         app:menu="@menu/bottom_navigation_main" />

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.concat.SearchHotkey;
+import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter.IPSearchHotkey;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
@@ -121,6 +122,7 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV, IPSearchH
 
             }
         });
+
     }
 
     @Override
@@ -133,16 +135,13 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV, IPSearchH
     private void initDialog() {
         Window window = getDialog().getWindow();
 //        生成popuwindows的宽高
-        WindowManager manager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);
+        WindowManager manager = (WindowManager) MyApp.sMyApp.getSystemService(MyApp.sMyApp.WINDOW_SERVICE);
         int width = manager.getDefaultDisplay().getWidth();
         int height = manager.getDefaultDisplay().getHeight();
         window.setLayout(width, height);
 
         //取消过渡动画 , 使DialogSearch的出现更加平滑
         window.setWindowAnimations(R.style.DialogEmptyAnimation);
-
-
-
     }
 
     @Override
@@ -173,7 +172,6 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV, IPSearchH
                 }
             });
         }
-
     }
 
     @Override

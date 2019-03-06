@@ -62,7 +62,6 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
     protected void initData() {
 //        mPresenter.getDaoHang("navi/json");
         showLoading();
-        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
         PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -58,38 +58,38 @@ public class GongzhonghaoFragment extends BaseFragment<OfficialMarkConcat.Offici
 
     @Override
     public void showOfficialMarkInfo(WxAuthor wxAuthor) {
-        title= (ArrayList<WxAuthor.DataBean>) wxAuthor.getData();
-        for (int i = 0; i < title.size(); i++) {
-            Log.i("===========", "showOfficialMarkInfo: "+title.get(i).getName());
-            tab.addTab(tab.newTab().setText(title.get(i).getName()));
-
-            list.add(new ReuseFragment(title.get(i).getName(),title.get(i).getId()));
-        }
-        if (list!=null&&list.size()!=0){
-            vp.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
-                @Override
-                public Fragment getItem(int position) {
-                    return list.get(position);
-                }
-
-                @Override
-                public int getCount() {
-                    return list.size();
-                }
-
-                @Nullable
-                @Override
-                public CharSequence getPageTitle(int position) {
-                    return title.get(position).getName();
-                }
-
-                @Override
-                public void destroyItem(ViewGroup container, int position, Object object) {
-
-                }
-            });
-        }
-        tab.setupWithViewPager(vp);
+//        title= (ArrayList<WxAuthor.DataBean>) wxAuthor.getData();
+//        for (int i = 0; i < title.size(); i++) {
+//            Log.i("===========", "showOfficialMarkInfo: "+title.get(i).getName());
+//            tab.addTab(tab.newTab().setText(title.get(i).getName()));
+//
+//            list.add(new ReuseFragment(title.get(i).getName(),title.get(i).getId()));
+//        }
+//        if (list!=null&&list.size()!=0){
+//            vp.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+//                @Override
+//                public Fragment getItem(int position) {
+//                    return list.get(position);
+//                }
+//
+//                @Override
+//                public int getCount() {
+//                    return list.size();
+//                }
+//
+//                @Nullable
+//                @Override
+//                public CharSequence getPageTitle(int position) {
+//                    return title.get(position).getName();
+//                }
+//
+//                @Override
+//                public void destroyItem(ViewGroup container, int position, Object object) {
+//
+//                }
+//            });
+//        }
+//        tab.setupWithViewPager(vp);
 
     }
 
