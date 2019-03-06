@@ -40,7 +40,7 @@ public class MainActivity extends SimpleActivity {
 
     @Override
     protected void initData() {
-        new CountDownTimer(2150, 1000) {
+        new CountDownTimer(1000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -68,10 +68,10 @@ public class MainActivity extends SimpleActivity {
                 mEightAnimation.setAnimation("O.json");
                 mEightAnimation.loop(true);
                 mEightAnimation.playAnimation();
-                mNineAnimation.setAnimation("I.json");
+                mNineAnimation.setAnimation("O.json");
                 mNineAnimation.loop(true);
                 mNineAnimation.playAnimation();
-                mTenAnimation.setAnimation("D.json");
+                mTenAnimation.setAnimation("I.json");
                 mTenAnimation.loop(true);
                 mTenAnimation.playAnimation();
 

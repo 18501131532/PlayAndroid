@@ -50,7 +50,7 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
 
     @Override
     protected void initData() {
-//        showLoading();
+       // showLoading();
         Intent in = getIntent();
         List<String> titleList = new ArrayList<>();
         List<Fragment> fragmentList = new ArrayList<>();

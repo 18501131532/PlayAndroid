@@ -54,4 +54,5 @@ public class HttpGreendao {
     public void updata(ImageList list) {
         mImageListDao.update(list);
     }
+
 }

@@ -54,7 +54,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mOnItmeClick.ondianji(position);
+                mOnItmeClick.ondianji(position,v);
             }
         });
     }
@@ -96,6 +96,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
     }
 
     public interface OnItmeClick{
-        void ondianji(int position);
+        void ondianji(int position ,View view);
     }
 }

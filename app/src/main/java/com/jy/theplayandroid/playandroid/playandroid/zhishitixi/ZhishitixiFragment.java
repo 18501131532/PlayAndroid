@@ -73,7 +73,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     protected void initData() {
-        showLoading();
+//        showLoading();
         initView();
 
         PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +154,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     public void show(OneBean oneBean) {
-        hideLoding();
+//        hideLoding();
         list.addAll(oneBean.getData());
         shi.notifyDataSetChanged();
     }
