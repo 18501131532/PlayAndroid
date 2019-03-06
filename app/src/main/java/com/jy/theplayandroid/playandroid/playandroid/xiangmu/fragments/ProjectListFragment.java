@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.ProjectListData;
+import com.jy.theplayandroid.playandroid.global.MyApp;
+import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.activitys.ProjectActivity;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.adapters.ProjectListAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
@@ -69,12 +71,21 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
         mProjectListRecyclerView.setLayoutManager(linearLayoutManager);
         mProjectListAdapter = new ProjectListAdapter(mActivity,mList);
         mProjectListRecyclerView.setAdapter(mProjectListAdapter);
+
+        MyApp.getMyApp().ScrollList(mProjectListRecyclerView);
     }
 
     @Override
     public void load() {
         super.load();
         mPresenter.getProjectList(page, id);
+        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProjectListRecyclerView.scrollToPosition(0);
+            }
+        });
+
     }
 
     @Override

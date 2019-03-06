@@ -31,9 +31,12 @@ import com.jy.theplayandroid.playandroid.adapter.FragmentAdapter;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.favroite.FavroiteFragment;
+import com.jy.theplayandroid.playandroid.http.HttpGreendao;
+import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.logout.LogoutFragment;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.DaohangFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.GongzhonghaoFragment;
 import com.jy.theplayandroid.playandroid.playandroid.main.MainFragment;
@@ -55,6 +58,10 @@ public class PlayStartActivity extends SimpleActivity
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
     public static AppCompatDelegate mDelegate;
+
+    private boolean isone=false;
+    private boolean istwo=false;
+
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEdit;
     public static NavigationView mNavigationView;
@@ -99,6 +106,7 @@ public class PlayStartActivity extends SimpleActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        HttpGreendao.getInstance().insert(new ImageList(null,isone,istwo));
 
         mPlayFragment = new PlayFragment(tvToolbar,bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();

@@ -14,9 +14,14 @@ import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
 import com.jy.theplayandroid.playandroid.util.CleanDataUtils;
+import com.jy.theplayandroid.playandroid.http.HttpGreendao;
+import com.jy.theplayandroid.playandroid.http.HttpManager;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
+import com.jy.theplayandroid.playandroid.util.ACache;
 import com.jy.theplayandroid.playandroid.util.ShareUtil;
 
 import java.io.File;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -49,6 +54,8 @@ public class SettingsFragment extends SimpleFragment {
     LinearLayout mLlSettingClear;
     @BindView(R.id.setting_other_group)
     CardView mSettingOtherGroup;
+    private boolean isone=false;
+    private boolean istwo=false;
 
     private File cacheFile;
     public SettingsFragment() {
@@ -75,6 +82,17 @@ public class SettingsFragment extends SimpleFragment {
             case R.id.cb_setting_cache:
                 break;
             case R.id.cb_setting_image:
+                if (mCbSettingImage.isChecked()){
+                    List<ImageList> imageLists = HttpGreendao.getInstance().selectImg();
+                    boolean one = imageLists.get(0).getOne();
+                    one=true;
+                    HttpGreendao.getInstance().updata(new ImageList((long)1,one,istwo));
+                }else {
+                    List<ImageList> imageLists = HttpGreendao.getInstance().selectImg();
+                    boolean one = imageLists.get(0).getOne();
+                    one=false;
+                    HttpGreendao.getInstance().updata(new ImageList((long)1,one,istwo));
+                }
                 break;
             case R.id.cb_setting_night:
                 if(mCbSettingNight.isChecked()){
