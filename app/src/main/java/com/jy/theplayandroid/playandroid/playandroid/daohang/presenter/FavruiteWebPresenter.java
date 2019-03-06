@@ -14,7 +14,7 @@ import okhttp3.FormBody;
 
 public class FavruiteWebPresenter<V extends TalkClassify.FavruiteWebView> extends BasePresenter<V> implements TalkClassify.FavruiteWebPresenter, TalkClassify.FavruiteWebCallBack {
 
-    DaoHangModule mDaoHangModule=new DaoHangModule();
+    DaoHangModule mDaoHangModule = new DaoHangModule();
 
     @Override
     public void setShowLoading() {
@@ -28,43 +28,49 @@ public class FavruiteWebPresenter<V extends TalkClassify.FavruiteWebView> extend
 
     @Override
     public void setShowError(String error) {
-        if (mView!=null){
+        if (mView != null) {
             mView.showError(error);
         }
     }
 
     @Override
-    public void getFavruiteWeb(Map<String,Object> formBody) {
-        if (mDaoHangModule!=null){
-            mDaoHangModule.getFavruiteWeb(formBody,this);
+    public void getFavruiteWeb(Map<String, Object> formBody) {
+        if (mDaoHangModule != null) {
+            mDaoHangModule.getFavruiteWeb(formBody, this);
         }
     }
 
     @Override
     public void getFavruiteWebDelete(Map<String, Object> formBody) {
-        if (mDaoHangModule!=null){
-            mDaoHangModule.getFavruiteWebDelete(formBody,this);
+        if (mDaoHangModule != null) {
+            mDaoHangModule.getFavruiteWebDelete(formBody, this);
         }
     }
 
     @Override
     public void setFavruiteWeb(FavroiteAddBean favruiteWeb) {
-        if (mView!=null){
+        if (mView != null) {
             mView.showFavruiteWeb(favruiteWeb);
         }
     }
 
     @Override
-    public void setFavruiteWebDelete(HttpResult favruiteWeb) {
-        if (mView!=null){
-            mView.showFavruiteWebDelete(favruiteWeb);
+    public void setFavruite(Favruite favruiteWeb) {
+        if (mView != null) {
+            mView.showFavruite(favruiteWeb);
         }
     }
 
     @Override
-    public void setFavruite(Favruite favruiteWeb) {
-        if (mView!=null){
-            mView.showFavruite(favruiteWeb);
+    public void setFavruiteWebDelete(HttpResult favruiteWeb) {
+        if (mView != null) {
+            mView.showFavruiteWebDelete(favruiteWeb);
+        }
+    }
+
+    public void getFavruite(int page) {
+        if (mDaoHangModule != null) {
+            mDaoHangModule.getFavruite(page, this);
         }
     }
 }

@@ -239,6 +239,11 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     }
 
     @Override
+    public void showFavruite(Favruite favruiteBean) {
+
+    }
+
+    @Override
     public void showFavruiteWebDelete(HttpResult favruiteBean) {
         if (favruiteBean.getErrorCode() == 0) {
             Toast.makeText(mActivity, "删除收藏成功", Toast.LENGTH_SHORT).show();

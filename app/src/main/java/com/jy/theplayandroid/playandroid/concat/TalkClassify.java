@@ -76,16 +76,19 @@ public interface TalkClassify {
      * */
     interface FavruiteWebView extends Base_View{
         void showFavruiteWeb(FavroiteAddBean favruiteBean);
+        void showFavruite(Favruite favruiteBean);
         void showFavruiteWebDelete(HttpResult favruiteBean);
     }
 
     interface FavruiteWebPresenter {
         void getFavruiteWeb(Map<String,Object> formBody);
+        void getFavruite(int page);
         void getFavruiteWebDelete(Map<String,Object> formBody);
     }
 
     interface FavruiteWebCallBack extends HttpFinishCallBack{
         void setFavruiteWeb(FavroiteAddBean favruiteWeb);
+        void setFavruite(Favruite favruiteWeb);
         void setFavruiteWebDelete(HttpResult favruiteWeb);
     }
 }

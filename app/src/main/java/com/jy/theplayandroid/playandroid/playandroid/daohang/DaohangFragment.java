@@ -67,8 +67,8 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "dvfdvb", Toast.LENGTH_SHORT).show();
-                rlvDaohang.scrollToPosition(0);
-                lvDaohang.scrollToPosition(0);
+                rlvDaohang.smoothScrollToPosition(0);
+                lvDaohang.smoothScrollToPosition(0);
             }
         });
     }

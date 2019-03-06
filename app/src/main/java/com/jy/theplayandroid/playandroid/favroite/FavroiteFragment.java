@@ -2,6 +2,7 @@ package com.jy.theplayandroid.playandroid.favroite;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jy.theplayandroid.playandroid.LoadingActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.adapter.CollectLiskeAdapter;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
@@ -65,63 +67,69 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
 
     @Override
     protected void initData() {
-        mPresenter.getFavruite(mPage);
+        SharedPreferences loging = mContext.getSharedPreferences("loging", 0);
+        boolean loging1 = loging.getBoolean("loging", false);
+        if (loging1) {
+            mPresenter.getFavruite(mPage);
+            mManager = new LinearLayoutManager(getContext());
+            mCollectRlv.setLayoutManager(mManager);
+            List<Favruite.DataBean.DatasBean> datas = new ArrayList<>();
+            mAdapter = new CollectLiskeAdapter(datas, getContext());
+            mCollectRlv.setAdapter(mAdapter);
+
+            mCollectRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    mCollectRefreshLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            datas.clear();
+                            mPage = 0;
+                            initData();
+                            mCollectRefreshLayout.finishRefresh();
+                        }
+                    }, 1000);
+                }
+            });
+            mCollectRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                    mCollectRefreshLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mSize > 0 && mSize >= 20) {
+                                mPage++;
+                                initData();
+                                mCollectRefreshLayout.finishLoadMore();
+                            } else {
+                                Toast.makeText(mContext, "没有多余的干货了", Toast.LENGTH_SHORT).show();
+                                mCollectRefreshLayout.finishLoadMore();
+                            }
+                        }
+                    }, 1000);
+                }
+            });
+            mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
+                @Override
+                public void OnItemClick(int position) {
+                    Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
+                    intent.putExtra("title", mAdapter.mList.get(position).getTitle());
+                    intent.putExtra("id", mAdapter.mList.get(position).getId());
+                    intent.putExtra("link", mAdapter.mList.get(position).getLink());
+                    intent.putExtra("auther", mAdapter.mList.get(position).getAuthor());
+                    startActivity(intent);
+                }
+            });
+        } else {
+            startActivity(new Intent(mContext, LoadingActivity.class));
+        }
     }
 
     @Override
     public void initView() {
         super.initView();
-        mManager = new LinearLayoutManager(getContext());
-        mCollectRlv.setLayoutManager(mManager);
-        List<Favruite.DataBean.DatasBean> datas = new ArrayList<>();
-        mAdapter = new CollectLiskeAdapter(datas, getContext());
-        mCollectRlv.setAdapter(mAdapter);
 
-        mCollectRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mCollectRefreshLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        datas.clear();
-                        mPage = 0;
-                        initData();
-                        mCollectRefreshLayout.finishRefresh();
-                    }
-                }, 1000);
-            }
-        });
-        mCollectRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mCollectRefreshLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mSize > 0 && mSize >= 20) {
-                            mPage++;
-                            initData();
-                            mCollectRefreshLayout.finishLoadMore();
-                        } else {
-                            Toast.makeText(mContext, "没有多余的干货了", Toast.LENGTH_SHORT).show();
-                            mCollectRefreshLayout.finishLoadMore();
-                        }
-                    }
-                }, 1000);
-            }
-        });
-        mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(int position) {
-                Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
-                intent.putExtra("title", mAdapter.mList.get(position).getTitle());
-                intent.putExtra("id", mAdapter.mList.get(position).getId());
-                intent.putExtra("link", mAdapter.mList.get(position).getLink());
-                intent.putExtra("auther", mAdapter.mList.get(position).getAuthor());
-                startActivity(intent);
-            }
-        });
     }
-
 
     @Override
     protected FavruiteWebPresenter<TalkClassify.FavruiteWebView> createPresenter() {
@@ -138,15 +146,15 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
 
     }
 
-//    @Override
-//    public void showFavruite(Favruite favruite) {
-//        if (favruite.getData() != null) {
-//            List<Favruite.DataBean.DatasBean> datas = favruite.getData().getDatas();
-//            mAdapter.addData(datas);
-//            mSize = favruite.getData().getSize();
-//        }
-//
-//    }
+    @Override
+    public void showFavruite(Favruite favruite) {
+        if (favruite.getData() != null) {
+            List<Favruite.DataBean.DatasBean> datas = favruite.getData().getDatas();
+            mAdapter.addData(datas);
+            mSize = favruite.getData().getSize();
+        }
+
+    }
 
     @Override
     public void showError(String error) {

@@ -169,15 +169,24 @@ public class PlayStartActivity extends SimpleActivity
 
         int id = item.getItemId();
         if (id == R.id.nav_item_wan_android) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+            fab.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, playFragment).commit();
         } else if (id == R.id.nav_item_my_collect) {
+            bottomNavigationView.setVisibility(View.GONE);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, favroiteFragment).commit();
+            tvToolbar.setText(item.getTitle());
         } else if (id == R.id.nav_item_setting) {
+            bottomNavigationView.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, settingsFragment).commit();
             tvToolbar.setText(item.getTitle());
         } else if (id == R.id.nav_item_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));
         } else if (id == R.id.nav_item_logout) {
+            tvToolbar.setText(item.getTitle());
+            bottomNavigationView.setVisibility(View.GONE);
+            fab.setVisibility(View.GONE);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, logoutFragment).commit();
         }
 

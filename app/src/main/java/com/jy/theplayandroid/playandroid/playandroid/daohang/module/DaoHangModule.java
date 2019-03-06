@@ -76,4 +76,15 @@ public class DaoHangModule {
                     }
                 });
     }
+
+    public void getFavruite(int page, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
+        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruite(page)
+                .compose(RxUtils.<Favruite>rxObserableSchedulerHelper())
+                .subscribe(new BaseObserver<Favruite>(daoHangCallBack) {
+                    @Override
+                    public void onNext(Favruite value) {
+                        daoHangCallBack.setFavruite(value);
+                    }
+                });
+    }
 }
