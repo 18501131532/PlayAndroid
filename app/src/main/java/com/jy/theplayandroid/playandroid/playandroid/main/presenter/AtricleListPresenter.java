@@ -28,12 +28,12 @@ public class AtricleListPresenter<V extends AtricleList.AtricleListView> extends
 
     @Override
     public void setShowLoading() {
-
+        mView.showLoading();
     }
 
     @Override
     public void setHideLoading() {
-
+        mView.hideLoding();
     }
 
     @Override

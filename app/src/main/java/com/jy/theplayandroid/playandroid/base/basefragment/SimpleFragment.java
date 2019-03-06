@@ -43,7 +43,6 @@ public abstract class SimpleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBind = ButterKnife.bind(this, view);
-
         initData();
         initView();
     }

@@ -72,7 +72,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     protected void initData() {
-
+        showLoading();
         initView();
 
 
@@ -82,15 +82,13 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     }
 
-
     @Override
     public void load() {
         super.load();
         PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ZhishiRecyclerView.scrollToPosition(0);
-                ZhishiRecyclerView.smoothScrollToPosition(0);
+                ZhishiRecyclerView.scrollToPosition(0);
             }
         });
     }
@@ -165,6 +163,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
 
     @Override
     public void show(OneBean oneBean) {
+        hideLoding();
         list.addAll(oneBean.getData());
         shi.notifyDataSetChanged();
     }

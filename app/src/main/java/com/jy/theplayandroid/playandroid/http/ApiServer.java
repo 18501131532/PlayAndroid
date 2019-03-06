@@ -41,7 +41,7 @@ import retrofit2.http.Path;
  * Created by 段傅华 on 2019/2/27.
  */
 
-public interface ApiServer {
+public interface  ApiServer {
     //http://www.wanandroid.com/navi/json
 
     /**

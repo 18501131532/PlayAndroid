@@ -27,7 +27,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PlayFragment extends SimpleFragment {
+public class PlayFragment extends SimpleFragment  {
 
 
     TextView tool;
@@ -74,6 +74,8 @@ public class PlayFragment extends SimpleFragment {
         bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation_view);
         fab = getActivity().findViewById(R.id.fab);
 
+
+        fab.setOnClickListener((MainFragment)new MainFragment());
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -111,4 +113,6 @@ public class PlayFragment extends SimpleFragment {
             }
         });
     }
+
+
 }

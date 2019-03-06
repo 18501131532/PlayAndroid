@@ -56,7 +56,6 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
     @Override
     protected void initData() {
         showLoading();
-
     }
 
     @Override
@@ -72,6 +71,7 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
 
     @Override
     public void showProjectClassify(List<ProjectClassifyData.DataBean> dataBeans) {
+      hideLoding();
         Log.e("156", dataBeans.toString());
         List<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
@@ -114,17 +114,5 @@ public class XiangmuFragment extends BaseFragment<ProjectClassify.ProjectClassif
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }
