@@ -24,9 +24,12 @@ import com.jy.theplayandroid.playandroid.about.AboutFragment;
 import com.jy.theplayandroid.playandroid.base.DialogFragment;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.favroite.FavroiteFragment;
+import com.jy.theplayandroid.playandroid.http.HttpGreendao;
+import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.logout.LogoutFragment;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
 import com.jy.theplayandroid.playandroid.settings.SettingsFragment;
 import com.jy.theplayandroid.playandroid.util.GetWindowManagerUtils;
 import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
@@ -40,6 +43,10 @@ public class PlayStartActivity extends SimpleActivity
     TextView tvToolbar;
     private PlayFragment mPlayFragment;
     public static AppCompatDelegate mDelegate;
+
+    private boolean isone=false;
+    private boolean istwo=false;
+
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEdit;
 
@@ -59,6 +66,7 @@ public class PlayStartActivity extends SimpleActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        HttpGreendao.getInstance().insert(new ImageList(null,isone,istwo));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

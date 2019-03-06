@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
+import com.jy.theplayandroid.playandroid.http.HttpGreendao;
+import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
 
 import java.util.List;
@@ -35,7 +37,15 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHoder holder, final int position) {
         ProjectListBean.DataBean.DatasBean datasBean = mList.get(position);
-        Glide.with(context).load(datasBean.getEnvelopePic()).into(holder.mImage);
+        List<ImageList> imageLists = HttpGreendao.getInstance().selectImg();
+        boolean one = imageLists.get(0).getOne();
+        if (one){
+            holder.mImage.setImageResource(R.mipmap.ic_launcher);
+        }else {
+            Glide.with(context).load(datasBean.getEnvelopePic()).into(holder.mImage);
+        }
+
+
         holder.mTitle.setText(datasBean.getTitle());
         holder.mTv.setText(datasBean.getDesc());
         holder.mTime.setText(datasBean.getNiceDate());

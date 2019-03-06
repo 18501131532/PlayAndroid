@@ -47,11 +47,17 @@
                 android:textColor="@color/light_deep_red"
                 android:textSize="@dimen/sp_16" />
 
-            <com.zhy.view.flowlayout.TagFlowLayout
+            <com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout
+
                 android:id="@+id/top_search_flow_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:max_select="0" />
+                app:max_select="0" >
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123"/>
+            </com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

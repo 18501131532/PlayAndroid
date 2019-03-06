@@ -14,8 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.collect.Lists;
-import com.google.gson.Gson;
+
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
