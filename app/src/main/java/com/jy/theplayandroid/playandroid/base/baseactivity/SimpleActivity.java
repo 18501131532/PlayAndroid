@@ -75,7 +75,7 @@ public abstract class SimpleActivity extends AppCompatActivity {
         if (mBind != null) {
             mBind.unbind();
         }
-        initBack();
+        //initBack();
     }
 
     public void initBack() {

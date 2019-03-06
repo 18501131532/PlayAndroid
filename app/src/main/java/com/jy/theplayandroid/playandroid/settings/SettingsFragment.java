@@ -2,7 +2,6 @@ package com.jy.theplayandroid.playandroid.settings;
 
 
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -10,13 +9,11 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.jy.theplayandroid.playandroid.MainActivity;
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
+import com.jy.theplayandroid.playandroid.util.CleanDataUtils;
 import com.jy.theplayandroid.playandroid.http.HttpGreendao;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
@@ -27,7 +24,6 @@ import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -66,7 +62,6 @@ public class SettingsFragment extends SimpleFragment {
         // Required empty public constructor
     }
 
-
     @Override
     protected int createLayoutId() {
         return R.layout.fragment_settings;
@@ -74,14 +69,12 @@ public class SettingsFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
-        mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
+        try {
+            mTvSettingClear.setText(CleanDataUtils.getTotalCacheSize(mContext));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
-
-
-
-
 
     @OnClick({R.id.cb_setting_cache, R.id.cb_setting_image, R.id.cb_setting_night, R.id.ll_setting_clear, R.id.ll_setting_feedback})
     public void onViewClicked(View view) {
@@ -114,13 +107,13 @@ public class SettingsFragment extends SimpleFragment {
                 ShareUtil.sendEmail(mActivity,getString(R.string.send_email));
                 break;
             case R.id.ll_setting_clear:
-                //clearCache();
+                CleanDataUtils.clearAllCache(mContext);
+                try {
+                    mTvSettingClear.setText(CleanDataUtils.getTotalCacheSize(mContext));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
         }
-
-    }
-    private void clearCache() {
-        ACache.deleteDir(cacheFile);
-        mTvSettingClear.setText(ACache.getCacheSize(cacheFile));
     }
 }

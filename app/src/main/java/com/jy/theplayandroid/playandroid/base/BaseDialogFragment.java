@@ -1,5 +1,6 @@
 package com.jy.theplayandroid.playandroid.base;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +11,13 @@ import android.view.ViewGroup;
 
 public abstract class BaseDialogFragment extends DialogFragment{
     public Context context;
+    public Activity mActivity;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context=context;
+        this.mActivity= (Activity) context;
     }
 
     @Nullable

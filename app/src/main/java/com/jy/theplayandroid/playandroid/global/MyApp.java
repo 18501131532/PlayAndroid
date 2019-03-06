@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.support.v7.widget.RecyclerView;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 
 import java.util.ArrayList;
@@ -34,16 +35,16 @@ public class MyApp extends Application {
         registerActivityLifecycleCallbacks(myActivityLifecycle);
         sMyApp=this;
 
-        boolean runBackground = isRunBackground(sMyApp);
-        if (runBackground){
-
-        }else {
-            Log.e("duanxq", "app: " + "shabi");
-            mSharedPreferences = getSharedPreferences("loging", 0);
-            mEdit = mSharedPreferences.edit();
-            mEdit.putBoolean("loging", false);
-            mEdit.commit();
-        }
+//        boolean runBackground = isRunBackground(sMyApp);
+//        if (runBackground){
+//
+//        }else {
+//            Log.e("duanxq", "app: " + "shabi");
+//            mSharedPreferences = getSharedPreferences("loging", 0);
+//            mEdit = mSharedPreferences.edit();
+//            mEdit.putBoolean("loging", false);
+//            mEdit.commit();
+//        }
     }
 
 

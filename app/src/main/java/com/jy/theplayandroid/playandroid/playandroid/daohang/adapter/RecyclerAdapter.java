@@ -46,7 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
         viewHolder.setIsRecyclable(false);
-        viewHolder.tvNodeTitle.setText(mStrings.get(position).getTitle());
+        viewHolder.tvNodeTitle.setText(mStrings.get(position).getTitle().toString());
         List<JsonBean.DataBean.ArticlesBean> articles = mDataBeans.get(position).getArticles();
 //        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < articles.size(); i++) {

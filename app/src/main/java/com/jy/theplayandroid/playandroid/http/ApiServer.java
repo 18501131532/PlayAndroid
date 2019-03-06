@@ -67,19 +67,20 @@ public interface  ApiServer {
     Observable<JsonBean>getDaoHangList(@Url String url);
 
     /**
-     * 导航收藏
-     *http://www.wanandroid.com/lg/collect/add/json
-     * */
-    @POST("lg/collect/add/json")
-    Observable<JsonBean>getDaoHangLike(@Body RequestBody requestBody);
-
-    /**
      * 收藏站外文章
      *http://www.wanandroid.com/lg/collect/add/json
      * */
     @POST("lg/collect/add/json")
     @FormUrlEncoded
     Observable<FavroiteAddBean>getFavruiteWebAdd(@FieldMap Map<String,Object> requestBody);
+
+//    /**
+//     * 取消站外收藏
+//     *http://www.wanandroid.com/lg/uncollect/2805/json
+//     * */
+//    @POST("lg/collect/2805/json")
+//    @FormUrlEncoded
+//    Observable<FavroiteAddBean>getFavruiteWebAdd(@FieldMap Map<String,Object> requestBody);
 
     /**
      * 收藏列表
@@ -110,18 +111,18 @@ public interface  ApiServer {
    * */
    @GET("article/list/{page}/json")
    Observable<ArticleListBean> getArticleList(@Path("page")int page);
+
    /*
    * 首页banner
    * */
    @GET("banner/json")
    Observable<ArticleBannerBean>getArticleBanner();
-   //公众号
+
+    /*
+     * 公众号
+     * */
     @GET("wxarticle/chapters/json")
     Observable<WxAuthor> getWxAuthorListData();
-   /*
-   * 收藏站内文章
-   * */
-
 
     /**
      * 知识体系下的文章
@@ -131,7 +132,6 @@ public interface  ApiServer {
      * @param cid second page id
      * @return 知识体系feed文章数据
      */
-
     @GET("article/list/{curPage}/json")
     Observable<TwoBEAN> getZhishiTwo(@Path("curPage")String page, @Query("chapterId") String id);
 

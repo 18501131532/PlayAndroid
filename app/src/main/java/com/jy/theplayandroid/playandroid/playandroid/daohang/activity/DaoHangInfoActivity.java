@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jy.theplayandroid.playandroid.LoadingActivity;
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
@@ -94,7 +95,7 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
 //            }
 //        });
         wvDaohanginfo.loadUrl(mWeb);
-        wvDaohanginfo.setWebViewClient(new WebViewClient(){
+        wvDaohanginfo.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
@@ -106,9 +107,9 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     private void initWeb() {
         //title，author，link
         HashMap<String, Object> map = new HashMap<>();
-        map.put("title",mTitle);
-        map.put("author",mAuther);
-        map.put("link",mWeb);
+        map.put("title", mTitle);
+        map.put("author", mAuther);
+        map.put("link", mWeb);
         mPresenter.getFavruiteWeb(map);
     }
 
@@ -148,6 +149,8 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         switch (item.getItemId()) {
             case R.id.iteminfo_like:
                 boolean loading = mSharedPreferences.getBoolean("loging", false);
+                //获取NavigationView上的组件
+                MenuItem v = PlayStartActivity.mNavigationView.getMenu().getItem(4);
                 if (loading) {
                     if (isClick) {
                         initWeb();
@@ -161,7 +164,9 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                         item.setIcon(R.mipmap.ic_toolbar_like_n);
                         isClick = true;
                     }
+                    v.setVisible(true);
                 } else {
+                    v.setVisible(false);
                     startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
                 }
                 break;
@@ -184,7 +189,7 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
 
     @Override
     public void showFavruiteWeb(FavroiteAddBean favruiteBean) {
-        if (favruiteBean.getData()!=null){
+        if (favruiteBean.getData() != null) {
             if (favruiteBean.getData().getLink().equals(mWeb)) {
                 Toast.makeText(mActivity, "收藏成功", Toast.LENGTH_SHORT).show();
             } else {
