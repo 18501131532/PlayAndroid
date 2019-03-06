@@ -35,7 +35,7 @@ public class SearchActivity extends BaseActivity<SearchApi.SearchV, SearchPersen
     @BindView(R.id.search_activity_recycler)
     RecyclerView searchActivityRecycler;
 
-    List<SearchBean.DataBean.DatasBean> list=new ArrayList<>();
+    List<SearchBean.DataBean.DatasBean> list = new ArrayList<>();
     String k;
     @BindView(R.id.search_activity_image)
     ImageView searchActivityImage;
@@ -61,16 +61,16 @@ public class SearchActivity extends BaseActivity<SearchApi.SearchV, SearchPersen
             }
         });
 
-        shi = new SearchAdapter(this,list);
+        shi = new SearchAdapter(this, list);
         searchActivityRecycler.setAdapter(shi);
         searchActivityRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         shi.setItemonclicks(new SearchAdapter.itemonclicklist() {
             @Override
             public void itemonclick(int i) {
-                Intent in=new Intent(SearchActivity.this,infoActivity.class);
-                in.putExtra("like",list.get(i).getLink());
-                in.putExtra("name",list.get(i).getSuperChapterName());
+                Intent in = new Intent(SearchActivity.this, infoActivity.class);
+                in.putExtra("like", list.get(i).getLink());
+                in.putExtra("name", list.get(i).getSuperChapterName());
                 startActivity(in);
             }
         });
@@ -78,7 +78,7 @@ public class SearchActivity extends BaseActivity<SearchApi.SearchV, SearchPersen
             @Override
             public void onclicks(int i) {
 
-                Toast.makeText(mActivity, ""+i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, "" + i, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -89,7 +89,7 @@ public class SearchActivity extends BaseActivity<SearchApi.SearchV, SearchPersen
     @Override
     public void showSearch(SearchBean searchBean) {
         list.addAll(searchBean.getData().getDatas());
-shi.notifyDataSetChanged();
+        shi.notifyDataSetChanged();
     }
 
     @Override

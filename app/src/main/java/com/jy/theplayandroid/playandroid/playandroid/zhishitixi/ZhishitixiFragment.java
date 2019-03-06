@@ -79,10 +79,18 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
         MyApp.sMyApp.ScrollList(ZhishiRecyclerView);
 
 
+
+    }
+
+
+    @Override
+    public void load() {
+        super.load();
         PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZhishiRecyclerView.scrollToPosition(0);
+//                ZhishiRecyclerView.scrollToPosition(0);
+                ZhishiRecyclerView.smoothScrollToPosition(0);
             }
         });
     }

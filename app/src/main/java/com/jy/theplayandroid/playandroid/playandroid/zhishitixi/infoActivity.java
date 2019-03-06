@@ -144,7 +144,6 @@ public class infoActivity extends AppCompatActivity {
         items = menu.getItem(0);
 
 
-
         return true;
     }
 

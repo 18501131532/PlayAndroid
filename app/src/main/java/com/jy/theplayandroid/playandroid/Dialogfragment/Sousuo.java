@@ -167,7 +167,6 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV, IPSearchH
                 public void onClick(View v) {
                     Intent in=new Intent(context,SearchActivity.class);
                     in.putExtra("k",dataBeans.get(j).getName());
-
                     startActivity(in);
                     getDialog().dismiss();
 
