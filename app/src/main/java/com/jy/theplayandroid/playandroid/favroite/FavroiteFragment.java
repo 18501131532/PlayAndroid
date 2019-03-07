@@ -177,12 +177,6 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
     }
 
     @Override
-    public void initView() {
-        super.initView();
-
-    }
-
-    @Override
     protected FavruiteWebPresenter<TalkClassify.FavruiteWebView> createPresenter() {
         return new FavruiteWebPresenter<>();
     }
