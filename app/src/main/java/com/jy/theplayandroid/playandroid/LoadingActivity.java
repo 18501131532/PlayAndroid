@@ -22,6 +22,8 @@ import com.jy.theplayandroid.playandroid.concat.TalkClassify;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
 import com.jy.theplayandroid.playandroid.presenter.LoadingPresenter;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,12 +96,15 @@ public class LoadingActivity extends BaseActivity<TalkClassify.LoadingView, Load
                 mSharedPreferences = getSharedPreferences("loging", 0);
                 mEdit = mSharedPreferences.edit();
                 mEdit.putBoolean("loging", true);
-                mEdit.putString("name",loadingBean.getData().getEmail().toString());
+                mEdit.putString("name",loadingBean.getData().getUsername().toString());
                 mEdit.commit();
 
                 mItem = PlayStartActivity.mNavigationView.getMenu().getItem(4);
                 PlayStartActivity.mHead.setText(loadingBean.getData().getUsername().toString());
                 mItem.setVisible(true);
+
+                EventBus.getDefault().postSticky("loging");
+
                 finish();
             } else {
                 Toast.makeText(mActivity, "登陆失败", Toast.LENGTH_SHORT).show();

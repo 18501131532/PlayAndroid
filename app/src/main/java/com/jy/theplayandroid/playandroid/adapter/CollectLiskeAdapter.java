@@ -46,6 +46,15 @@ public class CollectLiskeAdapter extends RecyclerView.Adapter{
                 }
             }
         });
+
+        holder1.mLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener!=null){
+                    mListener.OnItemClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -54,6 +63,7 @@ public class CollectLiskeAdapter extends RecyclerView.Adapter{
     }
 
     public void addData(List<Favruite.DataBean.DatasBean> datas) {
+
         this.mList.addAll(datas);
         notifyDataSetChanged();
     }

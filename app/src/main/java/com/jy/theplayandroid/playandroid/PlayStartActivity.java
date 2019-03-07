@@ -74,7 +74,7 @@ public class PlayStartActivity extends SimpleActivity
     @Override
     protected void initData() {
         mSharedPreferences = getSharedPreferences("loging", 0);
-        mLoging = mSharedPreferences.getBoolean("loging", false);
+        mLoging = mSharedPreferences.getBoolean("loging", true);
         //侧滑 功能
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mHead = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_header_login_tv);
@@ -91,7 +91,7 @@ public class PlayStartActivity extends SimpleActivity
         MenuItem item = mNavigationView.getMenu().getItem(4);
         if (mLoging) {
             item.setVisible(true);
-            String name = mSharedPreferences.getString("name", "");
+            String name = mSharedPreferences.getString("name", "sfsdfsdf");
             mHead.setText(name);
         } else {
             item.setVisible(false);
