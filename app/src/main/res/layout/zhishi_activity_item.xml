@@ -5,10 +5,14 @@
     android:id="@+id/item_search_pager_group"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/colorCard"
     app:cardCornerRadius="@dimen/dp_3"
     app:cardElevation="@dimen/dp_2">
+
+
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

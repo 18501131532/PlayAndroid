@@ -3,7 +3,6 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -26,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, ZhishipresenterTwo<ZhishiTwo.twoView>> implements ZhishiTwo.twoView {
 
@@ -60,27 +58,25 @@ public class Zhishiactivity extends BaseActivity<ZhishiTwo.twoView, Zhishipresen
 
         for (int i = 0; i < children.size(); i++) {
             titleList.add(children.get(i).getName());
+            //titleList.add("123");
             fragmentList.add(new BlankFragment(children.get(i).getId() + ""));
+            //fragmentList.add(new BlankFragment());
         }
 
 
         TabAdapter tab = new TabAdapter(getSupportFragmentManager(), titleList, fragmentList);
         zhishiActivityView.setAdapter(tab);
         zhishiActivityTab.setupWithViewPager(zhishiActivityView);
+
+
         title.setText(title2);
-
-
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//以下三行是修改回退按钮为白色的逻辑
 
+        //以下三行是修改回退按钮为白色的逻辑
         Drawable upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material);
-
         upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

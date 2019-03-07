@@ -3,7 +3,6 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -11,9 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
@@ -33,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -71,11 +66,16 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
         return R.layout.fragment_blank;
     }
 
+
     @Override
-    public void load() {
-        super.load();
-        Log.i("=============", "setUserVisibleHint: " + id);
-        mPresenter.gettwo(page + "", id);
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.i("=============", "setUserVisibleHint: " + id);
+//            showLoading();
+            mPresenter.gettwo(page + "", id);
+
+        }
     }
 
     @Override
@@ -91,12 +91,14 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
             public void onclickshow(int i) {
                 Intent in = new Intent(getActivity(), DaoHangInfoActivity.class);
                 in.putExtra("link", list.get(i).getLink());
-                in.putExtra("auther", list.get(i).getAuthor());
                 in.putExtra("title", list.get(i).getTitle());
-                in.putExtra("id", list.get(i).getId() + "");
+                in.putExtra("id", list.get(i).getId());
+                in.putExtra("auther", list.get(i).getAuthor());
                 startActivity(in);
             }
         });
+
+
 
 
         smartlayout.setOnRefreshListener(new OnRefreshListener() {
@@ -144,6 +146,7 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
 
     @Override
     public void show(TwoBEAN twoBEAN) {
+//        hideLoding();
         if (page < 0) {
             page = 0;
         }

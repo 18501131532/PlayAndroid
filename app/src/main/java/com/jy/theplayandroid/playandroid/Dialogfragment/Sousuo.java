@@ -156,7 +156,7 @@ public class Sousuo extends DialogFragment<SearchHotkey.SearchHotkeyV, IPSearchH
             final int j=i;
             Random myRandom = new Random();
             int ranColor = 0xff000000 | myRandom.nextInt(0x00ffffff);
-             final TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.layout, topSearchFlowLayout, false);
+            TextView tv = (TextView) LayoutInflater.from(MyApp.getMyApp()).inflate(R.layout.layout, topSearchFlowLayout, false);
             tv.setText(dataBeans.get(i).getName());
             tv.setBackgroundColor(ranColor);
             topSearchFlowLayout.addView(tv);

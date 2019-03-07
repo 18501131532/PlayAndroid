@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayStartActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            android:theme="@style/AppTheme.AppBarOverlay"/>
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,53 +22,60 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="@dimen/dp_0">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_play"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/blue_gradient_bg"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_play"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/blue_gradient_bg"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <TextView
-                android:id="@+id/tv_toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/home_pager"
-                android:textColor="@color/colorCard"
-                android:textSize="@dimen/sp_17"
-                android:textStyle="normal" />
 
-        </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:id="@+id/tv_toolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/home_pager"
+                    android:textColor="@color/colorCard"
+                    android:textSize="@dimen/sp_17"
+                    android:textStyle="normal" />
 
+            </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/style_float_btn"
-        android:layout_marginBottom="@dimen/dp_60"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:src="@mipmap/icon_up_arrow"
-        app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.ScaleDownShowBehavior"
-        tools:ignore="RtlCompat" />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorCard"
-        app:elevation="@dimen/dp_16"
-        app:itemIconTint="@drawable/nav_item_color_state"
-        app:itemTextColor="@drawable/nav_item_color_state"
-        app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.BottomNavigationBehavior"
-        app:menu="@menu/bottom_navigation_main" />
+        <FrameLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            style="@style/style_float_btn"
+            android:layout_marginBottom="@dimen/dp_60"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:src="@mipmap/icon_up_arrow"
+            app:layout_behavior="@string/bye_burger_float_behavior"
+            tools:ignore="RtlCompat" />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorCard"
+            app:elevation="@dimen/dp_16"
+            app:layout_behavior="@string/bye_burger_bottom_behavior"
+
+            app:itemIconTint="@drawable/nav_item_color_state"
+            app:itemTextColor="@drawable/nav_item_color_state"
+            app:menu="@menu/bottom_navigation_main" />
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+</android.support.v4.widget.DrawerLayout>

@@ -79,7 +79,7 @@ public class ZhishitixiFragment extends BaseFragment<ZhishiOne.oneView, Zhishipr
         PlayStartActivity.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZhishiRecyclerView.scrollToPosition(0);
+                ZhishiRecyclerView.smoothScrollToPosition(0);
             }
         });
     }
