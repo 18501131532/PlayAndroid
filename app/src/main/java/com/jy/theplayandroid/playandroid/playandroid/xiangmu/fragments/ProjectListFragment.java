@@ -88,6 +88,12 @@ public class ProjectListFragment extends BaseFragment<ProjectListData.ProjectLis
                 mProjectListRecyclerView.scrollToPosition(0);
             }
         });
+//        PlayFragment.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mProjectListRecyclerView.scrollToPosition(0);
+//            }
+//        });
 
     }
 

@@ -5,9 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
     tools:context=".PlayStartActivity"
     tools:showIn="@layout/app_bar_play_start">
 
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 
 </android.support.constraint.ConstraintLayout>
