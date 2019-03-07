@@ -114,4 +114,7 @@ dependencies {
     //防止内存泄露
     //rxlifecycle//rxlifecycle-components已经引入了，这个可以去掉
     implementation"com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+
+
+    implementation 'com.github.githubwing:ByeBurger:1.2.2'
 }
