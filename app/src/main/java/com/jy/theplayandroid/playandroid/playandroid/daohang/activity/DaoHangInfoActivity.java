@@ -145,18 +145,32 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem menuItem = menu.findItem(R.id.iteminfo_like).setChecked(true);
-        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
-        if (dateBases.size() > 0) {
-            for (int i = 0; i < dateBases.size(); i++) {
-                if (dateBases.get(i).getMId().contains(mId)) {
-                    menuItem.setIcon(R.mipmap.ic_toolbar_like_p);
-                } else {
-                    menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
-                }
+        mTitle = getIntent().getStringExtra("title");
+        boolean aBoolean = mSharedPreferences.getBoolean(mTitle, false);
+        if (mSharedPreferences.getBoolean("loging", false)) {
+            if (aBoolean) {
+                menuItem.setIcon(R.mipmap.ic_toolbar_like_p).setChecked(true);
+            } else {
+                menuItem.setIcon(R.mipmap.ic_toolbar_like_n).setChecked(true);
             }
         } else {
-            menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
+            startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
         }
+//        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+//        Log.e("shoucangksnfd", "onPrepareOptionsMenu: "+dateBases.size());
+//        mId = getIntent().getStringExtra("id");
+//        if (dateBases.size() > 0) {
+//            for (int i = 0; i < dateBases.size(); i++) {
+//                if (dateBases.get(i).getMId().contains(mId)) {
+//                    Log.e("shoucangksnfd", "onPrepareOptionsMenu: "+mId);
+//                    menuItem.setIcon(R.mipmap.ic_toolbar_like_p).setChecked(true);
+//                } else {
+//                    menuItem.setIcon(R.mipmap.ic_toolbar_like_n).setChecked(true);
+//                }
+//            }
+//        } else {
+//            menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
+//        }
         return true;
     }
 
@@ -178,11 +192,13 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                     if (isClick) {
                         initWeb();
                         item.setIcon(R.mipmap.ic_toolbar_like_p);
+                        mEdit.putBoolean(mTitle, true);
+                        mEdit.commit();
 
-                        ArrayList<DateBase> dateBases = new ArrayList<>();
-                        dateBases.add(new DateBase(null, true, mId));
-                        LikeDataBaseMannger.getInstrance().insert(dateBases);
-                        Log.e("datebse_selete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
+//                        ArrayList<DateBase> dateBases = new ArrayList<>();
+//                        dateBases.add(new DateBase(null, true, mId));
+//                        LikeDataBaseMannger.getInstrance().insert(dateBases);
+//                        Log.e("datebse_selete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
 
                         isClick = false;
                     } else {
@@ -190,17 +206,19 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                         map.put("id", mId);
                         mPresenter.getFavruiteWebDelete(map);
                         item.setIcon(R.mipmap.ic_toolbar_like_n);
+                        mEdit.putBoolean(mTitle, false);
+                        mEdit.commit();
 
-                        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
-                        Log.e("datebse_selete2", "onOptionsItemSelected: " + dateBases.size());
-                        if (dateBases.size() > 0) {
-                            List<DateBase> dateBases1 = LikeDataBaseMannger.getInstrance().selectId(mId);
-                            Log.e("datebse_seleteid", "onOptionsItemSelected: " + dateBases1.size());
-                            if (dateBases1.size() > 0) {
-                                LikeDataBaseMannger.getInstrance().delete(dateBases1.get(0));
-                                Log.e("datebse_seletedelete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
-                            }
-                        }
+//                        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+//                        Log.e("datebse_selete2", "onOptionsItemSelected: " + dateBases.size());
+//                        if (dateBases.size() > 0) {
+//                            List<DateBase> dateBases1 = LikeDataBaseMannger.getInstrance().selectId(mId);
+//                            Log.e("datebse_seleteid", "onOptionsItemSelected: " + dateBases1.size());
+//                            if (dateBases1.size() > 0) {
+//                                LikeDataBaseMannger.getInstrance().delete(dateBases1.get(0));
+//                                Log.e("datebse_seletedelete", "onOptionsItemSelected: " + LikeDataBaseMannger.getInstrance().selectAll().size());
+//                            }
+//                        }
                         isClick = true;
                     }
                     v.setVisible(true);

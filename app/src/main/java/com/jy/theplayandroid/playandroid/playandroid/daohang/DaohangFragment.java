@@ -157,8 +157,8 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
                 intent.putExtra("link", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getLink());
                 intent.putExtra("auther", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getAuthor());
                 intent.putExtra("id", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId() + "");
-                boolean collect = mRecyclerAdapter.mDataBeans.get(position).getArticles().get(position).isCollect();
-                intent.putExtra("collect", collect);
+//                boolean collect = mRecyclerAdapter.mDataBeans.get(position).getArticles().get(position).isCollect();
+//                intent.putExtra("collect", collect);
                 startActivity(intent);
             }
         });

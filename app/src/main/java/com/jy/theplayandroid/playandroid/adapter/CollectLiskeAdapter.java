@@ -18,6 +18,7 @@ public class CollectLiskeAdapter extends RecyclerView.Adapter{
     public   List<Favruite.DataBean.DatasBean> mList;
     private  Context mContext;
     private OnItemClickListener mListener;
+    private OnLikeItemClickListener mListenerLike;
 
     public CollectLiskeAdapter(List<Favruite.DataBean.DatasBean> datas, Context context) {
         this.mList=datas;
@@ -50,8 +51,8 @@ public class CollectLiskeAdapter extends RecyclerView.Adapter{
         holder1.mLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mListener!=null){
-                    mListener.OnItemClick(position);
+                if (mListenerLike!=null){
+                    mListenerLike.OnLikeItemClick(position);
                 }
             }
         });
@@ -88,7 +89,16 @@ public class CollectLiskeAdapter extends RecyclerView.Adapter{
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
+
+    //条目点击事件
+    public interface OnLikeItemClickListener{
+        void OnLikeItemClick(int position);
+    }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mListener=listener;
+    }
+
+    public void setOnItemLikeClickListener(OnLikeItemClickListener listener){
+        this.mListenerLike=listener;
     }
 }

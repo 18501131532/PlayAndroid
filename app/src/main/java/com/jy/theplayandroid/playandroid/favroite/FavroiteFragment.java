@@ -64,6 +64,8 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
     private CollectLiskeAdapter mAdapter;
     private int mSize;
     private LinearLayoutManager mManager;
+    private SharedPreferences mLoging;
+    private SharedPreferences.Editor mEdit;
 
     public FavroiteFragment() {
         // Required empty public constructor
@@ -76,8 +78,8 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getDate(String string) {
-        if (string.contains("loging")){
-            Log.e("eventbus", "getDate: "+string);
+        if (string.contains("loging")) {
+            Log.e("eventbus", "getDate: " + string);
             initClick();
         }
     }
@@ -149,29 +151,31 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
         mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(int position) {
-                Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
+                Intent intent = new Intent(mContext, DaoHangInfoActivity.class);
                 intent.putExtra("title", mAdapter.mList.get(position).getTitle());
-                intent.putExtra("id", mAdapter.mList.get(position).getId());
+                intent.putExtra("id", mAdapter.mList.get(position).getId() + "");
                 intent.putExtra("link", mAdapter.mList.get(position).getLink());
                 intent.putExtra("auther", mAdapter.mList.get(position).getAuthor());
                 startActivity(intent);
             }
         });
 
-        mAdapter.setOnItemClickListener(new CollectLiskeAdapter.OnItemClickListener() {
+        mAdapter.setOnItemLikeClickListener(new CollectLiskeAdapter.OnLikeItemClickListener() {
             @Override
-            public void OnItemClick(int position) {
+            public void OnLikeItemClick(int position) {
                 HashMap<String, Object> map = new HashMap<>();
-                map.put("id",mAdapter.mList.get(position).getId());
+                map.put("id", mAdapter.mList.get(position).getId());
                 mPresenter.getFavruiteWebDelete(map);
 
                 mAdapter.mList.remove(position);
                 mAdapter.notifyDataSetChanged();
 
-                List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectId(mAdapter.mList.get(position).getId() + "");
-                if (dateBases.size()>0){
-                    LikeDataBaseMannger.getInstrance().delete(dateBases.get(0));
-                }
+                mEdit.putBoolean(mAdapter.mList.get(position).getTitle().toString(), false);
+                mEdit.commit();
+//                List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectId(mAdapter.mList.get(position).getId() + "");
+//                if (dateBases.size()>0){
+//                    LikeDataBaseMannger.getInstrance().delete(dateBases.get(0));
+//                }
             }
         });
     }
@@ -188,7 +192,7 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
 
     @Override
     public void showFavruiteWebDelete(HttpResult favruiteBean) {
-        if (favruiteBean.getErrorCode()==0){
+        if (favruiteBean.getErrorCode() == 0) {
             Toast.makeText(mContext, "删除收藏成功", Toast.LENGTH_SHORT).show();
         }
     }
@@ -196,18 +200,26 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
     @Override
     public void showFavruite(Favruite favruite) {
         if (favruite.getData() != null) {
-            List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
-            ArrayList<DateBase> dateBases1 = new ArrayList<>();
-            if (dateBases.size()>0){
-                for (int i = 0; i < dateBases.size(); i++) {
-                    if (dateBases.get(i).getMId().contains(favruite.getData().getDatas().get(i).getId()+"")){
-
-                    }else {
-                        dateBases1.add(new DateBase(null,true,favruite.getData().getDatas().get(i).getId()+""));
-                    }
-                }
+//            List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
+//            ArrayList<DateBase> dateBases1 = new ArrayList<>();
+//            if (dateBases.size()>0){
+//                for (int i = 0; i < dateBases.size(); i++) {
+//                    for (int j = 0; j < favruite.getData().getDatas().size(); j++) {
+//                        if (dateBases.get(i).getMId().contains(favruite.getData().getDatas().get(j).getId()+"")){
+//
+//                        }else {
+//                            dateBases1.add(new DateBase(null,true,favruite.getData().getDatas().get(j).getId()+""));
+//                        }
+//                    }
+//                }
+//            }
+//            LikeDataBaseMannger.getInstrance().insert(dateBases1);
+            mLoging = mContext.getSharedPreferences("loging", 0);
+            mEdit = mLoging.edit();
+            for (int i = 0; i < favruite.getData().getDatas().size(); i++) {
+                mEdit.putBoolean(favruite.getData().getDatas().get(i).getTitle().toString(), true);
             }
-            LikeDataBaseMannger.getInstrance().insert(dateBases1);
+            mEdit.commit();
             List<Favruite.DataBean.DatasBean> datas = favruite.getData().getDatas();
             Log.e("favroite", "showFavruite: " + datas.size());
             mAdapter.addData(datas);
