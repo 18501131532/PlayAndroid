@@ -9,18 +9,13 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="false"
-            android:theme="@style/AppTheme.AppBarOverlay"/>
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="false"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="@dimen/dp_0">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/dp_0">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_play"
@@ -29,7 +24,6 @@
                 android:background="@drawable/blue_gradient_bg"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
-
 
                 <TextView
                     android:id="@+id/tv_toolbar"
@@ -42,16 +36,13 @@
                     android:textStyle="normal" />
 
             </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-
-
+        </android.support.design.widget.AppBarLayout>
 
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -69,13 +60,10 @@
             android:layout_gravity="bottom"
             android:background="@color/colorCard"
             app:elevation="@dimen/dp_16"
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
-
             app:itemIconTint="@drawable/nav_item_color_state"
             app:itemTextColor="@drawable/nav_item_color_state"
+            app:layout_behavior="@string/bye_burger_bottom_behavior"
             app:menu="@menu/bottom_navigation_main" />
     </android.support.design.widget.CoordinatorLayout>
-
-
 
 </android.support.v4.widget.DrawerLayout>
