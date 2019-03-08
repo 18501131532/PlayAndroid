@@ -2,14 +2,18 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
@@ -87,14 +91,15 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
 
 
         shi.setOnclicklist(new ZhishiActivityAdapter.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
-            public void onclickshow(int i) {
+            public void onclickshow(int i,View view) {
                 Intent in = new Intent(getActivity(), DaoHangInfoActivity.class);
                 in.putExtra("link", list.get(i).getLink());
                 in.putExtra("title", list.get(i).getTitle());
                 in.putExtra("id", list.get(i).getId());
                 in.putExtra("auther", list.get(i).getAuthor());
-                startActivity(in);
+                startActivity(in, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
             }
         });
 
