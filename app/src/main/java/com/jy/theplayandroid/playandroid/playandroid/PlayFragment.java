@@ -7,9 +7,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.adapter.FragmentAdapter;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
@@ -70,7 +72,7 @@ public class PlayFragment extends SimpleFragment  {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), fragments);
         framelayoutPlay.setAdapter(fragmentAdapter);
 
-        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        PlayStartActivity.bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

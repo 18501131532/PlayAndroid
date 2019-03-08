@@ -112,9 +112,9 @@ public class MainRlvAdapter extends RecyclerView.Adapter{
             MyViewHolder holder1= (MyViewHolder) holder;
             if (mList.get(position).getAuthor()!=null){
                 holder1.mName.setText(mList.get(position).getAuthor()+"");
-            holder1.mTitle.setText(mList.get(position).getTitle());
-            holder1.mType.setText(mList.get(position).getSuperChapterName()+"/"+mList.get(position).getChapterName());
-            holder1.mTime.setText(mList.get(position).getNiceDate());
+                holder1.mTitle.setText(mList.get(position).getTitle());
+                holder1.mType.setText(mList.get(position).getSuperChapterName()+"/"+mList.get(position).getChapterName());
+                holder1.mTime.setText(mList.get(position).getNiceDate());
             }
 
             //判断是否为新

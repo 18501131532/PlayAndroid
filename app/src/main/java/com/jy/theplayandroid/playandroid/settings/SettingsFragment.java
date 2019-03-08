@@ -1,6 +1,8 @@
 package com.jy.theplayandroid.playandroid.settings;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jy.theplayandroid.playandroid.MainActivity;
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
@@ -54,10 +57,14 @@ public class SettingsFragment extends SimpleFragment {
     LinearLayout mLlSettingClear;
     @BindView(R.id.setting_other_group)
     CardView mSettingOtherGroup;
+
     private boolean isone=false;
     private boolean istwo=false;
 
     private File cacheFile;
+    private SharedPreferences sh;
+    private SharedPreferences.Editor ed;
+
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -69,6 +76,17 @@ public class SettingsFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+
+
+        sh = getActivity().getSharedPreferences("night", Context.MODE_PRIVATE);
+        ed = sh.edit();
+//
+        if (sh.getBoolean("che",false)==false){
+            mCbSettingNight.setChecked(false);
+        }else{
+            mCbSettingNight.setChecked(true);
+//            ((PlayStartActivity)getActivity()).getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         try {
             mTvSettingClear.setText(CleanDataUtils.getTotalCacheSize(mContext));
         } catch (Exception e) {
@@ -95,12 +113,16 @@ public class SettingsFragment extends SimpleFragment {
                 }
                 break;
             case R.id.cb_setting_night:
+
                 if(mCbSettingNight.isChecked()){
-                    int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-                    PlayStartActivity.mDelegate.setLocalNightMode(currentNightMode == Configuration.UI_MODE_NIGHT_NO ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-                    // 同样需要调用recreate方法使之生效
-                    getActivity().recreate();
+                    ((PlayStartActivity)getActivity()).getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }else{
+                    ((PlayStartActivity)getActivity()).getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
+                (getActivity()).recreate();
+                boolean checked = mCbSettingNight.isChecked();
+                ed.putBoolean("che",checked);
+                ed.commit();
                 break;
             case R.id.ll_setting_feedback:
                 //Toast.makeText(mContext, "bdhjskhskjdhfk", Toast.LENGTH_SHORT).show();

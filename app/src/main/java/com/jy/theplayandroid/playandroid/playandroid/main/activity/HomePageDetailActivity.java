@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.util.ShareUtil;
 
 import java.lang.reflect.Method;
@@ -31,6 +33,9 @@ public class HomePageDetailActivity extends SimpleActivity {
     WebView mWebWeb;
     String mUrl;
     public boolean mIsChange = false;
+    private String title;
+    private String id;
+    private String auther;
 
     @Override
     protected int creatLoyoutId() {
@@ -41,7 +46,9 @@ public class HomePageDetailActivity extends SimpleActivity {
     protected void initData() {
         Intent intent = getIntent();
         mUrl = intent.getStringExtra("url");
-        String title = intent.getStringExtra("title");
+        title = intent.getStringExtra("title");
+        id = getIntent().getStringExtra("id");
+        auther = getIntent().getStringExtra("auther");
 
         setSupportActionBar(mWebTooblar);
         mWebTooblar.setTitle("");
@@ -78,8 +85,12 @@ public class HomePageDetailActivity extends SimpleActivity {
                 finish();
                 break;
                case R.id.item_like:
-             if (mIsChange){
-                }
+                   Intent intent1 = new Intent(this, DaoHangInfoActivity.class);
+                   intent1.putExtra("title",title);
+                   intent1.putExtra("id",id);
+                   intent1.putExtra("link",mUrl);
+                   intent1.putExtra("auther",auther);
+                   startActivity(intent1);
                 break;
             case R.id.item_share:
                 ShareUtil.shareText(mActivity, mUrl, "分享");

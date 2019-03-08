@@ -84,6 +84,7 @@ public class PlayStartActivity extends SimpleActivity
         mNavigationView.setNavigationItemSelectedListener(this);
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         fab = findViewById(R.id.fab);
+        mPlayFragment = new PlayFragment(tvToolbar,bottomNavigationView);
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
@@ -109,7 +110,6 @@ public class PlayStartActivity extends SimpleActivity
         toggle.syncState();
         HttpGreendao.getInstance().insert(new ImageList(null,isone,istwo));
 
-        mPlayFragment = new PlayFragment(tvToolbar,bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
     }
 
