@@ -91,9 +91,15 @@ public class MainActivity extends SimpleActivity {
                 mTenAnimation.cancelAnimation();
 
                 startActivity(new Intent(MainActivity.this,PlayStartActivity.class));
-                finish();
+//                finish();
             }
         }.start();
     }
 
+//    @Override
+//    public Intent getIntent() {
+//        startActivity(new Intent(MainActivity.this,PlayStartActivity.class));
+//        finish();
+//        return super.getIntent();
+//    }
 }

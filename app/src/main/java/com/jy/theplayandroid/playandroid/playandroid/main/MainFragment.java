@@ -131,6 +131,8 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
                 Intent intent = new Intent(getContext(), HomePageDetailActivity.class);
                 intent.putExtra("url",mMainRlvAdapter.mList.get(position).getLink());
                 intent.putExtra("title",mMainRlvAdapter.mList.get(position).getTitle());
+                intent.putExtra("id",mMainRlvAdapter.mList.get(position).getId());
+                intent.putExtra("author",mMainRlvAdapter.mList.get(position).getAuthor());
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
             }
         });

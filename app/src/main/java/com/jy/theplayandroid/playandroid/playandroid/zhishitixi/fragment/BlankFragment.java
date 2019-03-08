@@ -101,6 +101,8 @@ public class BlankFragment extends BaseFragment<ZhishiTwo.twoView, Zhishipresent
 
 
 
+
+
         smartlayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {

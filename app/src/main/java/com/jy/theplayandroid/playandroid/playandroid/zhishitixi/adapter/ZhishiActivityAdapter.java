@@ -2,6 +2,8 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jy.theplayandroid.playandroid.LoadingActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
 
@@ -24,6 +27,9 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
     Context context;
     List<TwoBEAN.DataBean.DatasBean> list;
     OnClickListener onclicklist;
+    private final SharedPreferences sh;
+    private final SharedPreferences.Editor ed;
+
 
     public void setOnclicklistlike(OnClickListenerlike onclicklistlike) {
         this.onclicklistlike = onclicklistlike;
@@ -42,6 +48,11 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
         this.context = context;
         this.list = list;
         Log.e("liangxq1", list.toString());
+        sh = context.getSharedPreferences("loging", Context.MODE_PRIVATE);
+        ed = sh.edit();
+
+
+
     }
 
     @NonNull
@@ -73,7 +84,19 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
         holder.homePageItemlistLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+                if(!sh.getBoolean("loging",false)){
+                    Intent in=new Intent(context, LoadingActivity.class);
+                    context.startActivity(in);
+                }else{
+                    if(!sh.getBoolean("title",false)){
+                        holder.homePageItemlistLike.setImageResource(R.drawable.icon_like);
+                        ed.putBoolean("title",true);
+                    }else{
+                        holder.homePageItemlistLike.setImageResource(R.drawable.icon_like_article_not_selected);
+                        ed.putBoolean("title",false);
+                    }
+                    ed.commit();
+                }
             }
         });
 
@@ -94,7 +117,7 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
 
 
 
-    class Mywang extends RecyclerView.ViewHolder {
+    public class Mywang extends RecyclerView.ViewHolder {
         private TextView zhishiActivityItemTitle;
         private TextView zhishiActivityItemHou;
         private TextView zhishiActivityItemContext;
@@ -119,6 +142,6 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
         void onclickshow(int i);
     }
     public interface OnClickListenerlike {
-        void onclicklike(int i);
+        void onclicklike(int i,Mywang holder);
     }
 }
