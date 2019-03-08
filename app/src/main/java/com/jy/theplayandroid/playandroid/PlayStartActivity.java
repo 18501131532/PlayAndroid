@@ -3,6 +3,8 @@ package com.jy.theplayandroid.playandroid;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +18,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,8 +62,8 @@ public class PlayStartActivity extends SimpleActivity
     private PlayFragment mPlayFragment;
     public static AppCompatDelegate mDelegate;
 
-    private boolean isone=false;
-    private boolean istwo=false;
+    private boolean isone = false;
+    private boolean istwo = false;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEdit;
@@ -70,6 +73,7 @@ public class PlayStartActivity extends SimpleActivity
     public static FloatingActionButton fab;
     public static BottomNavigationView bottomNavigationView;
     private Toolbar mToolbar;
+    private long firstTime = 0;
 
     @Override
     protected void initData() {
@@ -84,7 +88,7 @@ public class PlayStartActivity extends SimpleActivity
         mNavigationView.setNavigationItemSelectedListener(this);
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         fab = findViewById(R.id.fab);
-        mPlayFragment = new PlayFragment(tvToolbar,bottomNavigationView);
+        mPlayFragment = new PlayFragment(tvToolbar, bottomNavigationView);
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
@@ -108,7 +112,7 @@ public class PlayStartActivity extends SimpleActivity
                 this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        HttpGreendao.getInstance().insert(new ImageList(null,isone,istwo));
+        HttpGreendao.getInstance().insert(new ImageList(null, isone, istwo));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, mPlayFragment).commit();
     }
@@ -162,7 +166,7 @@ public class PlayStartActivity extends SimpleActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         tvToolbar.setText("首页");
-        PlayFragment playFragment = new PlayFragment(tvToolbar,bottomNavigationView);
+        PlayFragment playFragment = new PlayFragment(tvToolbar, bottomNavigationView);
         FavroiteFragment favroiteFragment = new FavroiteFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
         LogoutFragment logoutFragment = new LogoutFragment();
@@ -203,5 +207,20 @@ public class PlayStartActivity extends SimpleActivity
         mEdit = mSharedPreferences.edit();
         mEdit.putBoolean("loging", false);
         mEdit.commit();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - firstTime > 2000) {
+                Toast.makeText(PlayStartActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+                firstTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
