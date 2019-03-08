@@ -12,7 +12,7 @@ import java.util.List;
 public class IMProjectListData {
 
     public void getProjectListData(int page, int cid, final ProjectListData.ProjectListCallBack projectListCallBack){
-        projectListCallBack.setShowLoading();
+//        projectListCallBack.setShowLoading();
         HttpManager.getInstance().getServer(Global.BASE_URL).getProjectList(page,cid)
                 .compose(RxUtils.<ProjectListBean>rxObserableSchedulerHelper())
                 .subscribe(new BaseObserver<ProjectListBean>(projectListCallBack) {
@@ -20,7 +20,7 @@ public class IMProjectListData {
                     public void onNext(ProjectListBean value) {
                         List<ProjectListBean.DataBean.DatasBean> datas = value.getData().getDatas();
                         projectListCallBack.setProjectList(datas);
-                        projectListCallBack.setHideLoading();
+//                        projectListCallBack.setHideLoading();
                     }
                 });
     }

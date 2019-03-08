@@ -54,7 +54,7 @@
             android:layout_marginBottom="@dimen/dp_60"
             android:layout_marginEnd="@dimen/dp_16"
             android:src="@mipmap/icon_up_arrow"
-            app:layout_behavior="@string/bye_burger_float_behavior"
+            app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.ScaleDownShowBehavior"
             tools:ignore="RtlCompat" />
 
         <android.support.design.widget.BottomNavigationView
@@ -64,8 +64,7 @@
             android:layout_gravity="bottom"
             android:background="@color/colorCard"
             app:elevation="@dimen/dp_16"
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
-
+            app:layout_behavior="com.jy.theplayandroid.playandroid.util.wieght.BottomNavigationBehavior"
             app:itemIconTint="@drawable/nav_item_color_state"
             app:itemTextColor="@drawable/nav_item_color_state"
             app:menu="@menu/bottom_navigation_main" />
