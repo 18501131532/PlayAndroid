@@ -76,7 +76,7 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
         holder.itemSearchPagerGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onclicklist.onclickshow(position);
+                onclicklist.onclickshow(position,v);
             }
         });
 
@@ -139,7 +139,7 @@ public class ZhishiActivityAdapter extends RecyclerView.Adapter<ZhishiActivityAd
 
 
     public interface OnClickListener {
-        void onclickshow(int i);
+        void onclickshow(int i,View view);
     }
     public interface OnClickListenerlike {
         void onclicklike(int i,Mywang holder);
