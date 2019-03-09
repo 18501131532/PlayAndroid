@@ -2,7 +2,6 @@ package com.jy.theplayandroid.playandroid.playandroid.daohang;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,30 +9,22 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.global.MyApp;
-import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.DaoHangListAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.RecyclerAdapter;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.adapter.RecycleritemAdapter;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Bean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.bean.Bean;
+import com.jy.theplayandroid.playandroid.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.presenter.DaoHangPresenter;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -150,13 +141,12 @@ public class DaohangFragment extends BaseFragment<TalkClassify.DaoHangView, DaoH
         mRecyclerAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onClick(View v, int position, int art_position) {
-                Log.e("duanxq", "onClick: " + mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
-//                mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).setBool(true);
+                Log.e("duanxq2222", "onClick: " + mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
                 Intent intent = new Intent(mContext, DaoHangInfoActivity.class);
                 intent.putExtra("title", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getTitle());
                 intent.putExtra("link", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getLink());
                 intent.putExtra("auther", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getAuthor());
-                intent.putExtra("id", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId() + "");
+                intent.putExtra("id", mRecyclerAdapter.mDataBeans.get(position).getArticles().get(art_position).getId());
 //                boolean collect = mRecyclerAdapter.mDataBeans.get(position).getArticles().get(position).isCollect();
 //                intent.putExtra("collect", collect);
                 startActivity(intent);

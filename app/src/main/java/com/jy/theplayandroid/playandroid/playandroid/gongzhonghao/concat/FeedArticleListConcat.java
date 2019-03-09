@@ -2,7 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
+import com.jy.theplayandroid.playandroid.bean.FeedArticleListData;
 
 public interface FeedArticleListConcat {
     interface FeedArticleView extends Base_View {

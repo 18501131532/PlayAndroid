@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
-
-import org.w3c.dom.Text;
+import com.jy.theplayandroid.playandroid.bean.ChuangYongBean;
 
 import java.util.List;
 

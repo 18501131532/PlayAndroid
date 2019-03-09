@@ -1,19 +1,14 @@
 package com.jy.theplayandroid.playandroid.playandroid.gongzhonghao;
 
 
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.ViewGroup;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
+import com.jy.theplayandroid.playandroid.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.OfficialMarkConcat;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.fragment.ReuseFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.presenter.OfficialMarkPresenter;
 
 import java.util.ArrayList;

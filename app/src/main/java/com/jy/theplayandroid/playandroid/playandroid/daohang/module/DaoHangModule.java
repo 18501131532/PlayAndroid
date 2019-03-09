@@ -6,17 +6,15 @@ import com.jy.theplayandroid.playandroid.bean.RegisterBean;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.util.RxUtils;
+import com.jy.theplayandroid.playandroid.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.HttpResult;
+import com.jy.theplayandroid.playandroid.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.utils.RxUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
 public class DaoHangModule {
@@ -66,8 +64,8 @@ public class DaoHangModule {
                 });
     }
 
-    public void getFavruiteWebDelete(Map<String,Object> map, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
-        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruiteWebDelete(map)
+    public void getFavruiteWebDelete(int id,int orid, final TalkClassify.FavruiteWebCallBack daoHangCallBack) {
+        HttpManager.getInstance().getServer(Global.BASE_URL).getFavruiteWebDelete(id,orid)
                 .compose(RxUtils.<HttpResult>rxObserableSchedulerHelper())
                 .subscribe(new BaseObserver<HttpResult>(daoHangCallBack) {
                     @Override

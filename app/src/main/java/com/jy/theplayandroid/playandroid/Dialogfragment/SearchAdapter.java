@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchBean;
+import com.jy.theplayandroid.playandroid.bean.SearchBean;
 
 import java.util.List;
 

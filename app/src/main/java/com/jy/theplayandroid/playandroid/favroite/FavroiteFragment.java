@@ -3,15 +3,12 @@ package com.jy.theplayandroid.playandroid.favroite;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.LoadingActivity;
@@ -21,11 +18,9 @@ import com.jy.theplayandroid.playandroid.adapter.CollectLiskeAdapter;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.DateBase;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.manager.LikeDataBaseMannger;
+import com.jy.theplayandroid.playandroid.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.presenter.FavruiteWebPresenter;
 import com.scwang.smartrefresh.header.StoreHouseHeader;
 import com.scwang.smartrefresh.header.TaurusHeader;
@@ -41,10 +36,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -165,13 +158,15 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
             public void OnLikeItemClick(int position) {
                 HashMap<String, Object> map = new HashMap<>();
                 map.put("id", mAdapter.mList.get(position).getId());
-                mPresenter.getFavruiteWebDelete(map);
+                map.put("originId","-1");
+                mPresenter.getFavruiteWebDelete(mAdapter.mList.get(position).getId(),-1);
+
+                mEdit.putBoolean(mAdapter.mList.get(position).getTitle().toString(), false);
+                mEdit.commit();
 
                 mAdapter.mList.remove(position);
                 mAdapter.notifyDataSetChanged();
 
-                mEdit.putBoolean(mAdapter.mList.get(position).getTitle().toString(), false);
-                mEdit.commit();
 //                List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectId(mAdapter.mList.get(position).getId() + "");
 //                if (dateBases.size()>0){
 //                    LikeDataBaseMannger.getInstrance().delete(dateBases.get(0));
@@ -232,4 +227,9 @@ public class FavroiteFragment extends BaseFragment<TalkClassify.FavruiteWebView,
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

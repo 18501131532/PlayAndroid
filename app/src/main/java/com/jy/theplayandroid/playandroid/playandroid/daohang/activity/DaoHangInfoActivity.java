@@ -2,6 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.daohang.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -19,17 +20,16 @@ import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.DateBase;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
+import com.jy.theplayandroid.playandroid.bean.DateBase;
+import com.jy.theplayandroid.playandroid.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.HttpResult;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.manager.LikeDataBaseMannger;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.presenter.FavruiteWebPresenter;
-import com.jy.theplayandroid.playandroid.util.ShareUtil;
-import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
+import com.jy.theplayandroid.playandroid.utils.ShareUtil;
+import com.jy.theplayandroid.playandroid.utils.StatusBarUtil;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,10 +45,11 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     private String mAuther;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEdit;
-    private String mId;
+    private int mId;
     private Menu mMenu1;
     boolean isClick = true;
     private String mTitle;
+    private int mOrid;
 
     @Override
     protected int creatLoyoutId() {
@@ -61,7 +62,7 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         mEdit = mSharedPreferences.edit();
 
         mTitle = getIntent().getStringExtra("title");
-        mId = getIntent().getStringExtra("id");
+        mId = getIntent().getIntExtra("id", 0);
         Log.e("ppppppp", "initData: " + mId);
         mWeb = getIntent().getStringExtra("link");
         mAuther = getIntent().getStringExtra("auther");
@@ -104,7 +105,7 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
         if (dateBases.size() > 0) {
             for (int i = 0; i < dateBases.size(); i++) {
-                if (dateBases.get(i).getMId().contains(mId)) {
+                if (dateBases.get(i).getMId().contains(mId + "")) {
                     like.setIcon(R.mipmap.ic_toolbar_like_p);
                 } else {
                     like.setIcon(R.mipmap.ic_toolbar_like_n);
@@ -149,13 +150,16 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         boolean aBoolean = mSharedPreferences.getBoolean(mTitle, false);
         if (mSharedPreferences.getBoolean("loging", false)) {
             if (aBoolean) {
-                menuItem.setIcon(R.mipmap.ic_toolbar_like_p).setChecked(true);
+                menuItem.setIcon(R.mipmap.ic_toolbar_like_p);
+                isClick = false;
             } else {
-                menuItem.setIcon(R.mipmap.ic_toolbar_like_n).setChecked(true);
+                isClick = true;
+                menuItem.setIcon(R.mipmap.ic_toolbar_like_n);
             }
-        } else {
-            startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
         }
+//        else {
+//            startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
+//        }
 //        List<DateBase> dateBases = LikeDataBaseMannger.getInstrance().selectAll();
 //        Log.e("shoucangksnfd", "onPrepareOptionsMenu: "+dateBases.size());
 //        mId = getIntent().getStringExtra("id");
@@ -203,8 +207,9 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
                         isClick = false;
                     } else {
                         HashMap<String, Object> map = new HashMap<>();
-                        map.put("id", mId);
-                        mPresenter.getFavruiteWebDelete(map);
+//                        map.put("id", mId);
+//                        map.put("originId", mOrid);
+                        mPresenter.getFavruiteWebDelete(mId, mOrid);
                         item.setIcon(R.mipmap.ic_toolbar_like_n);
                         mEdit.putBoolean(mTitle, false);
                         mEdit.commit();
@@ -240,18 +245,29 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
     }
 
     @Override
+    public Intent getIntent() {
+        finish();
+        return super.getIntent();
+    }
+
+    @Override
     protected FavruiteWebPresenter<TalkClassify.FavruiteWebView> creatPresenter() {
         return new FavruiteWebPresenter<>();
     }
 
     @Override
     public void showFavruiteWeb(FavroiteAddBean favruiteBean) {
-        if (favruiteBean.getData() != null) {
-            if (favruiteBean.getData().getLink().equals(mWeb)) {
-                Toast.makeText(mActivity, "收藏成功", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mActivity, favruiteBean.getErrorMsg(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
+        if (favruiteBean != null) {
+            Log.e("duanxqooo", "showFavruiteWeb: " + favruiteBean.getData().getOriginId());
+            int originId = favruiteBean.getData().getOriginId();
+            mOrid = originId;
+            if (favruiteBean.getData() != null) {
+                if (favruiteBean.getData().getLink().equals(mWeb)) {
+                    Toast.makeText(mActivity, "收藏成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mActivity, favruiteBean.getErrorMsg(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DaoHangInfoActivity.this, LoadingActivity.class));
+                }
             }
         }
     }

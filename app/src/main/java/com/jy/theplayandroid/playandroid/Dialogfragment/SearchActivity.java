@@ -1,14 +1,11 @@
 package com.jy.theplayandroid.playandroid.Dialogfragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +13,7 @@ import android.widget.Toast;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
 import com.jy.theplayandroid.playandroid.concat.SearchApi;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchBean;
+import com.jy.theplayandroid.playandroid.bean.SearchBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.infoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter.SearchPersenter;
 

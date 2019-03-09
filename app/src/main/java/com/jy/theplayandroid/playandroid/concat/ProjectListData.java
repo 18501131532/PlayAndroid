@@ -2,8 +2,7 @@ package com.jy.theplayandroid.playandroid.concat;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.bean.ProjectListBean;
 
 import java.util.List;
 

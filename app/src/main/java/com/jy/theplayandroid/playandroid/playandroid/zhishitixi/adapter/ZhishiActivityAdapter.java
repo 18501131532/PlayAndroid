@@ -13,11 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.LoadingActivity;
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
+import com.jy.theplayandroid.playandroid.bean.TwoBEAN;
 
 import java.util.List;
 

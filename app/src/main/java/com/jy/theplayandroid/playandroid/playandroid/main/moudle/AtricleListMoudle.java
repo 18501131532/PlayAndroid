@@ -4,9 +4,9 @@ import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
-import com.jy.theplayandroid.playandroid.util.RxUtils;
+import com.jy.theplayandroid.playandroid.bean.ArticleBannerBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.utils.RxUtils;
 
 /**
  * Created by 段傅华 on 2019/2/28.

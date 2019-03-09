@@ -1,11 +1,8 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
+import com.jy.theplayandroid.playandroid.bean.TwoBEAN;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiTwo;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel.ZhishiMoudel;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel.ZhishiMoudelTwo;
 
 public class ZhishipresenterTwo<V extends ZhishiTwo.twoView> extends BasePresenter<V> implements ZhishiTwo.twoMoudel,ZhishiTwo.twoPresenter {

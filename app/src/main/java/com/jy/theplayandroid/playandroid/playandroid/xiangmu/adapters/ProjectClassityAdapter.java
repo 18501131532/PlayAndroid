@@ -4,9 +4,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.ViewGroup;
 
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
+import com.jy.theplayandroid.playandroid.bean.ProjectClassifyData;
 
 import java.util.List;
 

@@ -1,20 +1,16 @@
 package com.jy.theplayandroid.playandroid.playandroid.daohang.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Bean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.bean.Bean;
+import com.jy.theplayandroid.playandroid.bean.JsonBean;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout;
 
 import java.util.ArrayList;

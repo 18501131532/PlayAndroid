@@ -1,22 +1,18 @@
 package com.jy.theplayandroid.playandroid.playandroid.xiangmu;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.ProjectClassify;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.adapters.ProjectClassityAdapter;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
+import com.jy.theplayandroid.playandroid.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.fragments.ProjectListFragment;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter.IPProjectClassify;
 
@@ -24,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**

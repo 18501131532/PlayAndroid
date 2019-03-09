@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
+import com.jy.theplayandroid.playandroid.bean.FeedArticleListData;
 
 import java.util.ArrayList;
 

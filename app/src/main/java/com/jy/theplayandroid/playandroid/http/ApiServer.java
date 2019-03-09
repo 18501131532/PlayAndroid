@@ -2,41 +2,37 @@ package com.jy.theplayandroid.playandroid.http;
 
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
+import com.jy.theplayandroid.playandroid.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.HttpResult;
+import com.jy.theplayandroid.playandroid.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.bean.FeedArticleListData;
+import com.jy.theplayandroid.playandroid.bean.WxAuthor;
+import com.jy.theplayandroid.playandroid.bean.ProjectClassifyData;
+import com.jy.theplayandroid.playandroid.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.bean.ChuangYongBean;
+import com.jy.theplayandroid.playandroid.bean.OneBean;
+import com.jy.theplayandroid.playandroid.bean.SearchBean;
+import com.jy.theplayandroid.playandroid.bean.SearchHotkeyBean;
+import com.jy.theplayandroid.playandroid.bean.TwoBEAN;
 
 import io.reactivex.Observable;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleBannerBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleListBean;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
 
 /**
  * Created by 段傅华 on 2019/2/27.
@@ -79,9 +75,9 @@ public interface  ApiServer {
      * 取消站外收藏
      *http://www.wanandroid.com/lg/uncollect/2805/json
      * */
-    @POST("lg/collect/2805/json")
+    @POST("lg/uncollect/{id}/json")
     @FormUrlEncoded
-    Observable<HttpResult>getFavruiteWebDelete(@FieldMap Map<String,Object> requestBody);
+    Observable<HttpResult>getFavruiteWebDelete(@Path("id") int id, @Field("originId") int originId);
 
     /**
      * 收藏列表

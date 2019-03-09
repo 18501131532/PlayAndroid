@@ -4,7 +4,7 @@ import com.jy.theplayandroid.playandroid.dao.DaoMaster;
 import com.jy.theplayandroid.playandroid.dao.DaoSession;
 import com.jy.theplayandroid.playandroid.dao.DateBaseDao;
 import com.jy.theplayandroid.playandroid.global.MyApp;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.DateBase;
+import com.jy.theplayandroid.playandroid.bean.DateBase;
 
 import java.util.List;
 

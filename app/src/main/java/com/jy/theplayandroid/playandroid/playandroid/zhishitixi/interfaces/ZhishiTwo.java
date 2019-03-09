@@ -2,8 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
+import com.jy.theplayandroid.playandroid.bean.TwoBEAN;
 
 public interface ZhishiTwo {
 

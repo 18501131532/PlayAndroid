@@ -2,7 +2,6 @@ package com.jy.theplayandroid.playandroid.Dialogfragment;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,14 +27,12 @@ import com.jy.theplayandroid.playandroid.concat.SearchHotkey;
 import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter.IPSearchHotkey;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
+import com.jy.theplayandroid.playandroid.bean.SearchHotkeyBean;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

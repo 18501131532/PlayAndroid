@@ -17,13 +17,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.OfficialMarkDetailsActivity;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.adapter.ListItemAdapter;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
+import com.jy.theplayandroid.playandroid.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.FeedArticleListConcat;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.presenter.FeedArticlePresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

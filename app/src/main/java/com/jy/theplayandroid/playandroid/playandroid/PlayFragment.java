@@ -4,10 +4,8 @@ package com.jy.theplayandroid.playandroid.playandroid;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -20,7 +18,6 @@ import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.GongzhonghaoFr
 import com.jy.theplayandroid.playandroid.playandroid.main.MainFragment;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.XiangmuFragment;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.ZhishitixiFragment;
-import com.jy.theplayandroid.playandroid.util.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
 

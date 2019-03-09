@@ -3,9 +3,7 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel;
 import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.TwoBEAN;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
+import com.jy.theplayandroid.playandroid.bean.TwoBEAN;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiTwo;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

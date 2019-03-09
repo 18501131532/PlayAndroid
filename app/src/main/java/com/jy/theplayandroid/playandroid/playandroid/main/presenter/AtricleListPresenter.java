@@ -2,8 +2,8 @@ package com.jy.theplayandroid.playandroid.playandroid.main.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleBannerBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleListBean;
 import com.jy.theplayandroid.playandroid.playandroid.main.moudle.AtricleListMoudle;
 
 /**

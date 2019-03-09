@@ -20,7 +20,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_play"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/dp_45"
                 android:background="@drawable/blue_gradient_bg"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
@@ -50,7 +50,7 @@
             android:layout_marginBottom="@dimen/dp_60"
             android:layout_marginEnd="@dimen/dp_16"
             android:src="@mipmap/icon_up_arrow"
-            app:layout_behavior="@string/bye_burger_float_behavior"
+            app:layout_behavior="com.jy.theplayandroid.playandroid.utils.ScaleDownShowBehavior"
             tools:ignore="RtlCompat" />
 
         <android.support.design.widget.BottomNavigationView
@@ -62,7 +62,7 @@
             app:elevation="@dimen/dp_16"
             app:itemIconTint="@drawable/nav_item_color_state"
             app:itemTextColor="@drawable/nav_item_color_state"
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
+            app:layout_behavior="com.jy.theplayandroid.playandroid.utils.BottomNavigationBehavior"
             app:menu="@menu/bottom_navigation_main" />
     </android.support.design.widget.CoordinatorLayout>
 

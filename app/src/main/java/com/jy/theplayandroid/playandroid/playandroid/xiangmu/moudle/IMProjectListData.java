@@ -4,8 +4,8 @@ import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.concat.ProjectListData;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
-import com.jy.theplayandroid.playandroid.util.RxUtils;
+import com.jy.theplayandroid.playandroid.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.utils.RxUtils;
 
 import java.util.List;
 

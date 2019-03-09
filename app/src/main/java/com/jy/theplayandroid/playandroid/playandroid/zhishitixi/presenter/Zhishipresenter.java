@@ -1,9 +1,7 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter;
 
-import android.view.View;
-
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.bean.OneBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel.ZhishiMoudel;
 

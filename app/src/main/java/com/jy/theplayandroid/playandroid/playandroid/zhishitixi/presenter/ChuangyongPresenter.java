@@ -3,7 +3,7 @@ package com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter;
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.ChangYong;
 
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
+import com.jy.theplayandroid.playandroid.bean.ChuangYongBean;
 
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.moudel.ChuangYongMoudel;
 

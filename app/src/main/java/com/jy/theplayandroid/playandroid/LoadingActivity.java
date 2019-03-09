@@ -2,10 +2,8 @@ package com.jy.theplayandroid.playandroid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -21,21 +19,16 @@ import android.widget.Toast;
 import com.jy.theplayandroid.playandroid.base.baseactivity.BaseActivity;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
 import com.jy.theplayandroid.playandroid.presenter.LoadingPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.FormBody;
-import okhttp3.Request;
 
 public class LoadingActivity extends BaseActivity<TalkClassify.LoadingView, LoadingPresenter<TalkClassify.LoadingView>> implements TalkClassify.LoadingView {
 

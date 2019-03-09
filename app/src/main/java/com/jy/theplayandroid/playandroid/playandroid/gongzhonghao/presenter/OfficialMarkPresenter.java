@@ -1,7 +1,7 @@
 package com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.WxAuthor;
+import com.jy.theplayandroid.playandroid.bean.WxAuthor;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.OfficialMarkConcat;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.module.OfficialMarkModule;
 

@@ -2,7 +2,6 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.activitys;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -10,19 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
-import com.jy.theplayandroid.playandroid.util.ShareUtil;
-import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
-import com.jy.theplayandroid.playandroid.util.SystemUtil;
+import com.jy.theplayandroid.playandroid.utils.ShareUtil;
+import com.jy.theplayandroid.playandroid.utils.StatusBarUtil;
 
 import java.lang.reflect.Method;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ProjectActivity extends SimpleActivity {
 

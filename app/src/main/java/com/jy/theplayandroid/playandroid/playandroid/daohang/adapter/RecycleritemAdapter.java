@@ -11,13 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Bean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.FlowLayout;
+import com.jy.theplayandroid.playandroid.bean.Bean;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

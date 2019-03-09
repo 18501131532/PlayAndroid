@@ -3,7 +3,6 @@ package com.jy.theplayandroid.playandroid;
 import android.animation.ValueAnimator;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -17,8 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
-import com.jy.theplayandroid.playandroid.util.ElasticOutInterpolator;
-import com.jy.theplayandroid.playandroid.util.StatusBarUtil;
+import com.jy.theplayandroid.playandroid.utils.ElasticOutInterpolator;
+import com.jy.theplayandroid.playandroid.utils.StatusBarUtil;
 import com.scwang.smartrefresh.header.FlyRefreshHeader;
 import com.scwang.smartrefresh.header.flyrefresh.FlyView;
 import com.scwang.smartrefresh.header.flyrefresh.MountainSceneView;

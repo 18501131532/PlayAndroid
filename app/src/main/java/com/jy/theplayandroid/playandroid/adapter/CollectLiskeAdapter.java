@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
 
 import java.util.List;
 

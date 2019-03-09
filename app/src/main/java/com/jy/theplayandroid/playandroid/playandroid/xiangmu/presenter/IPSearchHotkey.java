@@ -3,7 +3,7 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter;
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.SearchHotkey;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.moudle.IMSearchHotkey;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
+import com.jy.theplayandroid.playandroid.bean.SearchHotkeyBean;
 
 import java.util.List;
 

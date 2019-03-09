@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.baseactivity.SimpleActivity;
-import com.jy.theplayandroid.playandroid.util.ShareUtil;
+import com.jy.theplayandroid.playandroid.utils.ShareUtil;
 
 import java.lang.reflect.Method;
 

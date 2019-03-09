@@ -1,18 +1,13 @@
 package com.jy.theplayandroid.playandroid.playandroid.daohang.cookies;
 
 import android.content.SharedPreferences;
-import android.text.TextUtils;
 
 import com.jy.theplayandroid.playandroid.global.MyApp;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.AppConstant;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.utils.SharePreferenceUtils;
 
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
 
 import okhttp3.Interceptor;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /*

@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.share.SharePopupWindow;
+import com.jy.theplayandroid.playandroid.bean.SharePopupWindow;
 
 public class OfficialMarkDetailsActivity extends AppCompatActivity {
     private Toolbar mark_toolbar;

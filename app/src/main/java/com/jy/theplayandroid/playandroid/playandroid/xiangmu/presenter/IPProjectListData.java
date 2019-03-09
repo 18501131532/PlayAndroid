@@ -2,7 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.ProjectListData;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.bean.ProjectListBean;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.moudle.IMProjectListData;
 
 import java.util.List;

@@ -3,7 +3,6 @@ package com.jy.theplayandroid.playandroid.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -12,16 +11,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jy.theplayandroid.playandroid.MainActivity;
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.SimpleFragment;
-import com.jy.theplayandroid.playandroid.util.CleanDataUtils;
-import com.jy.theplayandroid.playandroid.http.HttpGreendao;
-import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
+import com.jy.theplayandroid.playandroid.utils.CleanDataUtils;
+import com.jy.theplayandroid.playandroid.utils.HttpGreendao;
+import com.jy.theplayandroid.playandroid.bean.ImageList;
 //import com.jy.theplayandroid.playandroid.util.ACache;
-import com.jy.theplayandroid.playandroid.util.ShareUtil;
+import com.jy.theplayandroid.playandroid.utils.ShareUtil;
 
 import java.io.File;
 import java.util.List;

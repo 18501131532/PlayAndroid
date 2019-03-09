@@ -4,16 +4,14 @@ import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.bean.RegisterBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.FavroiteAddBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.Favruite;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.HttpResult;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
+import com.jy.theplayandroid.playandroid.bean.FavroiteAddBean;
+import com.jy.theplayandroid.playandroid.bean.Favruite;
+import com.jy.theplayandroid.playandroid.bean.HttpResult;
+import com.jy.theplayandroid.playandroid.bean.JsonBean;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
 /**
@@ -83,7 +81,7 @@ public interface TalkClassify {
     interface FavruiteWebPresenter {
         void getFavruiteWeb(Map<String,Object> formBody);
         void getFavruite(int page);
-        void getFavruiteWebDelete(Map<String,Object> formBody);
+        void getFavruiteWebDelete(int id,int orid);
     }
 
     interface FavruiteWebCallBack extends HttpFinishCallBack{

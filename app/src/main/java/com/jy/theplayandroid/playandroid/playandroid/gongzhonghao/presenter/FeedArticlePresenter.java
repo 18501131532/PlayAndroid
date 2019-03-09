@@ -1,7 +1,7 @@
 package com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
-import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.bean.FeedArticleListData;
+import com.jy.theplayandroid.playandroid.bean.FeedArticleListData;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.concat.FeedArticleListConcat;
 import com.jy.theplayandroid.playandroid.playandroid.gongzhonghao.module.FeedArticleModule;
 

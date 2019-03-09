@@ -4,8 +4,7 @@ import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.concat.SearchApi;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchBean;
+import com.jy.theplayandroid.playandroid.bean.SearchBean;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

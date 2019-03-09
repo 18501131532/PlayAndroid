@@ -1,32 +1,21 @@
 package com.jy.theplayandroid.playandroid.playandroid.zhishitixi;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
-import android.preference.Preference;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
-import com.jy.theplayandroid.playandroid.global.MyApp;
-import com.jy.theplayandroid.playandroid.playandroid.PlayFragment;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.adapter.ZhishiAdapter;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.OneBean;
+import com.jy.theplayandroid.playandroid.bean.OneBean;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.interfaces.ZhishiOne;
 import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.presenter.Zhishipresenter;
 import com.scwang.smartrefresh.header.TaurusHeader;
@@ -40,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 /**

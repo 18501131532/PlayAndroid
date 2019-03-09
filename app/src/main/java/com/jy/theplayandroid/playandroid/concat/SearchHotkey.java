@@ -2,8 +2,7 @@ package com.jy.theplayandroid.playandroid.concat;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.ChuangYongBean;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
+import com.jy.theplayandroid.playandroid.bean.SearchHotkeyBean;
 
 import java.util.List;
 

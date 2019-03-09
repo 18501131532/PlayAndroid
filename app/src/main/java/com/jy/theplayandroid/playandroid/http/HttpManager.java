@@ -6,7 +6,7 @@ import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.global.MyApp;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.cookies.AddHeaderInterceptor;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.cookies.SaveCookieInterceptor;
-import com.jy.theplayandroid.playandroid.util.SystemUtil;
+import com.jy.theplayandroid.playandroid.utils.SystemUtil;
 
 import java.io.File;
 import java.io.IOException;

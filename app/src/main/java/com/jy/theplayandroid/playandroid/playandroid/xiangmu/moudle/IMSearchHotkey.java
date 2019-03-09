@@ -4,8 +4,8 @@ import com.jy.theplayandroid.playandroid.base.baseobserver.BaseObserver;
 import com.jy.theplayandroid.playandroid.concat.SearchHotkey;
 import com.jy.theplayandroid.playandroid.global.Global;
 import com.jy.theplayandroid.playandroid.http.HttpManager;
-import com.jy.theplayandroid.playandroid.playandroid.zhishitixi.bean.SearchHotkeyBean;
-import com.jy.theplayandroid.playandroid.util.RxUtils;
+import com.jy.theplayandroid.playandroid.bean.SearchHotkeyBean;
+import com.jy.theplayandroid.playandroid.utils.RxUtils;
 
 import java.util.List;
 

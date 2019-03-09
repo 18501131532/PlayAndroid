@@ -3,15 +3,9 @@ package com.jy.theplayandroid.playandroid.presenter;
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.bean.LoadingBean;
 import com.jy.theplayandroid.playandroid.concat.TalkClassify;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.JsonBean;
-import com.jy.theplayandroid.playandroid.playandroid.daohang.bean.User;
 import com.jy.theplayandroid.playandroid.playandroid.daohang.module.DaoHangModule;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
-import java.util.ArrayList;
 import java.util.Map;
-
-import okhttp3.RequestBody;
 
 public class LoadingPresenter<V extends TalkClassify.LoadingView> extends BasePresenter<V> implements TalkClassify.LoadingPresenter, TalkClassify.LoadingCallBack {
     DaoHangModule mDaoHangModule=new DaoHangModule();

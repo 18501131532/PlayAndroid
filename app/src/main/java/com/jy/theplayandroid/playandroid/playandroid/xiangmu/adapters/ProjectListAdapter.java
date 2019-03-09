@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jy.theplayandroid.playandroid.R;
-import com.jy.theplayandroid.playandroid.http.HttpGreendao;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ImageList;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectListBean;
+import com.jy.theplayandroid.playandroid.utils.HttpGreendao;
+import com.jy.theplayandroid.playandroid.bean.ImageList;
+import com.jy.theplayandroid.playandroid.bean.ProjectListBean;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package com.jy.theplayandroid.playandroid.concat;
 
 import com.jy.theplayandroid.playandroid.base.basemoudle.HttpFinishCallBack;
 import com.jy.theplayandroid.playandroid.base.baseview.Base_View;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleBannerBean;
-import com.jy.theplayandroid.playandroid.playandroid.main.bean.ArticleListBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleBannerBean;
+import com.jy.theplayandroid.playandroid.bean.ArticleListBean;
 
 /**
  * Created by 段傅华 on 2019/2/28.

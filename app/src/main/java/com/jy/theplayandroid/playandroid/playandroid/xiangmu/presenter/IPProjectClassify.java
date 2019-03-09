@@ -2,7 +2,7 @@ package com.jy.theplayandroid.playandroid.playandroid.xiangmu.presenter;
 
 import com.jy.theplayandroid.playandroid.base.basepresenter.BasePresenter;
 import com.jy.theplayandroid.playandroid.concat.ProjectClassify;
-import com.jy.theplayandroid.playandroid.playandroid.xiangmu.bean.ProjectClassifyData;
+import com.jy.theplayandroid.playandroid.bean.ProjectClassifyData;
 import com.jy.theplayandroid.playandroid.playandroid.xiangmu.moudle.IMProjectClassify;
 
 import java.util.List;
