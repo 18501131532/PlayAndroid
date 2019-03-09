@@ -15,6 +15,7 @@ import com.jy.theplayandroid.playandroid.PlayStartActivity;
 import com.jy.theplayandroid.playandroid.R;
 import com.jy.theplayandroid.playandroid.base.basefragment.BaseFragment;
 import com.jy.theplayandroid.playandroid.concat.AtricleList;
+import com.jy.theplayandroid.playandroid.playandroid.daohang.activity.DaoHangInfoActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.activity.HomePageDetailActivity;
 import com.jy.theplayandroid.playandroid.playandroid.main.adapter.MainRlvAdapter;
 import com.jy.theplayandroid.playandroid.bean.ArticleBannerBean;
@@ -119,12 +120,13 @@ public class MainFragment extends BaseFragment<AtricleList.AtricleListView, Atri
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void OnItemClick(int position,View view) {
-                Intent intent = new Intent(getContext(), HomePageDetailActivity.class);
-                intent.putExtra("url",mMainRlvAdapter.mList.get(position).getLink());
+                Intent intent = new Intent(getContext(), DaoHangInfoActivity.class);
+                intent.putExtra("link",mMainRlvAdapter.mList.get(position).getLink());
                 intent.putExtra("title",mMainRlvAdapter.mList.get(position).getTitle());
                 intent.putExtra("id",mMainRlvAdapter.mList.get(position).getId());
                 intent.putExtra("author",mMainRlvAdapter.mList.get(position).getAuthor());
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "mybotton").toBundle());
+               // startActivity(intent);
             }
         });
     }

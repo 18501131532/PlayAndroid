@@ -57,6 +57,15 @@ public class BannerDetailsActivity extends SimpleActivity {
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         WebSettings settings = mBannerWebWeb.getSettings();
         settings.setJavaScriptEnabled(true);
+        //不显示缩放按钮
+        settings.setDisplayZoomControls(false);
+        //设置自适应屏幕，两者合用
+        //将图片调整到适合WebView的大小
+        settings.setUseWideViewPort(true);
+        //缩放至屏幕的大小
+        settings.setLoadWithOverviewMode(true);
+        //自适应屏幕
+        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         mBannerWebWeb.loadUrl(mUrls);
     }
 
