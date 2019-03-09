@@ -244,11 +244,11 @@ public class DaoHangInfoActivity extends BaseActivity<TalkClassify.FavruiteWebVi
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public Intent getIntent() {
-        finish();
-        return super.getIntent();
-    }
+//    @Override
+//    public Intent getIntent() {
+//        finish();
+//        return super.getIntent();
+//    }
 
     @Override
     protected FavruiteWebPresenter<TalkClassify.FavruiteWebView> creatPresenter() {
